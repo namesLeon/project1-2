@@ -1,4 +1,4 @@
-package org.proj11;
+package org.group24;
 
 /**
  * Hello world!
