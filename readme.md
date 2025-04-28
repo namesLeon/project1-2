@@ -1,52 +1,30 @@
-## GTFS MySQL database Setup and Loader Guide
+# BCS1600 Spring 2025 Project Skeleton
 
-### set up the MySQL Database
+The files in this repository can be used as a basis for your implementation of the Routing
+Engine portion of the project.
 
-1. **install MySQL Server** (if you don't have it yet):
-   - Download from [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
+[Maven]: https://maven.apache.org/
 
-2. **Start your MySQL Server**:
-   - Windows: start mySQL service meow
-   - Mac/Linux: `sudo systemctl start mysql`
+## Building
 
-3. **Create a new database**:
-   Open a terminal and run:
+Use [Maven][] to build, clean, test, and start your program. The command-line tool is called
+`mvn`, and IDEs like IntelliJ IDEA and Visual Studio Code have built-in support for Maven
+actions. Maven is configured with the [`pom.xml`](pom.xml) file in the root directory of your
+repository.
 
-   ```bash
-   mysql -u root -p
-   ```
+ - `mvn clean`: removes the `target/` directory (but note that e.g. vscode will immediately put
+   it back if vscode is open on the project!).
 
-   Inside the MySQL shell:
+ - `mvn compile`: build the main project.
 
-   ```sql
-   CREATE DATABASE gtfs_berlin;
-   exit;
-   ```
+ - `mvn test`: run the test suite.
 
-4. **Import the provided GTFS SQL dump**:
-   In your terminal:
+ - `mvn exec:java`: invoke the main class of the project (`exec.mainClass` property in
+   `pom.xml`). Use the `-q` flag to silence Maven's own output: `mvn -q exec:java`.
 
-   ```bash
-   mysql -u root -p gtfs_berlin < path/to/gtfs_berlin.sql
-   ```
-and that s it !!! should work now ^-^
----
+## Files
 
-###  GTFSMySQLLoader . java
+ - `pom.xml`: [Maven][] configuration file.
 
-The `GTFSMySQLLoader` class **connects to the MySQL database** and **loads GTFS data** into Java objects.
-
-It supports:
-- `loadStops()` → Load stops from the `stops` table into a `Map<String, Stop>`
-- `loadRoutes()` → Load routes from the `routes` table into a `Map<String, Route>`
-- `loadTrips()` → Load trips from the `trips` table into a `Map<String, Trip>`
-- `loadStopTimes()` → Load stop times from the `stop_times` table into a `List<StopTime>`
-- `loadCalendarDates()` → Load service dates from the `calendar_dates` table into a `List<CalendarDate>`
-
-The loader uses:
-- Standard JDBC (Java Database Connectivity)
-- Works similarly to the original ZIP GTFSLoader, but reads data from MySQL instead of a `.zip` file.
-
-NOTE : the data loaded in the current BERLIN gtfs database are the preprocessed csv files meow.
-
----
+ - `src/main/java/RoutingEngine.java`: Skeleton Routing Engine server implementation for you to
+   build on.
