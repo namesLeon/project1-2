@@ -4,4 +4,6 @@ import structure.TravelVisitor;
 
 public interface ConnectionRecord {
     void acceptVisitor(TravelVisitor visitor);
+
+    int getTotalCost();
 }

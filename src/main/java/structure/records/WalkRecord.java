@@ -5,7 +5,8 @@ import structure.TravelVisitor;
 public class WalkRecord implements ConnectionRecord{
     private int costMinutes;
 
-    public int getCostMinutes() {
+    @Override
+    public int getTotalCost(){
         return costMinutes;
     }
 
@@ -19,6 +20,11 @@ public class WalkRecord implements ConnectionRecord{
     @Override
     public void acceptVisitor(TravelVisitor visitor) {
 
+    }
+
+    @Override
+    public String toString(){
+        return "Walk Record - walk : "+costMinutes;
     }
 
 }

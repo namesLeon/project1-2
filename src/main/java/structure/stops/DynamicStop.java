@@ -1,4 +1,15 @@
 package structure.stops;
 
-public class DynamicStop {
+import structure.TravelVisitor;
+
+public class DynamicStop extends StopStructure {
+
+    public DynamicStop(double lat, double longt, String stopID){
+        super(lat, longt, stopID);
+    }
+
+    @Override
+    public void acceptVisitor(TravelVisitor visitor) {
+
+    }
 }

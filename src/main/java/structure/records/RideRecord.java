@@ -5,15 +5,17 @@ import structure.TravelVisitor;
 
 import java.time.LocalTime;
 
-public class TripRecord implements Comparable, ConnectionRecord{
+public class RideRecord implements Comparable, ConnectionRecord{
     private LocalTime time;
     private Trip trip;
-    private int costMinutes;
+    private int rideCost;
+    private int waitCost;
 
-    public TripRecord(LocalTime time, Trip trip, int costMinutes){
+    public RideRecord(LocalTime time, Trip trip, int costMinutes, int waitCost){
         this.time = time;
         this.trip = trip;
-        this.costMinutes = costMinutes;
+        this.rideCost = costMinutes;
+        this.waitCost = waitCost;
     }
 
     public LocalTime getTime() {
@@ -24,18 +26,32 @@ public class TripRecord implements Comparable, ConnectionRecord{
         return trip;
     }
 
-    public int getCostMinutes() {
-        return costMinutes;
+    public int getRideCost() {
+        return rideCost;
+    }
+
+    public int getWaitCost(){
+        return waitCost;
+    }
+
+    @Override
+    public int getTotalCost(){
+        return waitCost + rideCost;
     }
 
     @Override
     public int compareTo(Object o) {
-        TripRecord other = (TripRecord) o;
+        RideRecord other = (RideRecord) o;
         return this.time.compareTo(other.getTime());
     }
 
     @Override
     public void acceptVisitor(TravelVisitor visitor) {
 
+    }
+
+    @Override
+    public String toString(){
+        return "Ride Record - wait : "+waitCost + " | ride : "+rideCost;
     }
 }
