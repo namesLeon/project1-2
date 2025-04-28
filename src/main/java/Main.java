@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import data.*;
+import loaders.GTFSLoader;
 
 public class Main {
     public static void main(String[] args) throws IOException {

@@ -1,3 +1,4 @@
+package loaders;
 import java.io.*;
 import java.util.*;
 import java.util.zip.ZipEntry;
@@ -18,7 +19,7 @@ public class GTFSLoader {
 
     public Map<String, Stop> loadStops() throws IOException {
         Map<String, Stop> stops = new HashMap<>();
-        ZipEntry entry = zip.getEntry("stops.txt");
+        ZipEntry entry = zip.getEntry("stops_clean.txt");
         if (entry == null) return stops;
 
         try (
@@ -38,7 +39,7 @@ public class GTFSLoader {
 
     public Map<String, Route> loadRoutes() throws IOException {
         Map<String, Route> routes = new HashMap<>();
-        ZipEntry entry = zip.getEntry("routes.txt");
+        ZipEntry entry = zip.getEntry("routes_clean.txt");
         if (entry == null) return routes;
 
         try (
@@ -58,7 +59,7 @@ public class GTFSLoader {
 
     public Map<String, Trip> loadTrips() throws IOException {
         Map<String, Trip> trips = new HashMap<>();
-        ZipEntry entry = zip.getEntry("trips.txt");
+        ZipEntry entry = zip.getEntry("trips_clean.txt");
         if (entry == null) return trips;
 
         try (
@@ -78,7 +79,7 @@ public class GTFSLoader {
 
     public List<StopTime> loadStopTimes() throws IOException {
         List<StopTime> stopTimes = new ArrayList<>();
-        ZipEntry entry = zip.getEntry("stop_times.txt");
+        ZipEntry entry = zip.getEntry("stop_times_clean.txt");
         if (entry == null) return stopTimes;
 
         try (
@@ -99,7 +100,7 @@ public class GTFSLoader {
 
     public List<CalendarDate> loadCalendarDates() throws IOException {
         List<CalendarDate> calendar = new ArrayList<>();
-        ZipEntry entry = zip.getEntry("calendar_dates.txt");
+        ZipEntry entry = zip.getEntry("calendar_dates_clean.txt");
         if (entry == null) return calendar;
 
         try (
@@ -118,7 +119,7 @@ public class GTFSLoader {
 
     public void filterBerlinStops() {
         // Get the stops.txt entry from the zip file
-        ZipEntry entry = zip.getEntry("stops.txt");
+        ZipEntry entry = zip.getEntry("stops_clean.txt");
         if (entry == null) {
             System.out.println("stops.txt not found in the zip file.");
             return;
@@ -158,5 +159,5 @@ public class GTFSLoader {
         }
     }
 
-    public void printPath(){ System.out.println(path + "\\stops.txt"); }
+    public void printPath(){ System.out.println(path + "\\stops_clean.txt"); }
 }

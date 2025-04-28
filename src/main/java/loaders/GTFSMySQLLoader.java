@@ -1,3 +1,4 @@
+package loaders;
 import java.sql.*;
 import java.util.*;
 
@@ -26,11 +27,7 @@ public class GTFSMySQLLoader {
                 String stopName = rs.getString("stop_name");
                 double lat = rs.getDouble("stop_lat");
                 double lon = rs.getDouble("stop_lon");
-
-                //Create a Stop object
                 Stop stop = new Stop(stopId, stopName, lat, lon);
-
-                //Add it into the HashMap
                 stops.put(stopId, stop);
             }
         }

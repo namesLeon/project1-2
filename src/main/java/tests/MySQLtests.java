@@ -1,3 +1,4 @@
+package tests;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -5,6 +6,7 @@ import java.util.Map;
 import data.Stop;
 import data.StopTime;
 import data.Trip;
+import loaders.GTFSMySQLLoader;
 import data.CalendarDate;
 import data.Route;
 
