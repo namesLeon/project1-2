@@ -1,15 +1,14 @@
 package tests;
-import java.sql.SQLException;
+
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
 
-import data.Stop;
+
 import data.StopTime;
-import data.Trip;
+
 import loaders.GTFSLoader;
-import data.CalendarDate;
-import data.Route;
+
 
 public class StopTimesZipPerformanceTest {
     public static void main(String[] args) {
