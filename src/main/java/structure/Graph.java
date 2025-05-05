@@ -1,23 +1,30 @@
 package structure;
 
-import gtfsparsingzip.data.Stop;
 import gtfsparsingzip.data.Trip;
 import structure.edges.DynamicEdge;
 import structure.edges.Edge;
 import structure.edges.StaticEdge;
+import structure.stops.StaticStop;
 import structure.stops.StopStructure;
-import structure.timetables.DynamicTimetable;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Graph {
-    private HashMap<String, StopStructure> stopMap;
-    private HashMap<StopStructure, HashMap<StopStructure, Edge>> adjMap;
+    private final String START_ID = "0";
+    private final String END_ID = "1";
+    private final HashMap<String, StopStructure> stopMap;
+    private final HashMap<StopStructure, HashMap<StopStructure, Edge>> adjMap;
+
+    private final ArrayList<StopStructure> stopList;
+    private final double speed = 5;
 
     public Graph(){
         this.stopMap = new HashMap<>();
         this.adjMap = new HashMap<>();
+        this.stopList = new ArrayList<>();
     }
 
     // Possible exception here
@@ -33,36 +40,32 @@ public class Graph {
     public void addStop(StopStructure s){
         stopMap.putIfAbsent(s.getStopId(), s);
         adjMap.putIfAbsent(s, new HashMap<>());
+        stopList.add(s);
     }
 
-    public void addDynamicConnection(String startId, String endId, LocalTime time, Trip trip, int costInMinutes){
-        StopStructure start = getStopById(startId);
-        StopStructure end = getStopById(endId);
-
+    public void addDynamicConnection(StopStructure start, StopStructure end, LocalTime time, Trip trip, int walkingCostMinutes){
         if(!isAdjacent(start, end)){
-            addDynamicEdge(start, end);
+            //addDynamicEdge(start, end, GraphUtilities.calculateStaticCostMinutes(start, end, speed));
+            adjMap.get(start).putIfAbsent(end, new DynamicEdge(start, end, walkingCostMinutes));
         }
         Edge edge= getEdge(start, end);
         if(edge instanceof DynamicEdge){
-            ((DynamicEdge)edge).addConnection(time, trip, costInMinutes);
+            ((DynamicEdge)edge).addConnection(time, trip, walkingCostMinutes);
         }
     }
 
-    private void addDynamicEdge(StopStructure start, StopStructure end){
-        adjMap.get(start).putIfAbsent(end, new DynamicEdge(start, end));
-    }
+//    private void addDynamicEdge(StopStructure start, StopStructure end, int walkingCostMinutes){
+//        adjMap.get(start).putIfAbsent(end, new DynamicEdge(start, end, walkingCostMinutes));
+//    }
 
-    public void addStaticConnection(String startId, String endId){
-        StopStructure start = getStopById(startId);
-        StopStructure end = getStopById(endId);
-
+    public void addStaticConnection( StopStructure start, StopStructure end){
         if(!isAdjacent(start, end)){
-            adjMap.get(start).putIfAbsent(end, new StaticEdge(start, end));
+            addStaticEdge(start, end, GraphUtilities.calculateStaticCostMinutes(start, end, speed));
         }
     }
 
-    private void addStaticEdge(StopStructure start, StopStructure end){
-        adjMap.get(start).putIfAbsent(end, new StaticEdge(start, end));
+    private void addStaticEdge(StopStructure start, StopStructure end, int walkingCostMinutes){
+        adjMap.get(start).putIfAbsent(end, new StaticEdge(start, end, walkingCostMinutes));
     }
 
     public Edge getEdge(String startId, String endId){
@@ -76,5 +79,60 @@ public class Graph {
     public HashMap<StopStructure, Edge> getAdjacentStops(StopStructure start){
         adjMap.putIfAbsent(start, new HashMap<>());
         return adjMap.get(start);
+    }
+
+    public HashMap<String, StopStructure> getStopMap() {
+        return stopMap;
+    }
+
+    public HashMap<StopStructure, HashMap<StopStructure, Edge>> getAdjMap() {
+        return adjMap;
+    }
+
+    public ArrayList<StopStructure> getStopList(){
+        return stopList;
+    }
+
+    public void connectNeighbouringVertices(int walkingTimeLimit, double speed){
+        for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e1 : adjMap.entrySet()){
+            StopStructure start = e1.getKey();
+            HashMap<StopStructure, Edge> adj = e1.getValue();
+            for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e2 : adjMap.entrySet()){
+                StopStructure end = e2.getKey();
+
+                if(!start.equals(end) && !isAdjacent(start, end)){
+                    int walkingCostMinutes = GraphUtilities.calculateStaticCostMinutes(start, end, speed);
+                    if(walkingCostMinutes <= walkingTimeLimit) {
+                        addStaticEdge(start, end, walkingCostMinutes);
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void addEndNodeAndSetHeuristic(double lat, double longt){
+        StaticStop endStop = new StaticStop(lat, longt, END_ID);
+        addStop(endStop);
+        for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e : adjMap.entrySet()){
+            StopStructure stop1 = e.getKey();
+            if(!endStop.equals(stop1)){
+                int walkingCostMinutes = GraphUtilities.calculateStaticCostMinutes(stop1, endStop, speed);
+                stop1.setDistanceToGoal(walkingCostMinutes);
+                addStaticEdge(stop1, endStop, walkingCostMinutes);
+            }
+        }
+    }
+
+    public void addStartNode(double lat, double longt){
+        StaticStop startStop = new StaticStop(lat, longt, START_ID);
+        addStop(startStop);
+        for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e : adjMap.entrySet()){
+            StopStructure stop2 = e.getKey();
+            if(!startStop.equals(stop2)){
+                int walkingCostMinutes = GraphUtilities.calculateStaticCostMinutes(startStop, stop2, speed);
+                addStaticEdge(startStop, stop2, walkingCostMinutes);
+            }
+        }
     }
 }

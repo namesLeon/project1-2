@@ -6,6 +6,7 @@ public abstract class StopStructure {
     protected double latitude;
     protected double longitude;
     protected String stopID;
+    private double distanceToGoal;
     private int inDegree;
     private int outDegree;
 
@@ -21,6 +22,21 @@ public abstract class StopStructure {
     public double getLongitude(){ return longitude;}
     public String getStopId(){ return stopID;}
 
+    public void setDistanceToGoal(double distanceToGoal){
+        this.distanceToGoal = distanceToGoal;
+    }
+
+    public double getDistanceToGoal() {
+        return distanceToGoal;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(!(o instanceof StopStructure)) return false;
+        StopStructure other = (StopStructure) o;
+        return stopID.equals(other.getStopId());
+    }
     public void incrementInDegree(){inDegree++;}
     public void incrementOutDegree(){outDegree++;}
     public boolean isUnused(){ return inDegree==0 & outDegree==0;}

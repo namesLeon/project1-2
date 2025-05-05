@@ -11,20 +11,13 @@ public abstract class Edge {
     private static Double longitudeToKilometerConstant;
     private StopStructure start;
     private StopStructure end;
-    private static double speed = 5;
     protected int staticCostMinutes;
     protected Timetable timetable;
 
-    public Edge(StopStructure start, StopStructure end){
+    public Edge(StopStructure start, StopStructure end, int walkingCostMinutes){
         this.start = start;
         this.end = end;
-        if(latitudeToKilometerConstant == null){
-            latitudeToKilometerConstant = 1/110.574;
-        }
-        if(longitudeToKilometerConstant == null){
-            longitudeToKilometerConstant = 1/111.320;
-        }
-        this.staticCostMinutes = calculateStaticCostMinutes();
+        this.staticCostMinutes = walkingCostMinutes;
     }
     public int getCost(LocalTime time){
         return timetable.getCost(time);
@@ -36,18 +29,7 @@ public abstract class Edge {
 
     public abstract void acceptVisitor(TravelVisitor visitor);
 
-    private int calculateStaticCostMinutes(){
-        double x, y;
-        x = latitudeToKilometers(Math.abs(end.getLatitude() - start.getLatitude()));
-        y = longitudeToKilometers(Math.abs(end.getLongitude() - start.getLongitude()), end.getLatitude());
-        return (int) (Math.sqrt(x*x + y*x) / speed);
-    }
-
-    private double latitudeToKilometers(double latitudeDiff){
-        return latitudeDiff * latitudeToKilometerConstant;
-    }
-
-    private double longitudeToKilometers(double longitudeDiff, double latitude){
-        return longitudeToKilometerConstant * Math.cos(Math.toRadians(latitude)) * longitudeDiff;
-    }
+//    private int calculateStaticCostMinutes(){
+//        return GraphUtilities.calculateStaticCostMinutes(start, end, speed);
+//    }
 }

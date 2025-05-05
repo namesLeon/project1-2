@@ -9,9 +9,9 @@ import java.time.LocalTime;
 
 public class DynamicEdge extends Edge{
 
-    public DynamicEdge(StopStructure start, StopStructure end){
-        super(start, end);
-        this.timetable = new DynamicTimetable(staticCostMinutes);
+    public DynamicEdge(StopStructure start, StopStructure end, int walkingCostMinutes){
+        super(start, end, walkingCostMinutes);
+        this.timetable = new DynamicTimetable(walkingCostMinutes);
     }
 
     public void addConnection(LocalTime time, Trip trip, int costInMinutes){
