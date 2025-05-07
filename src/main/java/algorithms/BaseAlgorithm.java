@@ -21,38 +21,72 @@ public abstract class BaseAlgorithm {
         arrivalTable = new ArrivalTable();
         visited = new HashSet<>();
         LocalTime time = startTime;
-        int timeDiffMinutes = 0;
+        int costTravel = 0;
         StopStructure current = start;
         for(StopStructure stop : graph.getStopList()){
             arrivalTable.setTimeDiff(stop, current, Integer.MAX_VALUE);
         }
-        arrivalTable.setTimeDiff(current, current, timeDiffMinutes);
+        arrivalTable.setTimeDiff(current, current, costTravel);
         for(Map.Entry<StopStructure, Edge> entry : graph.getAdjacentStops(start).entrySet()){
-            relaxEdges(entry.getKey(), time);
+            relaxEdges(graph, entry.getKey(), time);
         }
 
         while(!pq.isEmpty()){
             PQEntry entry = pq.poll();
-            current = entry.to;
-            timeDiffMinutes = entry.costTravel;
+            current = entry.currentStop;
+            costTravel = entry.costTravel;
             time = startTime.plusMinutes(entry.costTravel);
-            if(visited.contains(current) || arrivalTable.getCostForStop(current) > timeDiffMinutes) continue;
-            relaxEdges(current, time);
+            if(visited.contains(current) || arrivalTable.getCostForStop(current) < costTravel) continue;
+            relaxEdges(graph, current, time);
             visited.add(current);
             if(current.equals(goal)) break;
         }
-
+        Stack<StopStructure> stopsStack = new Stack<>();
+        current = goal;
+        while(!current.equals(start)){
+            stopsStack.add(current);
+            current = arrivalTable.getFromStop(current);
+        }
+        stopsStack.add(current);
+        ArrayList<StopStructure> stopsList = new ArrayList<>();
+        while(!stopsStack.isEmpty()){
+            stopsList.add(stopsStack.pop());
+        }
+        return stopsList;
     }
 
 
-    public abstract void preprocessVertices();
-    public abstract void relaxEdges(StopStructure stop, LocalTime time);
+//    public void preprocessVertices(Graph graph, StopStructure start, StopStructure goal){
+//        graph.addStartNode(start);
+//    };
+    public void relaxEdges(Graph graph, StopStructure stop, LocalTime time){
+        StopStructure s;
+        Edge e;
+        int costTravel;
+        for(Map.Entry<StopStructure, Edge> entry : graph.getAdjacentStops(stop).entrySet()){
+            s = entry.getKey();
+            e = entry.getValue();
+            costTravel = arrivalTable.getCostForStop(stop) + e.getCost(time);
+            if(arrivalTable.getCostForStop(s) <= costTravel) continue;
+            pq.add(new PQEntry(s, stop, costTravel, getCostTotal(costTravel, s.getDistanceToGoal())));
 
-    public abstract static class PQEntry implements Comparable<PQEntry>{
-        StopStructure to;
-        StopStructure from;
+        }
+    };
+
+    public abstract int getCostTotal(int costTravel, int heuristicCost);
+
+    public static class PQEntry implements Comparable<PQEntry>{
+        StopStructure currentStop;
+        StopStructure fromStop;
         int costTravel;
         int costTotal;
+
+        public PQEntry(StopStructure currentStop, StopStructure fromStop, int costTravel, int costTotal){
+            this.currentStop = currentStop;
+            this.fromStop = fromStop;
+            this.costTravel = costTravel;
+            this.costTotal = costTotal;
+        }
 
         @Override
         public int compareTo(PQEntry o) {
