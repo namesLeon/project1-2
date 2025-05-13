@@ -3,6 +3,7 @@ package algorithms;
 import structure.stops.StopStructure;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ArrivalTable {
     private final HashMap<StopStructure, ArrivalTableEntry> arrivalMap;
@@ -16,6 +17,7 @@ public class ArrivalTable {
         else{
             ArrivalTableEntry entry = arrivalMap.get(to);
             entry.setFromStop(from);
+            entry.setCostInMinutes(timeDiffMinutes);
         }
     }
 
@@ -33,6 +35,12 @@ public class ArrivalTable {
 
     public int getCostForStop(StopStructure s){
         return arrivalMap.get(s).getCostInMinutes();
+    }
+
+    public void printCosts(){
+        for(Map.Entry<StopStructure, ArrivalTableEntry> e : arrivalMap.entrySet()){
+            System.out.println(e.getKey().getStopId() + " : " + e.getValue().getCostInMinutes());
+        }
     }
 
     private static class ArrivalTableEntry implements Comparable<ArrivalTableEntry>{

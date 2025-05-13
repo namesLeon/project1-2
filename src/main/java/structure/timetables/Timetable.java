@@ -1,6 +1,6 @@
 package structure.timetables;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 
 import java.time.LocalTime;
 

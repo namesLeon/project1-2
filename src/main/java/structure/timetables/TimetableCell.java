@@ -1,7 +1,7 @@
 package structure.timetables;
 
 import gtfsparsingzip.data.Trip;
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 import structure.records.RideRecord;
 
 import java.time.LocalTime;

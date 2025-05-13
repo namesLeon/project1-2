@@ -1,7 +1,7 @@
 package structure.edges;
 
 import gtfsparsingzip.data.Trip;
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 import structure.stops.StopStructure;
 import structure.timetables.DynamicTimetable;
 
@@ -9,9 +9,9 @@ import java.time.LocalTime;
 
 public class DynamicEdge extends Edge{
 
-    public DynamicEdge(StopStructure start, StopStructure end, int walkingCostMinutes){
-        super(start, end, walkingCostMinutes);
-        this.timetable = new DynamicTimetable(walkingCostMinutes);
+    public DynamicEdge(StopStructure start, StopStructure end, int costRideMinutes){
+        super(start, end, costRideMinutes);
+        this.timetable = new DynamicTimetable(costRideMinutes);
     }
 
     public void addConnection(LocalTime time, Trip trip, int costInMinutes){

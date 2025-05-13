@@ -1,6 +1,6 @@
 package structure.edges;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 import structure.stops.StopStructure;
 import structure.timetables.StaticTimetable;
 

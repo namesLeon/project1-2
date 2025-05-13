@@ -43,14 +43,14 @@ public class Graph {
         stopList.add(s);
     }
 
-    public void addDynamicConnection(StopStructure start, StopStructure end, LocalTime time, Trip trip, int walkingCostMinutes){
+    public void addDynamicConnection(StopStructure start, StopStructure end, LocalTime time, Trip trip, int rideCostMinutes){
         if(!isAdjacent(start, end)){
             //addDynamicEdge(start, end, GraphUtilities.calculateStaticCostMinutes(start, end, speed));
-            adjMap.get(start).putIfAbsent(end, new DynamicEdge(start, end, walkingCostMinutes));
+            adjMap.get(start).putIfAbsent(end, new DynamicEdge(start, end, rideCostMinutes));
         }
         Edge edge= getEdge(start, end);
         if(edge instanceof DynamicEdge){
-            ((DynamicEdge)edge).addConnection(time, trip, walkingCostMinutes);
+            ((DynamicEdge)edge).addConnection(time, trip, rideCostMinutes);
         }
     }
 

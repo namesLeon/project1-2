@@ -1,12 +1,11 @@
 package structure.timetables;
 
 import gtfsparsingzip.data.Trip;
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 import structure.records.ConnectionRecord;
 import structure.records.RideRecord;
 import structure.records.WalkRecord;
 
-import java.sql.SQLOutput;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.PriorityQueue;
@@ -53,7 +52,8 @@ public class DynamicTimetable implements Timetable {
         Duration difference;
         do{
             queue = connectionArray[index];
-            while(queue!=null&&(!queue.isEmpty() || !found)){
+            while(queue != null && !queue.isEmpty() && !found){
+                // System.out.println("Size of queue : "+queue.size() + "\nIs empty : "+queue.isEmpty() );
                 polled = queue.poll();
                 removed.push(polled);
                 difference = Duration.between(time, polled.getTime());
@@ -116,6 +116,7 @@ public class DynamicTimetable implements Timetable {
         tb.addConnection(time1, trip1, 30);
         printTrip(tb, time2);
         printTrip(tb, time3);
+        printTrip(tb, LocalTime.of(0,50));
 
         //System.out.println("Trip time: "+tb.getCost(time2));
 

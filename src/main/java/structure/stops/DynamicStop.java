@@ -1,6 +1,6 @@
 package structure.stops;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 
 public class DynamicStop extends StopStructure {
 

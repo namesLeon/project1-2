@@ -1,6 +1,6 @@
 package structure.records;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 
 public class WalkRecord implements ConnectionRecord{
     private int costMinutes;

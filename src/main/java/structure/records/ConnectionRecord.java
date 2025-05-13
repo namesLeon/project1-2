@@ -1,6 +1,6 @@
 package structure.records;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelVisitor;
 
 public interface ConnectionRecord {
     void acceptVisitor(TravelVisitor visitor);

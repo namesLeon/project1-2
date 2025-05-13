@@ -1,8 +1,9 @@
 package structure.stops;
 
-import structure.TravelVisitor;
+import structure.visitor.TravelElement;
+import structure.visitor.TravelVisitor;
 
-public abstract class StopStructure {
+public abstract class StopStructure implements TravelElement {
     protected double latitude;
     protected double longitude;
     protected String stopID;
@@ -40,5 +41,6 @@ public abstract class StopStructure {
     public void incrementInDegree(){inDegree++;}
     public void incrementOutDegree(){outDegree++;}
     public boolean isUnused(){ return inDegree==0 & outDegree==0;}
+
     public abstract void acceptVisitor(TravelVisitor visitor);
 }

@@ -17,6 +17,7 @@ public abstract class BaseAlgorithm {
 
 
     public ArrayList<StopStructure> findPath(Graph graph, StopStructure start, StopStructure goal, LocalTime startTime){
+        graph.connectNeighbouringVertices(30, 5);
         pq = new PriorityQueue<>();
         arrivalTable = new ArrivalTable();
         visited = new HashSet<>();
@@ -27,19 +28,23 @@ public abstract class BaseAlgorithm {
             arrivalTable.setTimeDiff(stop, current, Integer.MAX_VALUE);
         }
         arrivalTable.setTimeDiff(current, current, costTravel);
-        for(Map.Entry<StopStructure, Edge> entry : graph.getAdjacentStops(start).entrySet()){
-            relaxEdges(graph, entry.getKey(), time);
-        }
+        relaxEdges(graph, current, time, visited);
+        //arrivalTable.printCosts();
 
         while(!pq.isEmpty()){
             PQEntry entry = pq.poll();
             current = entry.currentStop;
             costTravel = entry.costTravel;
+            //System.out.println("current stop : "+current.getStopId());
             time = startTime.plusMinutes(entry.costTravel);
             if(visited.contains(current) || arrivalTable.getCostForStop(current) < costTravel) continue;
-            relaxEdges(graph, current, time);
+            arrivalTable.setTimeDiff(current, entry.fromStop, costTravel);
+            relaxEdges(graph, current, time, visited);
             visited.add(current);
-            if(current.equals(goal)) break;
+            //System.out.println();
+            //arrivalTable.printCosts();
+            //System.out.println(current.getStopId());
+            //if(current.equals(goal)) break;
         }
         Stack<StopStructure> stopsStack = new Stack<>();
         current = goal;
@@ -59,16 +64,22 @@ public abstract class BaseAlgorithm {
 //    public void preprocessVertices(Graph graph, StopStructure start, StopStructure goal){
 //        graph.addStartNode(start);
 //    };
-    public void relaxEdges(Graph graph, StopStructure stop, LocalTime time){
+    public void relaxEdges(Graph graph, StopStructure stop, LocalTime time, HashSet<StopStructure> visited){
         StopStructure s;
         Edge e;
         int costTravel;
         for(Map.Entry<StopStructure, Edge> entry : graph.getAdjacentStops(stop).entrySet()){
             s = entry.getKey();
+            //if(visited.contains(s)) continue;
             e = entry.getValue();
+            //System.out.println("Arrival table cost for previous stop : "+arrivalTable.getCostForStop(stop));
+            //System.out.println("Arrival table cost for this stop : "+arrivalTable.getCostForStop(s));
+            //System.out.println("Cost of edge travel : "+e.getCost(time));
             costTravel = arrivalTable.getCostForStop(stop) + e.getCost(time);
+            //System.out.println(s.getStopId() + " : "+costTravel);
             if(arrivalTable.getCostForStop(s) <= costTravel) continue;
             pq.add(new PQEntry(s, stop, costTravel, getCostTotal(costTravel, s.getDistanceToGoal())));
+            //System.out.println("for "+s.getStopId() +" added pq entry : "+costTravel);
 
         }
     };
