@@ -111,9 +111,20 @@ public class Graph {
         }
     }
 
-    public void addEndNodeAndSetHeuristic(double lat, double longt){
+    public void addEndNode(double lat, double longt){
         StaticStop endStop = new StaticStop(lat, longt, END_ID);
         addStop(endStop);
+//        for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e : adjMap.entrySet()){
+//            StopStructure stop1 = e.getKey();
+//            if(!endStop.equals(stop1)){
+//                int walkingCostMinutes = GraphUtilities.calculateStaticCostMinutes(stop1, endStop, speed);
+//                stop1.setDistanceToGoal(walkingCostMinutes);
+//                addStaticEdge(stop1, endStop, walkingCostMinutes);
+//            }
+//        }
+    }
+
+    public void setHeuristic(StopStructure endStop){
         for(Map.Entry<StopStructure, HashMap<StopStructure, Edge>> e : adjMap.entrySet()){
             StopStructure stop1 = e.getKey();
             if(!endStop.equals(stop1)){

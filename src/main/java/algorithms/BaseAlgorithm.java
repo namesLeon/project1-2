@@ -18,6 +18,7 @@ public abstract class BaseAlgorithm {
 
     public ArrayList<StopStructure> findPath(Graph graph, StopStructure start, StopStructure goal, LocalTime startTime){
         graph.connectNeighbouringVertices(30, 5);
+        graph.setHeuristic(goal);
         pq = new PriorityQueue<>();
         arrivalTable = new ArrivalTable();
         visited = new HashSet<>();

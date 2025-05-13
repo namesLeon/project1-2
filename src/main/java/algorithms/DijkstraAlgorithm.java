@@ -27,7 +27,7 @@ public class DijkstraAlgorithm extends BaseAlgorithm{
         StopStructure stop7 = new StaticStop(52.378587,4.8754411, "7");
         // StopStructure end = new StaticStop(48, 10, "7");
 
-        System.out.println(GraphUtilities.calculateStaticCostMinutes(stop3, stop4, 5));
+        //System.out.println(GraphUtilities.calculateStaticCostMinutes(stop3, stop4, 5));
 //        System.out.println(GraphUtilities.calculateStaticCostMinutes(stop2, stop3, 5));
 //        System.out.println(GraphUtilities.calculateStaticCostMinutes(stop3, stop4, 5));
 //        System.out.println(GraphUtilities.calculateStaticCostMinutes(stop4, stop5, 5));
