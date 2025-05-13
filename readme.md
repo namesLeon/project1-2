@@ -52,7 +52,7 @@ repository.
    Inside the MySQL shell:
 
    ```sql
-   CREATE DATABASE gtfs_berlin;
+   CREATE DATABASE gtfs_Amsterdam;
    exit;
    ```
 
@@ -60,7 +60,7 @@ repository.
    In your terminal:
 
    ```bash
-   mysql -u root -p gtfs_berlin < path/to/gtfs_berlin.sql
+   mysql -u root -p gtfs_Amsterdam < path/to/gtfs_Amsterdam.sql
    ```
   
   
@@ -82,6 +82,6 @@ The loader uses:
 - Standard JDBC (Java Database Connectivity)
 - Works similarly to the original ZIP GTFSLoader, but reads data from MySQL instead of a `.zip` file.
 
-NOTE : the data loaded in the current BERLIN gtfs database are the preprocessed csv files meow.
+NOTE : the data loaded in the current Amsterdam gtfs database are the preprocessed csv files meow.
 
 ---
