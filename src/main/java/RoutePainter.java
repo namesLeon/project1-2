@@ -20,18 +20,19 @@ class RoutePainter implements Painter<JXMapViewer> {
         g = (Graphics2D) g.create();
 
         // Convert geo-coordinates to pixel coordinates
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        List<Point2D.Double> trackPoints = track.stream()
+                .map(pos -> map.getTileFactory().geoToPixel(pos, map.getZoom()))
+                .map(p -> new Point2D.Double(p.getX() - map.getViewportBounds().getX(), p.getY() - map.getViewportBounds().getY()))
+                .toList();
 
-        g.setColor(new Color(0, 0, 255, 128)); // semi-transparent blue
+        g.setColor(new Color(221, 255, 0, 255)); // color
         g.setStroke(new BasicStroke(6)); // road-like thickness
 
-        Point2D prev = null;
-        for (GeoPosition gp : track) {
-            Point2D pt = map.getTileFactory().geoToPixel(gp, map.getZoom());
-            if (prev != null) {
-                g.drawLine((int) prev.getX(), (int) prev.getY(), (int) pt.getX(), (int) pt.getY());
-            }
-            prev = pt;
+
+        for (int i = 0; i < trackPoints.size() - 1; i++) {
+            Point2D pt1 = trackPoints.get(i);
+            Point2D pt2 = trackPoints.get(i + 1);
+            g.drawLine((int) pt1.getX(), (int) pt1.getY(), (int) pt2.getX(), (int) pt2.getY());
         }
 
         g.dispose();
