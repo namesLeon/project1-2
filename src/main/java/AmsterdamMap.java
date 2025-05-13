@@ -7,7 +7,6 @@ import org.jxmapviewer.input.CenterMapListener;
 import org.jxmapviewer.input.PanMouseInputListener;
 import org.jxmapviewer.viewer.TileFactory;
 import org.jxmapviewer.viewer.TileFactoryInfo;
-import org.jxmapviewer.cache.FileBasedLocalCache;
 
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseWheelEvent;
@@ -15,11 +14,7 @@ import java.awt.event.MouseWheelListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.io.File;
-import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -98,11 +93,35 @@ public class AmsterdamMap {
                 controls.add(zoomIn);
                 controls.add(zoomOut);
 
+                JPanel bottomPanel = new JPanel();
+                bottomPanel.setBorder(BorderFactory.createTitledBorder("Trip Info"));
+                bottomPanel.setLayout(new GridLayout(2, 3, 10, 5)); // 2 rows, 3 columns
+
+                // Labels (initialized with placeholders)
+                JLabel startTimeLabel = new JLabel("Start Time: --:--");
+                JLabel endTimeLabel = new JLabel("End Time: --:--");
+                JLabel stopsLabel = new JLabel("Stops: 0");
+                JLabel startCoordLabel = new JLabel("Start Coord: (--, --)");
+                JLabel endCoordLabel = new JLabel("End Coord: (--, --)");
+                JLabel transfersLabel = new JLabel("Transfers: 0");
+
+                // Add to panel
+                bottomPanel.add(startTimeLabel);
+                bottomPanel.add(endTimeLabel);
+                bottomPanel.add(stopsLabel);
+                bottomPanel.add(startCoordLabel);
+                bottomPanel.add(endCoordLabel);
+                bottomPanel.add(transfersLabel);
+
                 JFrame frame = new JFrame("Map - Vinkenstraat Route");
                 frame.setLayout(new BorderLayout());
                 frame.add(mapViewer);
                 frame.getContentPane().add(controls, BorderLayout.NORTH);
-                frame.setSize(10000, 10000);
+                frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+                // open frame full screen 
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setResizable(true);
+                
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
 
