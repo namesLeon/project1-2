@@ -26,7 +26,8 @@ class RoutePainter implements Painter<JXMapViewer> {
                 .toList();
 
         g.setColor(new Color(221, 255, 0, 255)); // color
-        g.setStroke(new BasicStroke(6)); // road-like thickness
+        g.setStroke(new BasicStroke(4, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 
         for (int i = 0; i < trackPoints.size() - 1; i++) {
