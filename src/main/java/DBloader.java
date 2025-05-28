@@ -9,8 +9,8 @@ import java.time.format.DateTimeFormatter;
 public class DBloader {
     // Database connection parameters
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_db?useSSL=false&serverTimezone=UTC";
-    private static final String DB_USER = "root";
-    private static final String DB_PASS = "your_password";
+    private static final String DB_USER = "BSC1510";
+    private static final String DB_PASS = "BSC1510";
 
     public static void main(String[] args) {
         if (args.length < 4) {
