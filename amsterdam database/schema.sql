@@ -3,6 +3,9 @@ DROP TABLE IF EXISTS stop_times;
 DROP TABLE IF EXISTS calendar_dates;
 DROP TABLE IF EXISTS trips;
 DROP TABLE IF EXISTS stops;
+DROP TABLE IF EXISTS agency;
+DROP TABLE IF EXISTS calendar;
+DROP TABLE IF EXISTS routes;
 
 -- 1. calendar_dates
 CREATE TABLE calendar_dates (
@@ -16,16 +19,9 @@ CREATE TABLE calendar_dates (
 -- 2. stops
 CREATE TABLE stops (
        stop_id             VARCHAR(50)    NOT NULL,
-       stop_code           VARCHAR(50)    NULL,
-       stop_name           VARCHAR(255)   NOT NULL,
+       stop_name           VARCHAR(255),
        stop_lat            DECIMAL(9,6)   NOT NULL,
        stop_lon            DECIMAL(9,6)   NOT NULL,
-       location_type       TINYINT        NOT NULL DEFAULT 0,
-       parent_station      VARCHAR(50)    NULL,
-       stop_timezone       VARCHAR(50)    NULL,
-       wheelchair_boarding TINYINT        NOT NULL DEFAULT 0,
-       platform_code       VARCHAR(50)    NULL,
-       zone_id             VARCHAR(50)    NULL,
        PRIMARY KEY (stop_id)
 ) ENGINE=InnoDB
     COMMENT='Stops and stations (GTFS stops.txt)';
@@ -34,16 +30,8 @@ CREATE TABLE stops (
 CREATE TABLE trips (
        trip_id             VARCHAR(50)    NOT NULL,
        route_id            VARCHAR(50)    NOT NULL,
+       trip_headsign       VARCHAR(50)    NOT NULL,
        service_id          VARCHAR(50)    NOT NULL,
-       realtime_trip_id    VARCHAR(100)   NULL,
-       trip_headsign       VARCHAR(255)   NULL,
-       trip_short_name     VARCHAR(100)   NULL,
-       trip_long_name      VARCHAR(255)   NULL,
-       direction_id        TINYINT        NULL,
-       block_id            VARCHAR(50)    NULL,
-       shape_id            VARCHAR(50)    NULL,
-       wheelchair_accessible TINYINT      NOT NULL DEFAULT 0,
-       bikes_allowed       TINYINT        NOT NULL DEFAULT 0,
        PRIMARY KEY (trip_id)
 ) ENGINE=InnoDB
     COMMENT='Trips (GTFS trips.txt)';
@@ -53,16 +41,40 @@ CREATE TABLE stop_times (
         trip_id             VARCHAR(50)    NOT NULL,
         stop_sequence       INT            NOT NULL,
         stop_id             VARCHAR(50)    NOT NULL,
-        stop_headsign       VARCHAR(255)   NULL,
         arrival_time        TIME           NOT NULL,
         departure_time      TIME           NOT NULL,
-        pickup_type         TINYINT        NOT NULL DEFAULT 0,
-        drop_off_type       TINYINT        NOT NULL DEFAULT 0,
-        timepoint           TINYINT        NOT NULL DEFAULT 0,
-        shape_dist_traveled DECIMAL(10,2)  NULL,
-        fare_units_traveled DECIMAL(10,2)  NULL,
         PRIMARY KEY (trip_id, stop_sequence),
         FOREIGN KEY (trip_id) REFERENCES trips(trip_id),
         FOREIGN KEY (stop_id) REFERENCES stops(stop_id)
 ) ENGINE=InnoDB
     COMMENT='Stop times and sequencing for each trip (GTFS stop_times.txt)';
+
+-- 5. agency
+CREATE TABLE agency (
+        agency_id           VARCHAR(100) PRIMARY KEY,
+        agency_name         VARCHAR(100) NOT NULL,
+        agency_url          VARCHAR(100) NOT NULL
+) ENGINE=InnoDB
+      COMMENT='Agencies table (GTFS agency.txt)';
+
+-- 6. calendar
+CREATE TABLE calendar (
+        service_id          VARCHAR(50)   PRIMARY KEY,
+        monday              BOOL    NOT NULL,
+        tuesday             BOOL    NOT NULL,
+        wednesday           BOOL    NOT NULL,
+        thursday            BOOL    NOT NULL,
+        friday              BOOL    NOT NULL,
+        saturday            BOOL    NOT NULL,
+        sunday              BOOL    NOT NULL
+) ENGINE=InnoDB
+  COMMENT='Calendar table, only if txt file exists (GTFS calendar.txt)';
+
+-- 7. routes
+CREATE TABLE routes (
+        route_id            VARCHAR(100) PRIMARY KEY,
+        agency_id           VARCHAR(100) NOT NULL,
+        route_short_name    VARCHAR(100),
+        route_long_name     VARCHAR(255)
+) ENGINE=InnoDB
+   COMMENT='Routes table (GTFS routes.txt)';
