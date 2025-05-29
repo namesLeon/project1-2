@@ -8,9 +8,9 @@ import java.time.format.DateTimeFormatter;
 
 public class DBloader {
     // Database connection parameters
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_db?useSSL=false&serverTimezone=UTC";
-    private static final String DB_USER = "BSC1510";
-    private static final String DB_PASS = "BSC1510";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    private static final String DB_USER = "BCS1510";
+    private static final String DB_PASS = "BCS1510";
 
     public static void main(String[] args) {
         if (args.length < 4) {
@@ -71,8 +71,9 @@ public class DBloader {
                 ps.setString(1, cols[0]);
                 ps.setString(2, cols[1].isEmpty() ? null : cols[1]);
                 ps.setString(3, cols[2]);
-                ps.setBigDecimal(4, new java.math.BigDecimal(cols[3]));
-                ps.setBigDecimal(5, new java.math.BigDecimal(cols[4]));
+                ps.setBigDecimal(4, new java.math.BigDecimal(cols[3].trim()));
+                System.out.println(cols[3]);
+                ps.setBigDecimal(5, new java.math.BigDecimal(cols[4].trim()));
                 ps.setInt(6, Integer.parseInt(cols[5]));
                 ps.setString(7, cols[6].isEmpty() ? null : cols[6]);
                 ps.setString(8, cols[7].isEmpty() ? null : cols[7]);
