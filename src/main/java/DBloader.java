@@ -30,7 +30,7 @@ public class DBloader {
 //            System.exit(1);
 //        }
 //        Path zipPath = Path.of(args[0]);
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs");
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip");
         loadFromZip(zipPath);
     }
 
@@ -58,24 +58,6 @@ public class DBloader {
             ps.executeBatch();
             System.out.println("Loaded calendar_dates from " + filePath);
         }
-
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//            String line = br.readLine(); // skip header
-//            int batchSize = 0;
-//            while ((line = br.readLine()) != null) {
-//                String[] cols = line.split(",");
-//                ps.setString(1, cols[0]);
-//                LocalDate ld = LocalDate.parse(cols[1], df);
-//                ps.setDate(2, Date.valueOf(ld));
-//                ps.setInt(3, Integer.parseInt(cols[2]));
-//                ps.addBatch();
-//
-//                if (++batchSize % 1000 == 0) ps.executeBatch();
-//            }
-//            ps.executeBatch();
-//            System.out.println("Loaded calendar_dates from " + filePath);
-//        }
     }
 
     private static void loadCalendar(Connection conn, Path filePath) throws IOException, SQLException {
@@ -131,36 +113,11 @@ public class DBloader {
             ps.executeBatch();
             System.out.println("Loaded stops from " + filePath);
         }
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//            String line = br.readLine(); // skip header
-//            int batchSize = 0;
-//            while ((line = br.readLine()) != null) {
-//                String[] cols = line.split(",", -1);
-//                ps.setString(1, cols[0]);
-//                ps.setString(2, cols[1].isEmpty() ? null : cols[1]);
-//                ps.setString(3, cols[2]);
-//                ps.setBigDecimal(4, new java.math.BigDecimal(cols[3].trim()));
-//                System.out.println(cols[3]);
-//                ps.setBigDecimal(5, new java.math.BigDecimal(cols[4].trim()));
-//                ps.setInt(6, Integer.parseInt(cols[5]));
-//                ps.setString(7, cols[6].isEmpty() ? null : cols[6]);
-//                ps.setString(8, cols[7].isEmpty() ? null : cols[7]);
-//                ps.setInt(9, cols[8].isEmpty() ? 0 : Integer.parseInt(cols[8]));
-//                ps.setString(10, cols[9].isEmpty() ? null : cols[9]);
-//                ps.setString(11, cols[10].isEmpty() ? null : cols[10]);
-//                ps.addBatch();
-//
-//                if (++batchSize % 1000 == 0) ps.executeBatch();
-//            }
-//            ps.executeBatch();
-//            System.out.println("Loaded stops from " + filePath);
-//        }
     }
 
     private static void loadTrips(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO trips(trip_id, route_id, trip_headsign, service_id) " +
-                "VALUES (?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?)";
 
         try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -171,7 +128,7 @@ public class DBloader {
             int batchSize = 0;
             for (CSVRecord rec : parser) {
                 String trip_id = rec.get("trip_id");
-                String route_id = rec.get("rote_id");
+                String route_id = rec.get("route_id");
                 String service_id = rec.get("service_id");
                 String trip_headsign = rec.get("trip_headsign");
                 ps.setString(1, trip_id);
@@ -184,32 +141,6 @@ public class DBloader {
             ps.executeBatch();
             System.out.println("Loaded trips from " + filePath);
         }
-
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//            String line = br.readLine(); // skip header
-//            int batchSize = 0;
-//            while ((line = br.readLine()) != null) {
-//                String[] cols = line.split(",", -1);
-//                ps.setString(1, cols[2]);  // trip_id
-//                ps.setString(2, cols[0]);  // route_id
-//                ps.setString(3, cols[1]);  // service_id
-//                ps.setString(4, cols[3].isEmpty() ? null : cols[3]);
-//                ps.setString(5, cols[4].isEmpty() ? null : cols[4]);
-//                ps.setString(6, cols[5].isEmpty() ? null : cols[5]);
-//                ps.setString(7, cols[6].isEmpty() ? null : cols[6]);
-//                ps.setObject(8, cols[7].isEmpty() ? null : Integer.parseInt(cols[7]), Types.TINYINT);
-//                ps.setString(9, cols[8].isEmpty() ? null : cols[8]);
-//                ps.setString(10, cols[9].isEmpty() ? null : cols[9]);
-//                ps.setInt(11, cols[10].isEmpty() ? 0 : Integer.parseInt(cols[10]));
-//                ps.setInt(12, cols[11].isEmpty() ? 0 : Integer.parseInt(cols[11]));
-//                ps.addBatch();
-//
-//                if (++batchSize % 1000 == 0) ps.executeBatch();
-//            }
-//            ps.executeBatch();
-//            System.out.println("Loaded trips from " + filePath);
-//        }
     }
 
     private static void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
@@ -227,8 +158,24 @@ public class DBloader {
                 String trip_id = rec.get("trip_id");
                 int stop_sequence = Integer.parseInt(rec.get("stop_sequence"));
                 String stop_id = rec.get("stop_id");
-                LocalTime arrivalTime = LocalTime.parse(rec.get("arrival_time"), tf);
-                LocalTime departureTime = LocalTime.parse(rec.get("departure_time"), tf);
+                String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
+                String[] departureTimeStringArr = rec.get("departure_time").split(":");
+                LocalTime arrivalTime;
+                LocalTime departureTime;
+                if(manageTimeOverflow(arrivalTimeStringArr)){
+                     arrivalTime = LocalTime.parse(joinTimeFromArray(arrivalTimeStringArr), tf);
+                }
+                else{
+                    arrivalTime = LocalTime.parse(rec.get("arrival_time"), tf);
+                }
+                if(manageTimeOverflow(departureTimeStringArr)){
+                    departureTime = LocalTime.parse(joinTimeFromArray(departureTimeStringArr), tf);
+                }
+                else{
+                    departureTime = LocalTime.parse(rec.get("departure_time"), tf);
+                }
+
+
 
                 ps.setString(1, trip_id);
                 ps.setInt(2, stop_sequence);
@@ -296,8 +243,8 @@ public class DBloader {
     }
 
     private static void loadRoutes(Connection conn, Path filePath) throws IOException, SQLException {
-        String sql = "INSERT INTO routes(route_id, agency_id, agency_url) " +
-                "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO routes(route_id, agency_id, route_short_name, route_long_name) " +
+                "VALUES (?, ?, ?, ?)";
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
         try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -307,13 +254,15 @@ public class DBloader {
                      .parse(reader)) {
             int batchSize = 0;
             for (CSVRecord rec : parser) {
+                String route_id = rec.get("route_id");
                 String agency_id = rec.get("agency_id");
-                String agency_name = rec.get("agency_name");
-                String agency_url = rec.get("agency_url");
+                String route_short_name = rec.get("route_short_name");
+                String route_long_name = rec.get("route_long_name");
 
-                ps.setString(1, agency_id);
-                ps.setString(2, agency_name);
-                ps.setString(3, agency_url);
+                ps.setString(1, route_id);
+                ps.setString(2, agency_id);
+                ps.setString(3, route_short_name);
+                ps.setString(4, route_long_name);
                 ps.addBatch();
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
@@ -343,17 +292,40 @@ public class DBloader {
             conn.setAutoCommit(false);
 
             loadCalendarDates(conn, tmpDir.resolve("calendar_dates.txt"));
+            conn.commit();
             loadStops(conn, tmpDir.resolve("stops.txt"));
+            conn.commit();
             loadTrips(conn, tmpDir.resolve("trips.txt"));
+            conn.commit();
             loadStopTimes(conn, tmpDir.resolve("stop_times.txt"));
+            conn.commit();
             loadAgencies(conn, tmpDir.resolve("agency.txt"));
+            conn.commit();
             loadRoutes(conn, tmpDir.resolve("routes.txt"));
-            loadCalendar(conn, tmpDir.resolve("calendar.txt"));
+            conn.commit();
+            if(Files.exists(tmpDir.resolve("calendar.txt")))  loadCalendar(conn, tmpDir.resolve("calendar.txt"));
             conn.commit();
             System.out.println("Data loaded successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static boolean manageTimeOverflow(String[] time){
+        int hourValueInt = Integer.parseInt(time[0]);
+        if(hourValueInt >= 24){
+            int calculated = hourValueInt - 24;
+            if(calculated < 10) time[0] = "0"+String.valueOf(calculated);
+            else{
+                time[0] = String.valueOf(calculated);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private static String joinTimeFromArray(String[] time){
+        return time[0]+":"+time[1]+":"+time[2];
     }
 
 }
