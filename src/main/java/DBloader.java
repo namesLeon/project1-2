@@ -24,34 +24,20 @@ public class DBloader {
     private static final String DB_PASS = "BCS1510";
     private static final boolean useEnvJDBCurl = false;
 
-    public static void main(String[] args) {
-        if (args.length < 4) {
-            System.err.println("Usage: java GTFSLoader <calendar_dates.txt> <stops.txt> <trips.txt> <stop_times.txt>");
-            System.exit(1);
-        }
-        String calendarFile = args[0];
-        String stopsFile = args[1];
-        String tripsFile = args[2];
-        String stopTimesFile = args[3];
-        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-            conn.setAutoCommit(false);
-
-            loadCalendarDates(conn, calendarFile);
-            loadStops(conn, stopsFile);
-            loadTrips(conn, tripsFile);
-            loadStopTimes(conn, stopTimesFile);
-
-            conn.commit();
-            System.out.println("Data loaded successfully.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException {
+//        if (args.length < 0) {
+//            System.err.println("Usage: gtfsDir.zip");
+//            System.exit(1);
+//        }
+//        Path zipPath = Path.of(args[0]);
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs");
+        loadFromZip(zipPath);
     }
 
-    private static void loadCalendarDates(Connection conn, String filePath) throws SQLException, IOException {
+    private static void loadCalendarDates(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO calendar_dates(service_id, date, exception_type) VALUES (?, ?, ?)";
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -70,7 +56,7 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
-            System.out.println("Loaded stops from " + filePath);
+            System.out.println("Loaded calendar_dates from " + filePath);
         }
 
 //        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -92,11 +78,38 @@ public class DBloader {
 //        }
     }
 
-    private static void loadStops(Connection conn, String filePath) throws SQLException, IOException {
+    private static void loadCalendar(Connection conn, Path filePath) throws IOException, SQLException {
+        String sql = "INSERT INTO calendar(service_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) " +
+                "VALUES(?,?,?,?,?,?,?,?)";
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
+             PreparedStatement ps = conn.prepareStatement(sql);
+             CSVParser parser = CSVFormat.DEFAULT
+                     .withFirstRecordAsHeader()
+                     .withTrim()
+                     .parse(reader)) {
+            int batchSize = 0;
+            for (CSVRecord rec : parser) {
+                ps.setString(1, rec.get("service_id"));
+                ps.setString(2, rec.get("monday"));
+                ps.setString(3, rec.get("tuesday"));
+                ps.setString(4, rec.get("wednesday"));
+                ps.setString(5, rec.get("thursday"));
+                ps.setString(6, rec.get("friday"));
+                ps.setString(7, rec.get("saturday"));
+                ps.setString(8, rec.get("sunday"));
+                ps.addBatch();
+                if (++batchSize % 1000 == 0) ps.executeBatch();
+            }
+            ps.executeBatch();
+            System.out.println("Loaded calendar from " + filePath);
+        }
+    }
+
+    private static void loadStops(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stops(stop_id, stop_name, stop_lat, stop_lon) " +
                 "VALUES (?, ?, ?, ?)";
 
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -145,11 +158,11 @@ public class DBloader {
 //        }
     }
 
-    private static void loadTrips(Connection conn, String filePath) throws SQLException, IOException {
+    private static void loadTrips(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO trips(trip_id, route_id, trip_headsign, service_id) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -169,7 +182,7 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
-            System.out.println("Loaded stops from " + filePath);
+            System.out.println("Loaded trips from " + filePath);
         }
 
 //        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -199,11 +212,11 @@ public class DBloader {
 //        }
     }
 
-    private static void loadStopTimes(Connection conn, String filePath) throws SQLException, IOException {
+    private static void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stop_times(trip_id, stop_sequence, stop_id, arrival_time, departure_time) " +
                 "VALUES (?, ?, ?, ?, ?)";
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -226,7 +239,7 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
-            System.out.println("Loaded stops from " + filePath);
+            System.out.println("Loaded stop_times from " + filePath);
         }
 
 //        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -255,11 +268,11 @@ public class DBloader {
 //        }
     }
 
-    private static void loadAgencies(Connection conn, String filePath) throws IOException, SQLException{
+    private static void loadAgencies(Connection conn, Path filePath) throws IOException, SQLException{
         String sql = "INSERT INTO agency(agency_id, agency_name, agency_url) " +
                 "VALUES (?, ?, ?)";
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -278,15 +291,15 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
-            System.out.println("Loaded stops from " + filePath);
+            System.out.println("Loaded agencies from " + filePath);
         }
     }
 
-    private static void loadRoutes(Connection conn, String filePath) throws IOException, SQLException {
+    private static void loadRoutes(Connection conn, Path filePath) throws IOException, SQLException {
         String sql = "INSERT INTO routes(route_id, agency_id, agency_url) " +
                 "VALUES (?, ?, ?)";
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
                      .withFirstRecordAsHeader()
@@ -305,14 +318,14 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
-            System.out.println("Loaded stops from " + filePath);
+            System.out.println("Loaded routes from " + filePath);
         }
     }
 
 
-    public void loadFromZip(Path zipPath) throws IOException {
+    public static void loadFromZip(Path zipPath) throws IOException {
         //clear previous data
-        Path tmpDir = Files.createTempDirectory("gtfs");
+        Path tmpDir = Files.createTempDirectory("gtfs_temp");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
@@ -326,118 +339,22 @@ public class DBloader {
                 zis.closeEntry();
             }
         }
-        parseStops(tmpDir.resolve("stops.txt"));
-        parseAgencies(tmpDir.resolve("agency.txt"));
-        parseRoutes(tmpDir.resolve("routes.txt"));
-        parseTrips(tmpDir.resolve("trips.txt"));
-        parseStopTimes(tmpDir.resolve("stop_times.txt"));
-    }
+        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
+            conn.setAutoCommit(false);
 
-    private void parseCalendarDates(Path p) throws IOException{
-
-    }
-
-
-    private void parseStops(Path p) throws IOException {
-        try (BufferedReader reader = Files.newBufferedReader(p);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            for (CSVRecord rec : parser) {
-                String id = rec.get("stop_id");
-                String name = rec.get("stop_name");
-                double lat = Double.parseDouble(rec.get("stop_lat"));
-                double lon = Double.parseDouble(rec.get("stop_lon"));
-                graph.stops.put(id, new Stop(id, name, lat, lon));
-            }
+            loadCalendarDates(conn, tmpDir.resolve("calendar_dates.txt"));
+            loadStops(conn, tmpDir.resolve("stops.txt"));
+            loadTrips(conn, tmpDir.resolve("trips.txt"));
+            loadStopTimes(conn, tmpDir.resolve("stop_times.txt"));
+            loadAgencies(conn, tmpDir.resolve("agency.txt"));
+            loadRoutes(conn, tmpDir.resolve("routes.txt"));
+            loadCalendar(conn, tmpDir.resolve("calendar.txt"));
+            conn.commit();
+            System.out.println("Data loaded successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private void parseAgencies(Path p) throws IOException {
-        try (BufferedReader reader = Files.newBufferedReader(p);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            for (CSVRecord rec : parser) {
-                agencyMap.put(rec.get("agency_id"), rec.get("agency_name"));
-            }
-        }
-    }
-
-    private void parseRoutes(Path p) throws IOException {
-        try (BufferedReader reader = Files.newBufferedReader(p);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            for (CSVRecord rec : parser) {
-                String id = rec.get("route_id");
-                String agId = rec.get("agency_id");
-                String operator = agencyMap.getOrDefault(agId, "");
-                String shortName = rec.get("route_short_name");
-                String longName = rec.get("route_long_name");
-                routes.put(id, new RouteInfo(id, operator, shortName, longName, ""));
-            }
-        }
-    }
-
-    private void parseTrips(Path p) throws IOException {
-        try (BufferedReader reader = Files.newBufferedReader(p);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            for (CSVRecord rec : parser) {
-                String tripId = rec.get("trip_id");
-                String routeId = rec.get("route_id");
-                String headSign = rec.get("trip_headsign");
-                Trip trip = new Trip(tripId, routeId, headSign);
-                trips.put(tripId, trip);
-            }
-        }
-    }
-
-    private void parseStopTimes(Path p) throws IOException {
-        try (BufferedReader reader = Files.newBufferedReader(p);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            for (CSVRecord rec : parser) {
-                String tripId = rec.get("trip_id");
-                Trip trip = trips.get(tripId);
-                if (trip == null) continue;
-                String stopId = rec.get("stop_id");
-                int arrival = StopTime.parseTime(rec.get("arrival_time"));
-                int departure = StopTime.parseTime(rec.get("departure_time"));
-                int seq = Integer.parseInt(rec.get("stop_sequence"));
-                trip.addStopTime(new StopTime(tripId, stopId, arrival, departure, seq));
-            }
-        }
-        for (Trip trip : trips.values()) {
-            List<StopTime> list = trip.stopTimes;
-            RouteInfo info = routes.get(trip.routeId);
-            for (int i = 0; i + 1 < list.size(); i++) {
-                StopTime curr = list.get(i);
-                StopTime next = list.get(i+1);
-                DepartureEvent ev = new DepartureEvent(
-                        curr.departureSec,
-                        curr.tripId,
-                        curr.stopId,
-                        next.stopId,
-                        next.arrivalSec,
-                        new RouteInfo(
-                                info.routeId,
-                                info.operator,
-                                info.shortName,
-                                info.longName,
-                                trip.headSign)
-                );
-                graph.departures.computeIfAbsent(curr.stopId, k -> new ArrayList<>()).add(ev);
-            }
-        }
-    }
 }
 
