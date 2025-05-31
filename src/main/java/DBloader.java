@@ -164,22 +164,6 @@ public class DBloader {
                 String stop_id = rec.get("stop_id");
                 String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
                 String[] departureTimeStringArr = rec.get("departure_time").split(":");
-//                LocalTime arrivalTime;
-//                LocalTime departureTime;
-//                if(manageTimeOverflow(arrivalTimeStringArr)){
-//                     arrivalTime = LocalTime.parse(joinTimeFromArray(arrivalTimeStringArr), tf);
-//                }
-//                else{
-//                    arrivalTime = LocalTime.parse(rec.get("arrival_time"), tf);
-//                }
-//                if(manageTimeOverflow(departureTimeStringArr)){
-//                    departureTime = LocalTime.parse(joinTimeFromArray(departureTimeStringArr), tf);
-//                }
-//                else{
-//                    departureTime = LocalTime.parse(rec.get("departure_time"), tf);
-//                }
-
-
 
                 ps.setString(1, trip_id);
                 ps.setInt(2, stop_sequence);

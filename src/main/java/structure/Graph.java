@@ -4,9 +4,16 @@ import gtfsparsingzip.data.Trip;
 import structure.edges.DynamicEdge;
 import structure.edges.Edge;
 import structure.edges.StaticEdge;
+import structure.stops.DynamicStop;
 import structure.stops.StaticStop;
 import structure.stops.StopStructure;
 
+import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,13 +25,16 @@ public class Graph {
     private final HashMap<String, StopStructure> stopMap;
     private final HashMap<StopStructure, HashMap<StopStructure, Edge>> adjMap;
 
+    private Connection conn;
+
     private final ArrayList<StopStructure> stopList;
     private final double speed = 5;
 
-    public Graph(){
+    public Graph(Connection conn){
         this.stopMap = new HashMap<>();
         this.adjMap = new HashMap<>();
         this.stopList = new ArrayList<>();
+        this.conn = conn;
     }
 
     // Possible exception here
@@ -144,6 +154,35 @@ public class Graph {
                 int walkingCostMinutes = GraphUtilities.calculateStaticCostMinutes(startStop, stop2, speed);
                 addStaticEdge(startStop, stop2, walkingCostMinutes);
             }
+        }
+    }
+
+    private void createGraphFromDB(){
+
+    }
+
+    private void createStopsFromDB() throws SQLException {
+        Statement st = conn.createStatement();
+        String fetchStopsFromDB = """
+                SELECT * FROM stops
+                """;
+        ResultSet rs = st.executeQuery(fetchStopsFromDB);
+        while(rs.next()){
+            String stopId = rs.getString(1);
+            double stopLatitude = rs.getDouble(3);
+            double stopLongitude = rs.getDouble(4);
+            stopList.add(new DynamicStop(stopLatitude, stopLongitude ,stopId));
+        }
+    }
+
+    private void createEdgesFromDB() throws SQLException{
+        Statement st = conn.createStatement();
+        String fetchEdgesFromDB = """
+                SELECT * FROM edges
+                """;
+        ResultSet rs = st.executeQuery(fetchEdgesFromDB);
+        while(rs.next()){
+
         }
     }
 }

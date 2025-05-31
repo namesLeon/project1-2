@@ -82,5 +82,3 @@ CREATE TABLE routes (
 -- 8. add indexing
 CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
 CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
-CREATE INDEX stop_times_arrival_time_ix ON stop_times(arrival_time);
-CREATE INDEX stop_times_departure_time_ix ON stop_times(departure_time);
