@@ -1,3 +1,4 @@
+import com.mysql.cj.util.DnsSrv;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -8,12 +9,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -25,12 +29,9 @@ public class DBloader {
     private static final boolean useEnvJDBCurl = false;
 
     public static void main(String[] args) throws IOException {
-//        if (args.length < 0) {
-//            System.err.println("Usage: gtfsDir.zip");
-//            System.exit(1);
-//        }
-//        Path zipPath = Path.of(args[0]);
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip");
+        createSQLTables();
+        //  "/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip"
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip");
         loadFromZip(zipPath);
     }
 
@@ -141,6 +142,9 @@ public class DBloader {
             ps.executeBatch();
             System.out.println("Loaded trips from " + filePath);
         }
+        catch (SQLException e){
+            System.out.println( e.getMessage());
+        }
     }
 
     private static void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
@@ -160,59 +164,36 @@ public class DBloader {
                 String stop_id = rec.get("stop_id");
                 String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
                 String[] departureTimeStringArr = rec.get("departure_time").split(":");
-                LocalTime arrivalTime;
-                LocalTime departureTime;
-                if(manageTimeOverflow(arrivalTimeStringArr)){
-                     arrivalTime = LocalTime.parse(joinTimeFromArray(arrivalTimeStringArr), tf);
-                }
-                else{
-                    arrivalTime = LocalTime.parse(rec.get("arrival_time"), tf);
-                }
-                if(manageTimeOverflow(departureTimeStringArr)){
-                    departureTime = LocalTime.parse(joinTimeFromArray(departureTimeStringArr), tf);
-                }
-                else{
-                    departureTime = LocalTime.parse(rec.get("departure_time"), tf);
-                }
+//                LocalTime arrivalTime;
+//                LocalTime departureTime;
+//                if(manageTimeOverflow(arrivalTimeStringArr)){
+//                     arrivalTime = LocalTime.parse(joinTimeFromArray(arrivalTimeStringArr), tf);
+//                }
+//                else{
+//                    arrivalTime = LocalTime.parse(rec.get("arrival_time"), tf);
+//                }
+//                if(manageTimeOverflow(departureTimeStringArr)){
+//                    departureTime = LocalTime.parse(joinTimeFromArray(departureTimeStringArr), tf);
+//                }
+//                else{
+//                    departureTime = LocalTime.parse(rec.get("departure_time"), tf);
+//                }
 
 
 
                 ps.setString(1, trip_id);
                 ps.setInt(2, stop_sequence);
                 ps.setString(3, stop_id);
-                ps.setTime(4, Time.valueOf(arrivalTime));
-                ps.setTime(5, Time.valueOf(departureTime));
+                ps.setTime(4, Time.valueOf(joinTimeFromArray(arrivalTimeStringArr)));
+                // ps.setTime(4, Time.valueOf(arrivalTime));
+                //ps.setTime(5, Time.valueOf(departureTime));
+                ps.setTime(5, Time.valueOf(joinTimeFromArray(departureTimeStringArr)));
                 ps.addBatch();
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
             System.out.println("Loaded stop_times from " + filePath);
         }
-
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//            String line = br.readLine(); // skip header
-//            int batchSize = 0;
-//            while ((line = br.readLine()) != null) {
-//                String[] cols = line.split(",", -1);
-//                ps.setString(1, cols[0]);
-//                ps.setInt(2, Integer.parseInt(cols[1]));
-//                ps.setString(3, cols[2]);
-//                ps.setString(4, cols[3].isEmpty() ? null : cols[3]);
-//                ps.setTime(5, Time.valueOf(LocalTime.parse(cols[4], tf)));
-//                ps.setTime(6, Time.valueOf(LocalTime.parse(cols[5], tf)));
-//                ps.setInt(7, cols[6].isEmpty() ? 0 : Integer.parseInt(cols[6]));
-//                ps.setInt(8, cols[7].isEmpty() ? 0 : Integer.parseInt(cols[7]));
-//                ps.setInt(9, cols[8].isEmpty() ? 0 : Integer.parseInt(cols[8]));
-//                ps.setBigDecimal(10, cols[9].isEmpty() ? null : new java.math.BigDecimal(cols[9]));
-//                ps.setBigDecimal(11, cols[10].isEmpty() ? null : new java.math.BigDecimal(cols[10]));
-//                ps.addBatch();
-//
-//                if (++batchSize % 1000 == 0) ps.executeBatch();
-//            }
-//            ps.executeBatch();
-//            System.out.println("Loaded stop_times from " + filePath);
-//        }
     }
 
     private static void loadAgencies(Connection conn, Path filePath) throws IOException, SQLException{
@@ -271,23 +252,46 @@ public class DBloader {
         }
     }
 
+    private static void createEdgesTable(Connection conn) throws SQLException{
+        Statement st = conn.createStatement();
+        String dropTableQuery = "DROP TABLE IF EXISTS edges";
+        String createTableQuery = """
+                CREATE TABLE edges AS(
+                    SELECT st1.stop_id as start_stop, st2.stop_id as end_stop, trip_id,
+                    st1.departure_time as departure_time, st2.arrival_time as arrival_time,
+                    TIMEDIFF(st2.arrival_time, st1.departure_time) AS transfer_length, st1.stop_sequence as edge_sequence
+                    FROM stop_times st1 JOIN stop_times st2
+                    USING (trip_id)
+                    WHERE st1.stop_sequence = st2.stop_sequence - 1)
+                """;
+        String createIndexQuery = "CREATE INDEX edges_trip_id_ix ON edges(trip_id)";
+
+        st.executeUpdate(dropTableQuery);
+        st.executeUpdate(createTableQuery);
+        st.executeUpdate(createIndexQuery);
+    }
+
 
     public static void loadFromZip(Path zipPath) throws IOException {
         //clear previous data
         Path tmpDir = Files.createTempDirectory("gtfs_temp");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
-            while ((entry = zis.getNextEntry()) != null) {
-                Path out = tmpDir.resolve(entry.getName());
-                if (entry.isDirectory()) {
-                    Files.createDirectories(out);
-                } else {
-                    Files.createDirectories(out.getParent());
-                    Files.copy(zis, out);
+            while ((entry = zis.getNextEntry()) != null){
+                if (!entry.isDirectory()) {
+                    String fileName = Paths.get(entry.getName()).getFileName().toString();
+                    Path out = tmpDir.resolve(fileName);
+                    Files.copy(zis, out, StandardCopyOption.REPLACE_EXISTING);
                 }
                 zis.closeEntry();
             }
         }
+        // Add this after your ZIP extraction
+        System.out.println("Contents of temp directory:");
+        try (Stream<Path> files = Files.walk(tmpDir)) {
+            files.forEach(System.out::println);
+        }
+        System.out.println("Loaded gtfs zip");
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
             conn.setAutoCommit(false);
 
@@ -305,6 +309,8 @@ public class DBloader {
             conn.commit();
             if(Files.exists(tmpDir.resolve("calendar.txt")))  loadCalendar(conn, tmpDir.resolve("calendar.txt"));
             conn.commit();
+            createEdgesTable(conn);
+            conn.commit();
             System.out.println("Data loaded successfully.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -313,20 +319,42 @@ public class DBloader {
 
     private static boolean manageTimeOverflow(String[] time){
         int hourValueInt = Integer.parseInt(time[0]);
-        if(hourValueInt >= 24){
-            int calculated = hourValueInt - 24;
-            if(calculated < 10) time[0] = "0"+String.valueOf(calculated);
-            else{
-                time[0] = String.valueOf(calculated);
-            }
-            return true;
+//        if(hourValueInt >= 24){
+//            hourValueInt -= 24;
+//        }
+        if(hourValueInt < 10) time[0] = "0"+String.valueOf(hourValueInt);
+        else{
+            time[0] = String.valueOf(hourValueInt);
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static String joinTimeFromArray(String[] time){
         return time[0]+":"+time[1]+":"+time[2];
     }
 
+    private static void createSQLTables(){
+        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
+
+            String sqlContent = Files.readString(Paths.get("amsterdam_database/schema.sql"));
+
+            // Split statements by semicolon
+            String[] statements = sqlContent.split(";");
+
+            try (Statement st = conn.createStatement()) {
+                for (String sql : statements) {
+                    sql = sql.trim();
+                    if (!sql.isEmpty() /*&& !sql.startsWith("--")*/) {
+                        //System.out.println("To execute : "+sql);
+                        st.executeUpdate(sql);
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 

@@ -30,7 +30,7 @@ CREATE TABLE stops (
 CREATE TABLE trips (
        trip_id             VARCHAR(50)    NOT NULL,
        route_id            VARCHAR(50)    NOT NULL,
-       trip_headsign       VARCHAR(50)    NOT NULL,
+       trip_headsign       VARCHAR(100)    NOT NULL,
        service_id          VARCHAR(50)    NOT NULL,
        PRIMARY KEY (trip_id)
 ) ENGINE=InnoDB
@@ -78,3 +78,9 @@ CREATE TABLE routes (
         route_long_name     VARCHAR(255)
 ) ENGINE=InnoDB
    COMMENT='Routes table (GTFS routes.txt)';
+
+-- 8. add indexing
+CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
+CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
+CREATE INDEX stop_times_arrival_time_ix ON stop_times(arrival_time);
+CREATE INDEX stop_times_departure_time_ix ON stop_times(departure_time);
