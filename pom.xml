@@ -29,11 +29,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-csv</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-    <dependency>
       <groupId>com.leastfixedpoint</groupId>
       <artifactId>leastfixedpoint-json</artifactId>
       <version>1.2</version>
