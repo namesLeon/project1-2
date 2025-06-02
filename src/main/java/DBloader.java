@@ -32,7 +32,7 @@ public class DBloader {
         createSQLTables();
         //  "/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip"
         // "/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip"
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip");
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip");
         loadFromZip(zipPath);
     }
 
@@ -338,6 +338,35 @@ public class DBloader {
                 }
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ResultSet getNewEdges(String removedStopId) throws SQLException{
+        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
+            Statement st = conn.createStatement();
+            String SQL = """
+                    SELECT * FROM (SELECT * FROM
+                    	(
+                    	SELECT e1.start_stop as start_stop, e2.end_stop as end_stop, trip_id,
+                    	e1.departure_time as departure_time, e2.arrival_time as arrival_time,
+                    	TIMEDIFF(e2.arrival_time, e2.departure_time) as transfer_length
+                    	FROM edges e1 JOIN edges e2
+                    	USING(trip_id)
+                    	WHERE e1.end_stop = e2.start_stop AND e1.end_stop = ?
+                    	) a
+                    	JOIN
+                    	(
+                    	SELECT trip_id, trip_headsign FROM trips
+                    	) b
+                    	USING(trip_id)
+                    ) c
+                    JOIN
+                    (SELECT route_id, agency_name, route_short_name, route_long_name
+                    FROM routes JOIN agency USING(agency_id))d
+                    """;
+            System.out.println("Created new edges.");
         } catch (Exception e) {
             e.printStackTrace();
         }
