@@ -345,7 +345,6 @@ public class DBloader {
 
     public static ResultSet getNewEdges(String removedStopId) throws SQLException{
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-            Statement st = conn.createStatement();
             String SQL = """
                     SELECT * FROM (SELECT * FROM
                     	(
@@ -366,9 +365,11 @@ public class DBloader {
                     (SELECT route_id, agency_name, route_short_name, route_long_name
                     FROM routes JOIN agency USING(agency_id))d
                     """;
+            PreparedStatement st = conn.prepareStatement(SQL);
+            st.setString(1, removedStopId);
+            ResultSet rs = st.executeQuery(SQL);
             System.out.println("Created new edges.");
-        } catch (Exception e) {
-            e.printStackTrace();
+            return rs;
         }
     }
 }
