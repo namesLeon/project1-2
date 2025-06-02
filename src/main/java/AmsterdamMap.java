@@ -233,8 +233,8 @@ public class AmsterdamMap {
         Date now = new Date();
         
         try {
-            // Parse input time or use current time if empty or "Right now"
-            Date startTime = (timeText.isEmpty() || timeText.equals("Right now")) 
+            // Parse input time or use current time if empty or "From now"
+            Date startTime = (timeText.isEmpty() || timeText.equals("From now"))
                 ? now 
                 : timeFormat.parse(timeText);
             

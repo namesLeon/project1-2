@@ -1,5 +1,4 @@
 
-
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.painter.Painter;
@@ -7,6 +6,7 @@ import org.jxmapviewer.painter.Painter;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
+
 
 class RoutePainter implements Painter<JXMapViewer> {
     private final List<GeoPosition> track;
