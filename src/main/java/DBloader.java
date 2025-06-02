@@ -31,7 +31,8 @@ public class DBloader {
     public static void main(String[] args) throws IOException {
         createSQLTables();
         //  "/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip"
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip");
+        // "/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip"
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip");
         loadFromZip(zipPath);
     }
 
@@ -176,6 +177,7 @@ public class DBloader {
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
             ps.executeBatch();
+
             System.out.println("Loaded stop_times from " + filePath);
         }
     }
@@ -293,8 +295,8 @@ public class DBloader {
             conn.commit();
             if(Files.exists(tmpDir.resolve("calendar.txt")))  loadCalendar(conn, tmpDir.resolve("calendar.txt"));
             conn.commit();
-            createEdgesTable(conn);
-            conn.commit();
+            //createEdgesTable(conn);
+            //conn.commit();
             System.out.println("Data loaded successfully.");
         } catch (Exception e) {
             e.printStackTrace();

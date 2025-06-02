@@ -30,7 +30,7 @@ public class Graph {
     private final ArrayList<StopStructure> stopList;
     private final double speed = 5;
 
-    public Graph(Connection conn){
+    public Graph(/*Connection conn*/){
         this.stopMap = new HashMap<>();
         this.adjMap = new HashMap<>();
         this.stopList = new ArrayList<>();
@@ -175,14 +175,14 @@ public class Graph {
         }
     }
 
-    private void createEdgesFromDB() throws SQLException{
-        Statement st = conn.createStatement();
-        String fetchEdgesFromDB = """
-                SELECT * FROM edges
-                """;
-        ResultSet rs = st.executeQuery(fetchEdgesFromDB);
-        while(rs.next()){
-
-        }
-    }
+//    private void createEdgesFromDB() throws SQLException{
+//        Statement st = conn.createStatement();
+//        String fetchEdgesFromDB = """
+//                SELECT * FROM edges
+//                """;
+//        ResultSet rs = st.executeQuery(fetchEdgesFromDB);
+//        while(rs.next()){
+//
+//        }
+//    }
 }
