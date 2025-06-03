@@ -26,6 +26,8 @@ public class JSONInterface {
     }
 
     public void run() throws IOException {
+
+        
         while (true) {
             Object obj;
             try {
@@ -146,8 +148,8 @@ public class JSONInterface {
         writer.getWriter().flush();
     }
 
-    private void sendJourney(List<JourneyStep> steps) throws IOException {
-        Writer out = writer.getWriter();
+    public static void sendJourney(List<JourneyStep> steps) throws IOException {
+        Writer out = new JSONWriter<>(new OutputStreamWriter(System.out)).getWriter();
         StringBuilder sb = new StringBuilder();
         sb.append("{\"ok\":[");
         for (int i = 0; i < steps.size(); i++) {

@@ -8,16 +8,23 @@ import org.jxmapviewer.input.PanMouseInputListener;
 import org.jxmapviewer.viewer.TileFactory;
 import org.jxmapviewer.viewer.TileFactoryInfo;
 
+import clinterface.GTFSLoader;
+import planner.RoutePlanner;
+import storage.TransitGraph;
+import structs.JourneyStep;
+
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.io.FileNotFoundException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,6 +32,9 @@ import java.util.Date;
 
 public class AmsterdamMap {
     private static List<GeoPosition> markers = new ArrayList<>();
+    private static RoutePlanner planner;
+    private static TransitGraph graph;
+    private static GTFSLoader loader;
     private static JLabel startCoordLabel;
     private static JLabel endCoordLabel;
     private static JXMapViewer mapViewer;
@@ -35,6 +45,7 @@ public class AmsterdamMap {
     private static JTextField timeInputField;
     private static JLabel startTimeLabel;
     private static JLabel endTimeLabel;
+    private static ArrayList<Integer> stepDurations;
 
 
     public static void main(String[] args) {
@@ -48,6 +59,21 @@ public class AmsterdamMap {
                 TileFactory tileFactory = new DefaultTileFactory(info);
 
                 mapViewer.setTileFactory(tileFactory);
+                graph = new TransitGraph();
+                loader = new GTFSLoader(graph);
+                try {
+                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
+                    loader.loadFromZip(Path.of(path));
+                    planner = new RoutePlanner(graph);
+                } catch (FileNotFoundException e) {
+                    //fatal: GTFS data not found
+                    System.err.println("File not found");
+                } catch (Exception e) {
+                    //fatal: other load error
+                    System.err.print(e.getMessage());
+                }
+
+        
 
                 // Set center to Amsterdam
                 GeoPosition amsterdam = new GeoPosition(52.3702, 4.8952);
@@ -120,7 +146,9 @@ public class AmsterdamMap {
                 startRouteButton = new JButton("Start Route");
                 startRouteButton.setEnabled(false);
                 startRouteButton.addActionListener(e -> {
-                    startRoute();
+                   
+                    String time = getTimeFromInput();
+                    startRoute(time);
                     updateTimeLabels();
                 });
 
@@ -209,11 +237,23 @@ public class AmsterdamMap {
         }
     }
 
-    private static void startRoute() {
+    private static void startRoute(String time) {
         if (markers.size() == 2) {
+            
             List<GeoPosition> route = new ArrayList<>();
-            route.add(markers.get(0));
-            route.add(markers.get(1));
+            GeoPosition start = markers.get(0);
+            GeoPosition end = markers.get(1);
+            route.add(start);
+            List<JourneyStep> journey = planner.computeRoute(start.getLatitude(), start.getLongitude(), end.getLatitude(), end.getLongitude(), time);
+            stepDurations = new ArrayList<>();
+            for(JourneyStep step : journey) {
+                stepDurations.add(step.durationMin);
+                GeoPosition stepPos = new GeoPosition(step.to[0], step.to[1]);
+                // if(step.mode.equals("walk")) {
+                   
+                // }
+                route.add(stepPos);
+            }
             routePainter = new RoutePainter(route);
             mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, routePainter));
             mapViewer.repaint();
@@ -227,6 +267,14 @@ public class AmsterdamMap {
         mapViewer.repaint();
     }
 
+
+    private static String getTimeFromInput() {
+        String timeText = timeInputField.getText();
+        if (timeText.isEmpty() || timeText.equals("Right now")) {
+            return new SimpleDateFormat("HH:mm").format(new Date());
+        }
+        return timeText;
+    }
      private static void updateTimeLabels() {
         String timeText = timeInputField.getText();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -246,7 +294,8 @@ public class AmsterdamMap {
         } catch (Exception e) {
             // If parsing fails, use current time
             startTimeLabel.setText("Start Time: " + timeFormat.format(now));
-            endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + 5 * 60 * 1000)));
+            endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
+  .reduce(0, Integer::sum) * 60 * 1000))); // Sum of durations in milliseconds
         }
     }
 

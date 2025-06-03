@@ -10,6 +10,7 @@ import java.util.List;
 
 class RoutePainter implements Painter<JXMapViewer> {
     private final List<GeoPosition> track;
+    private Color color = new Color(221, 255, 0, 255); // default yellow color
 
     public RoutePainter(List<GeoPosition> track) {
         this.track = track;
@@ -25,7 +26,7 @@ class RoutePainter implements Painter<JXMapViewer> {
                 .map(p -> new Point2D.Double(p.getX() - map.getViewportBounds().getX(), p.getY() - map.getViewportBounds().getY()))
                 .toList();
 
-        g.setColor(new Color(221, 255, 0, 255)); // color
+        g.setColor(color); // color
         g.setStroke(new BasicStroke(4, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
