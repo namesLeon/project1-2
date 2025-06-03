@@ -30,9 +30,9 @@ public class DBloader {
 
     public static void main(String[] args) throws IOException {
         createSQLTables();
-        //  "/Users/antonilazewski/Documents/Project_1-2/NL-20250425.gtfs.zip"
+        //  "/Users/antonilazewski/Documents/Project_1-2/gtfs-nl.zip"
         // "/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip"
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip");
+        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs_final.zip");
         loadFromZip(zipPath);
     }
 
@@ -150,8 +150,7 @@ public class DBloader {
 
     private static void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stop_times(trip_id, stop_sequence, stop_id, arrival_time, departure_time) " +
-                "VALUES (?, ?, ?, ?, ?)";
-        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                "VALUES (?, ?, ?, TIME(?), TIME(?))";
         try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
@@ -163,16 +162,12 @@ public class DBloader {
                 String trip_id = rec.get("trip_id");
                 int stop_sequence = Integer.parseInt(rec.get("stop_sequence"));
                 String stop_id = rec.get("stop_id");
-                String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
-                String[] departureTimeStringArr = rec.get("departure_time").split(":");
 
                 ps.setString(1, trip_id);
                 ps.setInt(2, stop_sequence);
                 ps.setString(3, stop_id);
-                ps.setTime(4, Time.valueOf(joinTimeFromArray(arrivalTimeStringArr)));
-                // ps.setTime(4, Time.valueOf(arrivalTime));
-                //ps.setTime(5, Time.valueOf(departureTime));
-                ps.setTime(5, Time.valueOf(joinTimeFromArray(departureTimeStringArr)));
+                ps.setString(4, rec.get("arrival_time"));
+                ps.setString(5, rec.get("departure_time"));
                 ps.addBatch();
                 if (++batchSize % 1000 == 0) ps.executeBatch();
             }
@@ -185,7 +180,6 @@ public class DBloader {
     private static void loadAgencies(Connection conn, Path filePath) throws IOException, SQLException{
         String sql = "INSERT INTO agency(agency_id, agency_name, agency_url) " +
                 "VALUES (?, ?, ?)";
-        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
         try (BufferedReader reader = Files.newBufferedReader(filePath);
              PreparedStatement ps = conn.prepareStatement(sql);
              CSVParser parser = CSVFormat.DEFAULT
@@ -273,13 +267,10 @@ public class DBloader {
             }
         }
         // Add this after your ZIP extraction
-        System.out.println("Contents of temp directory:");
-        try (Stream<Path> files = Files.walk(tmpDir)) {
-            files.forEach(System.out::println);
-        }
         System.out.println("Loaded gtfs zip");
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
             conn.setAutoCommit(false);
+
 
             loadCalendarDates(conn, tmpDir.resolve("calendar_dates.txt"));
             conn.commit();
@@ -298,12 +289,32 @@ public class DBloader {
             //createEdgesTable(conn);
             //conn.commit();
             System.out.println("Data loaded successfully.");
+
+//            String sql = "INSERT INTO stop_times(trip_id, stop_sequence, stop_id, arrival_time, departure_time) " +
+//                    "VALUES (?, ?, ?, TIME(?), TIME(?))";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            String trip_id = "228096877";
+//            int stop_sequence = 0;
+//            String stop_id = "2323991";
+//            //String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
+//            //String[] departureTimeStringArr = rec.get("departure_time").split(":");
+//
+//            ps.setString(1, trip_id);
+//            ps.setInt(2, stop_sequence);
+//            ps.setString(3, stop_id);
+//            ps.setString(4,"25:53:52");
+//            // ps.setTime(4, Time.valueOf(arrivalTime));
+//            //ps.setTime(5, Time.valueOf(departureTime));
+//            ps.setString(5,"26:32:30");
+//            ps.addBatch();
+//            ps.executeBatch();
+//            conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static boolean manageTimeOverflow(String[] time){
+        private static boolean manageTimeOverflow(String[] time){
         int hourValueInt = Integer.parseInt(time[0]);
 //        if(hourValueInt >= 24){
 //            hourValueInt -= 24;

@@ -80,5 +80,5 @@ CREATE TABLE routes (
    COMMENT='Routes table (GTFS routes.txt)';
 
 -- 8. add indexing
-CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
-CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
+-- CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
+-- CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
