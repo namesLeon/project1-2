@@ -8,6 +8,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * If you want to use this class, make sure that you have a proper database setup
+ *  - create a gtfs_Amsterdam database if none exists yet
+ *  - change the DB_USER and DB_PASS according to your database setup
+ *
+ *  Also, when you use the class first time in your code, you have to run initializeDataBase() method!
+ */
 public class DBManager {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String DB_USER = "BCS1510";

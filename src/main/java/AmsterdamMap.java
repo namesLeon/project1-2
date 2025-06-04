@@ -67,6 +67,7 @@ public class AmsterdamMap {
                     String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
+                    // dbManager.initializeDataBase(path);      // Takes like 30 seconds to load the database
                 } catch (FileNotFoundException e) {
                     //fatal: GTFS data not found
                     System.err.println("File not found");
