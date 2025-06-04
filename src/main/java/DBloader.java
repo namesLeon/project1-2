@@ -36,59 +36,6 @@ public class DBloader {
         loadFromZip(zipPath);
     }
 
-    private static void loadCalendarDates(Connection conn, Path filePath) throws SQLException, IOException {
-        String sql = "INSERT INTO calendar_dates(service_id, date, exception_type) VALUES (?, ?, ?)";
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
-        try (BufferedReader reader = Files.newBufferedReader(filePath);
-             PreparedStatement ps = conn.prepareStatement(sql);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            int batchSize = 0;
-            for (CSVRecord rec : parser) {
-                String id = rec.get("service_id");
-                LocalDate date = LocalDate.parse(rec.get("date"), df);
-                int exceptionType = Integer.parseInt(rec.get("exception_type"));
-                ps.setString(1, id);;
-                ps.setDate(2, Date.valueOf(date));
-                ps.setInt(3, exceptionType);
-                ps.addBatch();
-
-                if (++batchSize % 1000 == 0) ps.executeBatch();
-            }
-            ps.executeBatch();
-            System.out.println("Loaded calendar_dates from " + filePath);
-        }
-    }
-
-    private static void loadCalendar(Connection conn, Path filePath) throws IOException, SQLException {
-        String sql = "INSERT INTO calendar(service_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) " +
-                "VALUES(?,?,?,?,?,?,?,?)";
-        try (BufferedReader reader = Files.newBufferedReader(filePath);
-             PreparedStatement ps = conn.prepareStatement(sql);
-             CSVParser parser = CSVFormat.DEFAULT
-                     .withFirstRecordAsHeader()
-                     .withTrim()
-                     .parse(reader)) {
-            int batchSize = 0;
-            for (CSVRecord rec : parser) {
-                ps.setString(1, rec.get("service_id"));
-                ps.setString(2, rec.get("monday"));
-                ps.setString(3, rec.get("tuesday"));
-                ps.setString(4, rec.get("wednesday"));
-                ps.setString(5, rec.get("thursday"));
-                ps.setString(6, rec.get("friday"));
-                ps.setString(7, rec.get("saturday"));
-                ps.setString(8, rec.get("sunday"));
-                ps.addBatch();
-                if (++batchSize % 1000 == 0) ps.executeBatch();
-            }
-            ps.executeBatch();
-            System.out.println("Loaded calendar from " + filePath);
-        }
-    }
-
     private static void loadStops(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stops(stop_id, stop_name, stop_lat, stop_lon) " +
                 "VALUES (?, ?, ?, ?)";
@@ -244,16 +191,19 @@ public class DBloader {
                     USING (trip_id)
                     WHERE st1.stop_sequence = st2.stop_sequence - 1)
                 """;
-        String createIndexQuery = "CREATE INDEX edges_trip_id_ix ON edges(trip_id)";
+        String createTripIndexQuery = "CREATE INDEX edges_trip_id_ix ON edges(trip_id)";
+        String createStartStopIndexQuery = "CREATE INDEX edges_start_stop_ix ON edges(start_stop)";
+        String createEndStopIndexQuery = "CREATE INDEX edges_end_stop_ix ON edges(end_stop)";
 
         st.executeUpdate(dropTableQuery);
         st.executeUpdate(createTableQuery);
-        st.executeUpdate(createIndexQuery);
+        st.executeUpdate(createTripIndexQuery);
+        st.executeUpdate(createStartStopIndexQuery);
+        st.executeUpdate(createEndStopIndexQuery);
     }
 
 
     public static void loadFromZip(Path zipPath) throws IOException {
-        //clear previous data
         Path tmpDir = Files.createTempDirectory("gtfs_temp");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
@@ -266,14 +216,10 @@ public class DBloader {
                 zis.closeEntry();
             }
         }
-        // Add this after your ZIP extraction
         System.out.println("Loaded gtfs zip");
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
             conn.setAutoCommit(false);
 
-
-            loadCalendarDates(conn, tmpDir.resolve("calendar_dates.txt"));
-            conn.commit();
             loadStops(conn, tmpDir.resolve("stops.txt"));
             conn.commit();
             loadTrips(conn, tmpDir.resolve("trips.txt"));
@@ -284,71 +230,26 @@ public class DBloader {
             conn.commit();
             loadRoutes(conn, tmpDir.resolve("routes.txt"));
             conn.commit();
-            if(Files.exists(tmpDir.resolve("calendar.txt")))  loadCalendar(conn, tmpDir.resolve("calendar.txt"));
+            createEdgesTable(conn);
             conn.commit();
-            //createEdgesTable(conn);
-            //conn.commit();
             System.out.println("Data loaded successfully.");
-
-//            String sql = "INSERT INTO stop_times(trip_id, stop_sequence, stop_id, arrival_time, departure_time) " +
-//                    "VALUES (?, ?, ?, TIME(?), TIME(?))";
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            String trip_id = "228096877";
-//            int stop_sequence = 0;
-//            String stop_id = "2323991";
-//            //String[] arrivalTimeStringArr = rec.get("arrival_time").split(":");
-//            //String[] departureTimeStringArr = rec.get("departure_time").split(":");
-//
-//            ps.setString(1, trip_id);
-//            ps.setInt(2, stop_sequence);
-//            ps.setString(3, stop_id);
-//            ps.setString(4,"25:53:52");
-//            // ps.setTime(4, Time.valueOf(arrivalTime));
-//            //ps.setTime(5, Time.valueOf(departureTime));
-//            ps.setString(5,"26:32:30");
-//            ps.addBatch();
-//            ps.executeBatch();
-//            conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-        private static boolean manageTimeOverflow(String[] time){
-        int hourValueInt = Integer.parseInt(time[0]);
-//        if(hourValueInt >= 24){
-//            hourValueInt -= 24;
-//        }
-        if(hourValueInt < 10) time[0] = "0"+String.valueOf(hourValueInt);
-        else{
-            time[0] = String.valueOf(hourValueInt);
-            return false;
-        }
-        return true;
-    }
-
-    private static String joinTimeFromArray(String[] time){
-        return time[0]+":"+time[1]+":"+time[2];
-    }
-
     private static void createSQLTables(){
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-
             String sqlContent = Files.readString(Paths.get("amsterdam_database/schema.sql"));
-
-            // Split statements by semicolon
             String[] statements = sqlContent.split(";");
-
             try (Statement st = conn.createStatement()) {
                 for (String sql : statements) {
                     sql = sql.trim();
-                    if (!sql.isEmpty() /*&& !sql.startsWith("--")*/) {
-                        //System.out.println("To execute : "+sql);
+                    if (!sql.isEmpty()) {
                         st.executeUpdate(sql);
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
