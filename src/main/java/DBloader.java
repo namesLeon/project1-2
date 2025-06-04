@@ -28,15 +28,9 @@ public class DBloader {
     private static final String DB_PASS = "BCS1510";
     private static final boolean useEnvJDBCurl = false;
 
-    public static void main(String[] args) throws IOException {
-        createSQLTables();
-        //  "/Users/antonilazewski/Documents/Project_1-2/gtfs-nl.zip"
-        // "/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs.zip"
-        Path zipPath = Path.of("/Users/antonilazewski/Documents/Project_1-2/amsterdam_gtfs_final.zip");
-        loadFromZip(zipPath);
-    }
 
-    private static void loadStops(Connection conn, Path filePath) throws SQLException, IOException {
+
+    private void loadStops(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stops(stop_id, stop_name, stop_lat, stop_lon) " +
                 "VALUES (?, ?, ?, ?)";
 
@@ -64,7 +58,7 @@ public class DBloader {
         }
     }
 
-    private static void loadTrips(Connection conn, Path filePath) throws SQLException, IOException {
+    private void loadTrips(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO trips(trip_id, route_id, trip_headsign, service_id) " +
                 "VALUES (?, ?, ?, ?)";
 
@@ -95,7 +89,7 @@ public class DBloader {
         }
     }
 
-    private static void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
+    private void loadStopTimes(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stop_times(trip_id, stop_sequence, stop_id, arrival_time, departure_time) " +
                 "VALUES (?, ?, ?, TIME(?), TIME(?))";
         try (BufferedReader reader = Files.newBufferedReader(filePath);
@@ -124,7 +118,7 @@ public class DBloader {
         }
     }
 
-    private static void loadAgencies(Connection conn, Path filePath) throws IOException, SQLException{
+    private void loadAgencies(Connection conn, Path filePath) throws IOException, SQLException{
         String sql = "INSERT INTO agency(agency_id, agency_name, agency_url) " +
                 "VALUES (?, ?, ?)";
         try (BufferedReader reader = Files.newBufferedReader(filePath);
@@ -150,7 +144,7 @@ public class DBloader {
         }
     }
 
-    private static void loadRoutes(Connection conn, Path filePath) throws IOException, SQLException {
+    private void loadRoutes(Connection conn, Path filePath) throws IOException, SQLException {
         String sql = "INSERT INTO routes(route_id, agency_id, route_short_name, route_long_name) " +
                 "VALUES (?, ?, ?, ?)";
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -179,7 +173,7 @@ public class DBloader {
         }
     }
 
-    private static void createEdgesTable(Connection conn) throws SQLException{
+    private void createEdgesTable(Connection conn) throws SQLException{
         Statement st = conn.createStatement();
         String dropTableQuery = "DROP TABLE IF EXISTS edges";
         String createTableQuery = """
@@ -203,7 +197,7 @@ public class DBloader {
     }
 
 
-    public static void loadFromZip(Path zipPath) throws IOException {
+    public void loadFromZip(Path zipPath) throws IOException {
         Path tmpDir = Files.createTempDirectory("gtfs_temp");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
@@ -222,13 +216,13 @@ public class DBloader {
 
             loadStops(conn, tmpDir.resolve("stops.txt"));
             conn.commit();
+            loadRoutes(conn, tmpDir.resolve("routes.txt"));
+            conn.commit();
             loadTrips(conn, tmpDir.resolve("trips.txt"));
             conn.commit();
             loadStopTimes(conn, tmpDir.resolve("stop_times.txt"));
             conn.commit();
             loadAgencies(conn, tmpDir.resolve("agency.txt"));
-            conn.commit();
-            loadRoutes(conn, tmpDir.resolve("routes.txt"));
             conn.commit();
             createEdgesTable(conn);
             conn.commit();
@@ -238,7 +232,7 @@ public class DBloader {
         }
     }
 
-    private static void createSQLTables(){
+    public void createSQLTables(){
         try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
             String sqlContent = Files.readString(Paths.get("amsterdam_database/schema.sql"));
             String[] statements = sqlContent.split(";");
@@ -255,34 +249,6 @@ public class DBloader {
         }
     }
 
-    public static ResultSet getNewEdges(String removedStopId) throws SQLException{
-        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-            String SQL = """
-                    SELECT * FROM (SELECT * FROM
-                    	(
-                    	SELECT e1.start_stop as start_stop, e2.end_stop as end_stop, trip_id,
-                    	e1.departure_time as departure_time, e2.arrival_time as arrival_time,
-                    	TIMEDIFF(e2.arrival_time, e2.departure_time) as transfer_length
-                    	FROM edges e1 JOIN edges e2
-                    	USING(trip_id)
-                    	WHERE e1.end_stop = e2.start_stop AND e1.end_stop = ?
-                    	) a
-                    	JOIN
-                    	(
-                    	SELECT trip_id, trip_headsign FROM trips
-                    	) b
-                    	USING(trip_id)
-                    ) c
-                    JOIN
-                    (SELECT route_id, agency_name, route_short_name, route_long_name
-                    FROM routes JOIN agency USING(agency_id))d
-                    """;
-            PreparedStatement st = conn.prepareStatement(SQL);
-            st.setString(1, removedStopId);
-            ResultSet rs = st.executeQuery(SQL);
-            System.out.println("Created new edges.");
-            return rs;
-        }
-    }
+
 }
 

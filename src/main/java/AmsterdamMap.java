@@ -35,6 +35,7 @@ public class AmsterdamMap {
     private static RoutePlanner planner;
     private static TransitGraph graph;
     private static GTFSLoader loader;
+    private static DBManager dbManager;
     private static JLabel startCoordLabel;
     private static JLabel endCoordLabel;
     private static JXMapViewer mapViewer;
@@ -61,6 +62,7 @@ public class AmsterdamMap {
                 mapViewer.setTileFactory(tileFactory);
                 graph = new TransitGraph();
                 loader = new GTFSLoader(graph);
+                dbManager = new DBManager();
                 try {
                     String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));

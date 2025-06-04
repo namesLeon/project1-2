@@ -21,4 +21,10 @@ public class DepartureEvent {
         this.arrivalSec = arrivalSec;
         this.routeInfo = routeInfo;
     }
+
+    @Override
+    public String toString(){
+        return "departure sec : "+departureSec+" | trip id : "+tripId+" | from stop : "+fromStopId+
+                " | to stop : "+toStopId+" | arrival sec : "+arrivalSec+ routeInfo.toString();
+    }
 }

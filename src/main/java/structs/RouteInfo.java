@@ -18,4 +18,10 @@ public class RouteInfo {
         this.longName = longName;
         this.headSign = headSign;
     }
+
+    @Override
+    public String toString(){
+        return " | routeId : "+routeId+" | operator : "+operator + " | short name : "+shortName+
+                " | long name : " + longName + " | head sign : "+headSign;
+    }
 }

@@ -7,16 +7,8 @@ DROP TABLE IF EXISTS agency;
 DROP TABLE IF EXISTS calendar;
 DROP TABLE IF EXISTS routes;
 
--- 1. calendar_dates
-CREATE TABLE calendar_dates (
-        service_id          VARCHAR(50)   NOT NULL,
-        date                DATE          NOT NULL,
-        exception_type      TINYINT       NOT NULL,
-        PRIMARY KEY (service_id, date)
-) ENGINE=InnoDB
-    COMMENT='Exceptions for service schedules (GTFS calendar_dates.txt)';
 
--- 2. stops
+-- 1. stops
 CREATE TABLE stops (
        stop_id             VARCHAR(50)    NOT NULL,
        stop_name           VARCHAR(255),
@@ -26,13 +18,23 @@ CREATE TABLE stops (
 ) ENGINE=InnoDB
     COMMENT='Stops and stations (GTFS stops.txt)';
 
+-- 2. routes
+CREATE TABLE routes (
+    route_id            VARCHAR(100) PRIMARY KEY,
+    agency_id           VARCHAR(100) NOT NULL,
+    route_short_name    VARCHAR(100),
+    route_long_name     VARCHAR(255)
+) ENGINE=InnoDB
+  COMMENT='Routes table (GTFS routes.txt)';
+
 -- 3. trips
 CREATE TABLE trips (
        trip_id             VARCHAR(50)    NOT NULL,
-       route_id            VARCHAR(50)    NOT NULL,
+       route_id            VARCHAR(100)    NOT NULL,
        trip_headsign       VARCHAR(100)    NOT NULL,
        service_id          VARCHAR(50)    NOT NULL,
-       PRIMARY KEY (trip_id)
+       PRIMARY KEY (trip_id),
+       FOREIGN KEY (route_id) REFERENCES routes(route_id)
 ) ENGINE=InnoDB
     COMMENT='Trips (GTFS trips.txt)';
 
@@ -57,28 +59,6 @@ CREATE TABLE agency (
 ) ENGINE=InnoDB
       COMMENT='Agencies table (GTFS agency.txt)';
 
--- 6. calendar
-CREATE TABLE calendar (
-        service_id          VARCHAR(50)   PRIMARY KEY,
-        monday              BOOL    NOT NULL,
-        tuesday             BOOL    NOT NULL,
-        wednesday           BOOL    NOT NULL,
-        thursday            BOOL    NOT NULL,
-        friday              BOOL    NOT NULL,
-        saturday            BOOL    NOT NULL,
-        sunday              BOOL    NOT NULL
-) ENGINE=InnoDB
-  COMMENT='Calendar table, only if txt file exists (GTFS calendar.txt)';
-
--- 7. routes
-CREATE TABLE routes (
-        route_id            VARCHAR(100) PRIMARY KEY,
-        agency_id           VARCHAR(100) NOT NULL,
-        route_short_name    VARCHAR(100),
-        route_long_name     VARCHAR(255)
-) ENGINE=InnoDB
-   COMMENT='Routes table (GTFS routes.txt)';
-
--- 8. add indexing
--- CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
--- CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
+-- 6. add indexing
+ CREATE INDEX stop_times_stop_id_ix ON stop_times(stop_id);
+ CREATE INDEX stop_times_stop_sequence_ix ON stop_times(stop_sequence);
