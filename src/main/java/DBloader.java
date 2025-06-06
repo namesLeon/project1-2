@@ -1,4 +1,4 @@
-
+import com.mysql.cj.util.DnsSrv;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -24,8 +24,8 @@ import java.util.zip.ZipInputStream;
 public class DBloader {
     // Database connection parameters
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String DB_USER = "BCS1510";
-    private static final String DB_PASS = "BCS1510";
+    private static final String DB_USER = "matteo";
+    private static final String DB_PASS = "Password1234";
     private static final boolean useEnvJDBCurl = false;
 
 
