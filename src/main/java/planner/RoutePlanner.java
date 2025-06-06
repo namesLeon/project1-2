@@ -190,6 +190,16 @@ public class RoutePlanner {
         if (sec < 0) sec += 86400;
         int hh = sec / 3600;
         int mm = (int)Math.ceil(Double.valueOf(sec % 3600) / 60.0);
+        if(mm == 60){
+            if(hh == 23){
+                hh = 0;
+                mm = 0;
+            }
+            else{
+                hh += 1;
+                mm = 0;
+            }
+        }
         return String.format("%02d:%02d", hh, mm);
     }
 
