@@ -25,6 +25,19 @@ public class JSONInterface {
         writer = new JSONWriter<>(new OutputStreamWriter(System.out));
     }
 
+    /**
+     * Important note: <br>
+     * Now we have two possibilities to "delete" a stop <br>
+     *  1. Delete the stop at the moment of accepting the input for finding the route <br>
+     *      {"routeFrom":{}, "startingAt":{}, "to":{}, "deletedStopId":"xyz"} - the last key-value pair is optional.
+     *     Here the stop is added again after finding the path. <br>
+     *  2. Delete the stop at the moment of loading the files into the graph <br>
+     *      {"load" : "PATH", "deletedStopId":"xyz"} - the last key-value pair is optional.
+     *     Here the stop deletion is more binding than in step 1. The stop is not after finding the path. <br>
+     *  The 1st method would then be used for example for the GUI or some quick comparisons, whereas
+     *  2nd method would be used in experiments (so that we don't waste time for repetitive stop add and removal)
+     * @throws IOException
+     */
     public void run() throws IOException {
         String deletedStopId = null;
         

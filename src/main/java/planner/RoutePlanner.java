@@ -219,11 +219,22 @@ public class RoutePlanner {
         }
     }
 
+
+    // The following two methods are used in the process of stop deletion
+
+    /**
+     * Use it when you want to delete a stop
+     * @param stopId - String value of stopId corresponding to the stop you want to remove
+     */
     public void deleteStop(String stopId){
         graph.deleteStop(stopId);
         deletedStopId = String.valueOf(stopId);
     }
 
+    /**
+     * Use it when you want to remove the effects of stop deletion. Usually just call it after the
+     * shortest path has been computer (after method computeRoute)
+     */
     public void reloadDeletedStop(){
         graph.reloadDeletedStop();
         deletedStopId = null;

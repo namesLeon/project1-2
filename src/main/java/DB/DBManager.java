@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * If you want to use this class, make sure that you have a proper database setup
  *  - create a gtfs_Amsterdam database if none exists yet
  *  - change the DB_USER and DB_PASS according to your database setup
- *
- *  Also, when you use the class first time in your code, you have to run initializeDataBase() method!
+ *  Also, when using the class first time in your code, you have to run initializeDataBase() method!
  */
 public class DBManager {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
@@ -23,12 +22,12 @@ public class DBManager {
 
     /**
      * Run the main method if you don't have the database initialized yet.
-     * Make sure to first:
-     *  - activate mysql on your computer
-     *  - create a database named 'gtfs_Amsterdam' on your computer
-     *  - change the JDBC_USER and JDBC_PASS to credentials of some user from your database
+     * Make sure to first: <br>
+     *  - activate mysql on your computer <br>
+     *  - create a database named 'gtfs_Amsterdam' on your computer <br>
+     *  - change the JDBC_USER and JDBC_PASS to credentials of some user from your database <br>
      * You don't have to run this method everytime, matter of time it is best to run it as rarely as possible
-     * since it takes like 30 seconds to load the gtfs files into the database
+     * as it takes like 30 seconds to load the gtfs files into the database
      * @param args
      * @throws IOException
      */
@@ -49,6 +48,12 @@ public class DBManager {
         }
     }
 
+    /**
+     * Used for determining new departure events that are a result of deleting a specific stop from the gtfs database.
+     * We use sql JOINS to find them.
+     * @param deletedStopId - String value of stopId corresponding to the stop you want to remove from database
+     * @return
+     */
     public ArrayList<DepartureEvent> getDepartureEventsAfterStopDeletion(String deletedStopId){
         ArrayList<DepartureEvent> newDepartures = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)){
