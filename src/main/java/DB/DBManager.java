@@ -1,3 +1,5 @@
+package DB;
+
 import structs.DepartureEvent;
 import structs.RouteInfo;
 import structs.StopTime;
@@ -6,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * If you want to use this class, make sure that you have a proper database setup
@@ -17,11 +18,20 @@ import java.util.HashMap;
  */
 public class DBManager {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String DB_USER = "BCS1510";
-    private static final String DB_PASS = "BCS1510";
-    private Connection conn;
+    private static final String JDBC_USER = "BCS1510";
+    private static final String JDBC_PASS = "BCS1510";
 
-
+    /**
+     * Run the main method if you don't have the database initialized yet.
+     * Make sure to first:
+     *  - activate mysql on your computer
+     *  - create a database named 'gtfs_Amsterdam' on your computer
+     *  - change the JDBC_USER and JDBC_PASS to credentials of some user from your database
+     * You don't have to run this method everytime, matter of time it is best to run it as rarely as possible
+     * since it takes like 30 seconds to load the gtfs files into the database
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         DBManager manager = new DBManager();
         ArrayList<DepartureEvent> departureEvents = manager.getDepartureEventsAfterStopDeletion("2635837");
@@ -30,30 +40,21 @@ public class DBManager {
         );
     }
 
-    public DBManager(){
-        try{
-            conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
-        }
-        catch (SQLException e){
-            conn = null;
-            e.printStackTrace();
-        }
-    }
-
     public void initializeDataBase(String zipDirectory){
-        DBloader loader = new DBloader();
-        Path zipPath = Path.of(zipDirectory);
-        loader.createSQLTables();
-        try {
-            loader.loadFromZip(zipPath);
-        } catch (IOException e) {
+        try(Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)) {
+            DBloader loader = new DBloader();
+            Path zipPath = Path.of(zipDirectory);
+            loader.createSQLTables(conn);
+            loader.loadFromZip(zipPath, conn);
+        }
+        catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public ArrayList<DepartureEvent> getDepartureEventsAfterStopDeletion(String deletedStopId){
-        ArrayList<DepartureEvent> newDepartures = null;
-        try {
+        ArrayList<DepartureEvent> newDepartures = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)){
             PreparedStatement st = conn.prepareStatement("""
                     SELECT
                     route_id, trip_id, start_stop, end_stop, departure_time, arrival_time, transfer_length,
@@ -79,8 +80,6 @@ public class DBManager {
                     """);
             st.setString(1, deletedStopId);
             ResultSet rs = st.executeQuery();
-            newDepartures = new ArrayList<>();
-
             while (rs.next()) {
                 newDepartures.add(createNewDepartureEvent(rs));
             }

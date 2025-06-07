@@ -1,8 +1,8 @@
 package storage;
 
 import java.util.*;
-
 import structs.*;
+import DB.*;
 
 
 //holds all stops, departure events, and walking edges for routing
@@ -11,6 +11,8 @@ public class TransitGraph {
     public final Map<String, Stop> stops = new HashMap<>();
     public final Map<String, List<DepartureEvent>> departures = new HashMap<>();
     public final List<WalkEdge> walkEdges = new ArrayList<>();
+    public String deletedStop = null;
+    public final List<DepartureEvent> additionalDepartureEvents = new ArrayList<>();
 
     public void computeAllWalkEdges() {
         List<Stop> stopList = new ArrayList<>(stops.values());
@@ -51,5 +53,22 @@ public class TransitGraph {
                  * Math.sin(dLon/2)*Math.sin(dLon/2);
         double c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c;
+    }
+
+    public void deleteStop(String stopId){
+        DBManager dbManager = new DBManager();
+        for(DepartureEvent event : dbManager.getDepartureEventsAfterStopDeletion(stopId)){
+            departures.get(event.fromStopId).add(event);
+            additionalDepartureEvents.add(event);
+        }
+        deletedStop = String.valueOf(stopId);
+    }
+
+    public void reloadDeletedStop(){
+        for(DepartureEvent event : additionalDepartureEvents){
+            departures.get(event.fromStopId).remove(event);
+        }
+        additionalDepartureEvents.clear();
+        deletedStop = null;
     }
 }

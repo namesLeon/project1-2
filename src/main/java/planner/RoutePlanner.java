@@ -1,5 +1,6 @@
 package planner;
 
+import DB.DBManager;
 import storage.TransitGraph;
 import structs.*;
 
@@ -7,6 +8,7 @@ import java.util.*;
 
 public class RoutePlanner {
     private final TransitGraph graph;
+    private String deletedStopId = null;
 
     public RoutePlanner(TransitGraph graph) {
         this.graph = graph;
@@ -79,7 +81,7 @@ public class RoutePlanner {
 
         while (!pq.isEmpty()) {
             Label cur = pq.poll();
-            if (cur.arrivalSec > best.getOrDefault(cur.stopId, Integer.MAX_VALUE)) {
+            if (cur.stopId.equals(graph.deletedStop) || cur.arrivalSec > best.getOrDefault(cur.stopId, Integer.MAX_VALUE)) {
                 continue;
             }
             //System.out.println("[LOG] visit " + cur.stopId + " @sec=" + cur.arrivalSec);
@@ -205,5 +207,15 @@ public class RoutePlanner {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid numeric value in time: " + hhmm, e);
         }
+    }
+
+    public void deleteStop(String stopId){
+        graph.deleteStop(stopId);
+        deletedStopId = String.valueOf(stopId);
+    }
+
+    public void reloadDeletedStop(){
+        graph.reloadDeletedStop();
+        deletedStopId = null;
     }
 }

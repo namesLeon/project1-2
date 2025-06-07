@@ -1,10 +1,10 @@
-import com.mysql.cj.util.DnsSrv;
+package DB;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -12,24 +12,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class DBloader {
-    // Database connection parameters
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gtfs_Amsterdam?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String DB_USER = "BCS1510";
-    private static final String DB_PASS = "BCS1510";
-    private static final boolean useEnvJDBCurl = false;
-
-
-
     private void loadStops(Connection conn, Path filePath) throws SQLException, IOException {
         String sql = "INSERT INTO stops(stop_id, stop_name, stop_lat, stop_lon) " +
                 "VALUES (?, ?, ?, ?)";
@@ -197,7 +184,7 @@ public class DBloader {
     }
 
 
-    public void loadFromZip(Path zipPath) throws IOException {
+    public void loadFromZip(Path zipPath, Connection conn) throws IOException, SQLException {
         Path tmpDir = Files.createTempDirectory("gtfs_temp");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
@@ -211,44 +198,33 @@ public class DBloader {
             }
         }
         System.out.println("Loaded gtfs zip");
-        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-            conn.setAutoCommit(false);
-
-            loadStops(conn, tmpDir.resolve("stops.txt"));
-            conn.commit();
-            loadRoutes(conn, tmpDir.resolve("routes.txt"));
-            conn.commit();
-            loadTrips(conn, tmpDir.resolve("trips.txt"));
-            conn.commit();
-            loadStopTimes(conn, tmpDir.resolve("stop_times.txt"));
-            conn.commit();
-            loadAgencies(conn, tmpDir.resolve("agency.txt"));
-            conn.commit();
-            createEdgesTable(conn);
-            conn.commit();
-            System.out.println("Data loaded successfully.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        conn.setAutoCommit(false);
+        loadStops(conn, tmpDir.resolve("stops.txt"));
+        conn.commit();
+        loadRoutes(conn, tmpDir.resolve("routes.txt"));
+        conn.commit();
+        loadTrips(conn, tmpDir.resolve("trips.txt"));
+        conn.commit();
+        loadStopTimes(conn, tmpDir.resolve("stop_times.txt"));
+        conn.commit();
+        loadAgencies(conn, tmpDir.resolve("agency.txt"));
+        conn.commit();
+        createEdgesTable(conn);
+        conn.commit();
+        System.out.println("Data loaded successfully.");
     }
 
-    public void createSQLTables(){
-        try (Connection conn = DriverManager.getConnection(useEnvJDBCurl ? System.getenv("ROUTING_ENGINE_MYSQL_JDBC") : JDBC_URL, DB_USER, DB_PASS)) {
-            String sqlContent = Files.readString(Paths.get("amsterdam_database/schema.sql"));
-            String[] statements = sqlContent.split(";");
-            try (Statement st = conn.createStatement()) {
-                for (String sql : statements) {
-                    sql = sql.trim();
-                    if (!sql.isEmpty()) {
-                        st.executeUpdate(sql);
-                    }
+    public void createSQLTables(Connection conn) throws SQLException, IOException {
+        String sqlContent = Files.readString(Paths.get("amsterdam_database/schema.sql"));
+        String[] statements = sqlContent.split(";");
+        try (Statement st = conn.createStatement()) {
+            for (String sql : statements) {
+                sql = sql.trim();
+                if (!sql.isEmpty()) {
+                    st.executeUpdate(sql);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
-
-
 }
 

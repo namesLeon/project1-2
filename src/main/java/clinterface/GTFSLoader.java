@@ -1,5 +1,6 @@
 package clinterface;
 
+import DB.DBManager;
 import storage.TransitGraph;
 import structs.*;
 
@@ -33,9 +34,14 @@ public class GTFSLoader {
     private final Map<String,String> agencyMap = new HashMap<>();
     private final Map<String,RouteInfo> routes = new HashMap<>();
     private final Map<String,Trip> trips = new LinkedHashMap<>();
+    private String deletedStopId = null;
 
     public GTFSLoader(TransitGraph graph) {
         this.graph = graph;
+    }
+
+    public void setDeletedStopId(String deletedStopId){
+        this.deletedStopId = deletedStopId;
     }
 
     public void loadFromZip(Path zipPath) throws IOException {
@@ -78,6 +84,7 @@ public class GTFSLoader {
             list.sort(Comparator.comparingInt(e -> e.departureSec));
         }
         graph.computeAllWalkEdges();
+        if(deletedStopId != null) graph.deleteStop(deletedStopId);
     }
 
     private BufferedReader createReader(Path p) throws IOException {

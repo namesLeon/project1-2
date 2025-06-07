@@ -26,7 +26,7 @@ public class JSONInterface {
     }
 
     public void run() throws IOException {
-
+        String deletedStopId = null;
         
         while (true) {
             Object obj;
@@ -55,8 +55,12 @@ public class JSONInterface {
             Map<String,Object> req = (Map<String,Object>) obj;
 
             if (req.containsKey("load")) {
+                if(req.containsKey("deletedStopId")){
+                    deletedStopId = (String) req.get("deletedStopId");
+                }
                 try {
                     String path = (String) req.get("load");
+                    if(deletedStopId != null) loader.setDeletedStopId(deletedStopId);
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     sendOk();
@@ -84,6 +88,16 @@ public class JSONInterface {
                     @SuppressWarnings("unchecked")
                     Map<String,Object> to = (Map<String,Object>) req.get("to");
                     String start = (String) req.get("startingAt");
+                    deletedStopId = null;
+                    if(req.containsKey("deletedStopId")){
+                        try {
+                            deletedStopId = (String) req.get("deletedStopId");
+                            planner.deleteStop(deletedStopId);
+                        }
+                        catch (Exception e){
+                            sendError("Bad request");
+                        }
+                    }
 
                     double slat = ((Number) rf.get("lat")).doubleValue();
                     double slon = ((Number) rf.get("lon")).doubleValue();
@@ -93,6 +107,8 @@ public class JSONInterface {
                     //long t0 = System.nanoTime();
                     List<JourneyStep> journey = planner.computeRoute(slat, slon, dlat, dlon, start);
                     sendJourney(journey);
+                    if(deletedStopId!=null)planner.reloadDeletedStop();
+                    deletedStopId = null;
                     //long t1 = System.nanoTime();
                     //long elapsedNanos = t1 - t0;
                     //double elapsedMillis = elapsedNanos / 1_000_000.0;
@@ -112,7 +128,8 @@ public class JSONInterface {
                     sendError(e.getMessage());
                 }
 
-            } else {
+            }
+            else {
                 sendError("Bad request");
             }
         }

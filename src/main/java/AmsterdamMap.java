@@ -1,9 +1,8 @@
+import DB.DBManager;
 import org.jxmapviewer.JXMapViewer;
-import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.viewer.DefaultTileFactory;
 import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.painter.Painter;
-import org.jxmapviewer.input.CenterMapListener;
 import org.jxmapviewer.input.PanMouseInputListener;
 import org.jxmapviewer.viewer.TileFactory;
 import org.jxmapviewer.viewer.TileFactoryInfo;
@@ -14,8 +13,6 @@ import storage.TransitGraph;
 import structs.JourneyStep;
 
 import javax.swing.event.MouseInputListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -67,7 +64,7 @@ public class AmsterdamMap {
                     String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
-                    // dbManager.initializeDataBase(path);      // Takes like 30 seconds to load the database
+                    //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
                 } catch (FileNotFoundException e) {
                     //fatal: GTFS data not found
                     System.err.println("File not found");
