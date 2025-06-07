@@ -233,7 +233,7 @@ public class RoutePlanner {
 
     /**
      * Use it when you want to remove the effects of stop deletion. Usually just call it after the
-     * shortest path has been computer (after method computeRoute)
+     * shortest path has been computed (after method computeRoute)
      */
     public void reloadDeletedStop(){
         graph.reloadDeletedStop();
