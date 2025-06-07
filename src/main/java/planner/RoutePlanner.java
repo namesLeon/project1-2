@@ -36,13 +36,6 @@ public class RoutePlanner {
             String startTime) {
         int startSec = parsetime(startTime);
 
-        //detect if departure point coincides with stop
-        String srcStop = null;
-        for (Stop s : graph.stops.values()) {
-            if (s.lat == srcLat && s.lon == srcLon) srcStop = s.stopId;
-        }
-        //System.out.println("[LOG] srcStop=" + srcStop + ", dstStop=" + dstStop);
-
         //direct walk baseline
         double directDist = TransitGraph.haversine(srcLat, srcLon, dstLat, dstLon);
         int directSecs = (int)Math.ceil(directDist / 5000.0 * 3600.0);
@@ -54,20 +47,18 @@ public class RoutePlanner {
         Map<String,Integer> best = new HashMap<>();
         PriorityQueue<Label> pq = new PriorityQueue<>();
 
-        //src coincides with a stop, push exactly that stop with g = startSec
-        if (srcStop != null) {
-            Label init = new Label();
-            init.stopId = srcStop;
-            init.arrivalSec = startSec;
-            init.fVal = startSec + heuristic(srcStop, dstLat, dstLon);
-            best.put(srcStop, startSec);
-            pq.add(init);
-            //System.out.println("[LOG] seeded stop " + srcStop + "@" + startTime);
-        } else {
-            //push all stops with a walk from src to each stopID
-            for (Stop s : graph.stops.values()) {
-                double d = TransitGraph.haversine(srcLat, srcLon, s.lat, s.lon);
-                int secs = (int)Math.ceil(d / 5000.0 * 3600.0);
+        //seed all stops
+        for (Stop s : graph.stops.values()) {
+            double d = TransitGraph.haversine(srcLat, srcLon, s.lat, s.lon);
+            int secs = (int)Math.ceil(d / 5000.0 * 3600.0);
+            if(secs == 0){
+                Label init = new Label();
+                init.stopId = s.stopId;
+                init.arrivalSec = startSec;
+                init.fVal = startSec + heuristic(s.stopId, dstLat, dstLon);
+                best.put(s.stopId, startSec);
+                pq.add(init);
+            } else { 
                 Label init = new Label();
                 init.stopId = s.stopId;
                 init.arrivalSec = startSec + secs;
@@ -76,7 +67,6 @@ public class RoutePlanner {
                 best.put(s.stopId, init.arrivalSec);
                 pq.add(init);
             }
-            //System.out.println("[LOG] seeded all stops via walk");
         }
 
         while (!pq.isEmpty()) {
