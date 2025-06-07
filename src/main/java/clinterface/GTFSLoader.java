@@ -87,6 +87,10 @@ public class GTFSLoader {
         if(deletedStopId != null) graph.deleteStop(deletedStopId);
     }
 
+    public TransitGraph getTransitGraph() {
+        return this.graph;
+    }
+
     private BufferedReader createReader(Path p) throws IOException {
         BufferedReader reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
         reader.mark(1);

@@ -34,10 +34,7 @@ public class DBManager {
      */
     public static void main(String[] args) throws IOException {
         DBManager manager = new DBManager();
-        ArrayList<DepartureEvent> departureEvents = manager.getDepartureEventsAfterStopDeletion("2635837");
-        DepartureEvent e = departureEvents.get(1);
-        System.out.println(e.toString()
-        );
+        manager.initializeDataBase("data/amsterdam_gtfs.zip");
     }
 
     public void initializeDataBase(String zipDirectory){

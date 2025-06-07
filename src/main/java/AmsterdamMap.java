@@ -61,7 +61,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
@@ -203,7 +203,7 @@ public class AmsterdamMap {
                 bottomPanel.add(endCoordLabel);
                 bottomPanel.add(transfersLabel);
 
-                JFrame frame = new JFrame("Map - Vinkenstraat Route");
+                JFrame frame = new JFrame("Map - Amsterdam");
                 frame.setLayout(new BorderLayout());
                 frame.add(mapViewer);
                 frame.getContentPane().add(controls, BorderLayout.NORTH);
@@ -239,7 +239,7 @@ public class AmsterdamMap {
 
     private static void startRoute(String time) {
         if (markers.size() == 2) {
-            
+            List<String> modes = new ArrayList<>();
             List<GeoPosition> route = new ArrayList<>();
             GeoPosition start = markers.get(0);
             GeoPosition end = markers.get(1);
@@ -249,12 +249,10 @@ public class AmsterdamMap {
             for(JourneyStep step : journey) {
                 stepDurations.add(step.durationMin);
                 GeoPosition stepPos = new GeoPosition(step.to[0], step.to[1]);
-                // if(step.mode.equals("walk")) {
-                   
-                // }
+                modes.add(step.mode);
                 route.add(stepPos);
             }
-            routePainter = new RoutePainter(route);
+            routePainter = new RoutePainter(route, modes);
             mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, routePainter));
             mapViewer.repaint();
             routeActive = true;
@@ -287,7 +285,8 @@ public class AmsterdamMap {
                 : timeFormat.parse(timeText);
             
             // Calculate end time (start time + 5 minutes)
-            Date endTime = new Date(startTime.getTime() + 5 * 60 * 1000);
+            Date endTime = new Date(startTime.getTime() + stepDurations.stream()
+                    .reduce(0, Integer::sum) * 60 * 1000);
             
             startTimeLabel.setText("Start Time: " + timeFormat.format(startTime));
             endTimeLabel.setText("End Time: " + timeFormat.format(endTime));

@@ -34,7 +34,7 @@ public class TransitGraph {
         PriorityQueue<WalkEdge> pq = new PriorityQueue<>(Comparator.comparingInt(e->e.walkDurationSec));
         for (Stop s : stops.values()) {
             double dist = haversine(lat, lon, s.lat, s.lon);
-            if (dist <= 500.0) {
+            if (dist <= 5000.0) {
                 int secs = (int) Math.round(dist / 5000.0 * 3600.0);
                 pq.offer(new WalkEdge("__SRC__", s.stopId, secs));
             }
