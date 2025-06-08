@@ -1,3 +1,5 @@
+package gui;
+
 import DB.DBManager;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.viewer.DefaultTileFactory;
@@ -45,6 +47,8 @@ public class AmsterdamMap {
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
 
+    private static final HeatMapPainter heatPainter = new HeatMapPainter(400.0 /*m*/, 0.5f, 10);
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -61,7 +65,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
@@ -114,6 +118,7 @@ public class AmsterdamMap {
                                 markers.remove(0);
                             }
                             markers.add(geo);
+                            heatPainter.setSelectedPosition(geo);
 
                             if (routeActive) {
                                 resetRoute();
@@ -182,7 +187,9 @@ public class AmsterdamMap {
                 controls.add(timeInputField);
 
                 markerPainter = new MarkerPainter(markers);
-                mapViewer.setOverlayPainter(markerPainter);
+                mapViewer.setOverlayPainter(
+                        CompositePainter.of(markerPainter, heatPainter)
+                );
 
                 JPanel bottomPanel = new JPanel();
                 bottomPanel.setBorder(BorderFactory.createTitledBorder("Trip Info"));
@@ -253,13 +260,15 @@ public class AmsterdamMap {
                 route.add(stepPos);
             }
             routePainter = new RoutePainter(route, modes);
-            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, routePainter));
+            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter, routePainter));
             mapViewer.repaint();
             routeActive = true;
         }
     }
     private static void resetRoute() {
-        mapViewer.setOverlayPainter(markerPainter);
+        mapViewer.setOverlayPainter(
+                CompositePainter.of(markerPainter, heatPainter)
+        );
         routeActive = false;
         startRouteButton.setEnabled(markers.size() == 2);
         mapViewer.repaint();

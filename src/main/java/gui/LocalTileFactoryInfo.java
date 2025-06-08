@@ -1,5 +1,5 @@
+package gui;
 
-import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.viewer.TileFactoryInfo;
 
 public class LocalTileFactoryInfo extends TileFactoryInfo {
