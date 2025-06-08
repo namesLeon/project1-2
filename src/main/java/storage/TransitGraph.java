@@ -57,6 +57,7 @@ public class TransitGraph {
 
     public void deleteStop(String stopId){
         DBManager dbManager = new DBManager();
+        additionalDepartureEvents.clear();
         for(DepartureEvent event : dbManager.getDepartureEventsAfterStopDeletion(stopId)){
             departures.get(event.fromStopId).add(event);
             additionalDepartureEvents.add(event);

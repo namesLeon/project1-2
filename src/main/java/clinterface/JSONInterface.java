@@ -71,9 +71,13 @@ public class JSONInterface {
                 if(req.containsKey("deletedStopId")){
                     deletedStopId = (String) req.get("deletedStopId");
                 }
+                else{
+                    deletedStopId = null;
+                }
                 try {
                     String path = (String) req.get("load");
                     if(deletedStopId != null) loader.setDeletedStopId(deletedStopId);
+                    else loader.setDeletedStopNull();
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     sendOk();

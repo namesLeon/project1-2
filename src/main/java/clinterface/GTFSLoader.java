@@ -84,6 +84,10 @@ public class GTFSLoader {
             list.sort(Comparator.comparingInt(e -> e.departureSec));
         }
         graph.computeAllWalkEdges();
+        if(deletedStopId == null & graph.deletedStop!=null) {
+            graph.reloadDeletedStop();
+            graph.deletedStop = null;
+        }
         if(deletedStopId != null) graph.deleteStop(deletedStopId);
     }
 
@@ -198,4 +202,8 @@ public class GTFSLoader {
             }
         }
     }
+
+    public boolean hasDeletedStop(){ return deletedStopId != null;}
+
+    public void setDeletedStopNull(){ deletedStopId = null;}
 }

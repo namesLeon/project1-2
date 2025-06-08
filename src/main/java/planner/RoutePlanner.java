@@ -1,9 +1,12 @@
 package planner;
 
 import DB.DBManager;
+import clinterface.GTFSLoader;
 import storage.TransitGraph;
 import structs.*;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
 public class RoutePlanner {
@@ -36,13 +39,6 @@ public class RoutePlanner {
             String startTime) {
         int startSec = parsetime(startTime);
 
-        //detect if departure point coincides with stop
-        String srcStop = null;
-        for (Stop s : graph.stops.values()) {
-            if (s.lat == srcLat && s.lon == srcLon) srcStop = s.stopId;
-        }
-        //System.out.println("[LOG] srcStop=" + srcStop + ", dstStop=" + dstStop);
-
         //direct walk baseline
         double directDist = TransitGraph.haversine(srcLat, srcLon, dstLat, dstLon);
         int directSecs = (int)Math.ceil(directDist / 5000.0 * 3600.0);
@@ -54,20 +50,18 @@ public class RoutePlanner {
         Map<String,Integer> best = new HashMap<>();
         PriorityQueue<Label> pq = new PriorityQueue<>();
 
-        //src coincides with a stop, push exactly that stop with g = startSec
-        if (srcStop != null) {
-            Label init = new Label();
-            init.stopId = srcStop;
-            init.arrivalSec = startSec;
-            init.fVal = startSec + heuristic(srcStop, dstLat, dstLon);
-            best.put(srcStop, startSec);
-            pq.add(init);
-            //System.out.println("[LOG] seeded stop " + srcStop + "@" + startTime);
-        } else {
-            //push all stops with a walk from src to each stopID
-            for (Stop s : graph.stops.values()) {
-                double d = TransitGraph.haversine(srcLat, srcLon, s.lat, s.lon);
-                int secs = (int)Math.ceil(d / 5000.0 * 3600.0);
+        //seed all stops
+        for (Stop s : graph.stops.values()) {
+            double d = TransitGraph.haversine(srcLat, srcLon, s.lat, s.lon);
+            int secs = (int)Math.ceil(d / 5000.0 * 3600.0);
+            if(secs == 0){
+                Label init = new Label();
+                init.stopId = s.stopId;
+                init.arrivalSec = startSec;
+                init.fVal = startSec + heuristic(s.stopId, dstLat, dstLon);
+                best.put(s.stopId, startSec);
+                pq.add(init);
+            } else { 
                 Label init = new Label();
                 init.stopId = s.stopId;
                 init.arrivalSec = startSec + secs;
@@ -76,7 +70,6 @@ public class RoutePlanner {
                 best.put(s.stopId, init.arrivalSec);
                 pq.add(init);
             }
-            //System.out.println("[LOG] seeded all stops via walk");
         }
 
         while (!pq.isEmpty()) {
@@ -178,6 +171,91 @@ public class RoutePlanner {
         return steps;
     }
 
+    public HashMap<Stop, Integer> computeAllShortestPaths(double srcLat, double srcLon, String startTime) {
+        int startSec = parsetime(startTime);
+
+        //for each stopId, the best g‐cost (arrivalSec) seen so far
+        Map<String,Integer> best = new HashMap<>();
+        PriorityQueue<Label> pq = new PriorityQueue<>();
+        Set<String> visited = new HashSet<>();
+
+        visited.add("__SRC__");
+
+        //seed all stops
+        for (Stop s : graph.stops.values()) {
+            double d = TransitGraph.haversine(srcLat, srcLon, s.lat, s.lon);
+            int secs = (int)Math.ceil(d / 5000.0 * 3600.0);
+            if(secs == 0){
+                Label init = new Label();
+                init.stopId = s.stopId;
+                init.arrivalSec = startSec;
+                init.fVal = startSec;
+                best.put(s.stopId, startSec);
+                pq.add(init);
+            } else {
+                Label init = new Label();
+                init.stopId = s.stopId;
+                init.arrivalSec = startSec + secs;
+                init.fVal = init.arrivalSec;
+                init.viaWalk = new WalkEdge("__SRC__", s.stopId, secs);
+                best.put(s.stopId, init.arrivalSec);
+                pq.add(init);
+            }
+        }
+
+        while (!pq.isEmpty()) {
+            Label cur = pq.poll();
+            if (visited.contains(cur.stopId) || cur.stopId.equals(graph.deletedStop) || cur.arrivalSec > best.getOrDefault(cur.stopId, Integer.MAX_VALUE)) {
+                continue;
+            }
+            //System.out.println("[LOG] visit " + cur.stopId + " @sec=" + cur.arrivalSec);
+
+            //attempt final walk from this stop to the dest
+            Stop s = graph.stops.get(cur.stopId);
+
+            //walk edges
+            for (WalkEdge we : graph.walkEdges) {
+                if (!we.fromStopId.equals(cur.stopId)) continue;
+                int g2 = cur.arrivalSec + we.walkDurationSec;
+                if (g2 < best.getOrDefault(we.toStopId, Integer.MAX_VALUE)) {
+                    Label nxt = new Label();
+                    nxt.stopId = we.toStopId;
+                    nxt.arrivalSec = g2;
+                    nxt.fVal = g2;
+                    nxt.prev = cur;
+                    nxt.viaWalk = we;
+                    best.put(nxt.stopId, g2);
+                    pq.add(nxt);
+                    //System.out.println("[LOG] relax walk " + we.fromStopId + "->" + we.toStopId + " arr=" + g2);
+                }
+            }
+
+            //transit edges
+            List<DepartureEvent> deps = graph.departures.getOrDefault(cur.stopId, Collections.emptyList());
+            for (DepartureEvent ev : deps) {
+                if (ev.departureSec < cur.arrivalSec) continue;
+                int g2 = ev.arrivalSec;
+                if (g2 < best.getOrDefault(ev.toStopId, Integer.MAX_VALUE)) {
+                    Label nxt = new Label();
+                    nxt.stopId = ev.toStopId;
+                    nxt.arrivalSec = g2;
+                    nxt.fVal = g2;
+                    nxt.prev = cur;
+                    nxt.viaEvent = ev;
+                    best.put(nxt.stopId, g2);
+                    pq.add(nxt);
+                    //System.out.println("[LOG] relax ride " + cur.stopId + "->" + ev.toStopId + " dep=" + ev.departureSec + " arr=" + g2);
+                }
+            }
+            visited.add(cur.stopId);
+        }
+        HashMap<Stop, Integer> heatmapPoints = new HashMap<>();
+        for(Map.Entry<String,Integer> e : best.entrySet()){
+            heatmapPoints.put(graph.stops.get(e.getKey()), e.getValue() - startSec);
+        }
+        return heatmapPoints;
+    }
+
     private int heuristic(String stopId, double dstLat, double dstLon) {
         Stop st = graph.stops.get(stopId);
         double d = TransitGraph.haversine(st.lat, st.lon, dstLat, dstLon);
@@ -238,5 +316,23 @@ public class RoutePlanner {
     public void reloadDeletedStop(){
         graph.reloadDeletedStop();
         deletedStopId = null;
+    }
+
+    public static void main(String[] args) throws IOException {
+        TransitGraph graph = new TransitGraph();
+        GTFSLoader loader = new GTFSLoader(graph);
+        loader.loadFromZip(Path.of("data/amsterdam_gtfs.zip"));
+        RoutePlanner planner = new RoutePlanner(graph);
+        System.out.println(graph.stops.size());
+        System.out.println("Starting the search");
+        //planner.computeAllShortestPaths(52.346853, 4.800953, "23:00");
+        //planner.computeAllShortestPaths(52.377956, 4.897070, "12:00");
+        // 00:27
+        // 2636916 : 00:53
+        // 2636880 : 00:46
+        Stop s = graph.stops.get("2636880");
+        List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "23:00");
+        JourneyStep last = steps.get(steps.size() -1 );
+        System.out.println(planner.formatTime(planner.parsetime(last.startTime)+last.durationMin*60));
     }
 }
