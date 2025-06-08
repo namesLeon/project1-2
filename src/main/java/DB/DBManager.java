@@ -85,7 +85,7 @@ public class DBManager {
             while (rs.next()) {
                 newDepartures.add(createNewDepartureEvent(rs));
             }
-            System.out.println("Created new edges.");
+            //System.out.println("Created new edges.");
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
