@@ -13,8 +13,9 @@ public class SquareArea {
     private final double originLat;      // latitude of the NW (top-left) corner
     private final double originLon;      // longitude of the NW (top-left) corner
     private final List<Stop> stops;   // all stops within this cell
-    private final Color color;         // fill color (may encode yellow->red)
-    private final float opacity;                // transparency [0..1]
+    private Stop stop;
+    private Color color;         // fill color (may encode yellow->red)
+    private float opacity;                // transparency [0..1]
 
     /**
      * @param widthMeters   width of each square (meters)
@@ -55,6 +56,22 @@ public class SquareArea {
         }
     }
 
+    public void setStop(Stop stop){
+        this.stop = stop;
+    }
+
+    public Stop getStop(){
+        return this.stop;
+    }
+
+    public void setOpacity(float opacity){
+        this.opacity = opacity;
+    }
+
+    public void setColor(Color color){
+        this.color = color;
+    }
+
     /**
      * Populates this cell's stops list by filtering a master stop list.
      * Uses a simple lat/lon bounding box approximated from meters.
@@ -89,4 +106,5 @@ public class SquareArea {
     public double getOriginLon()    { return originLon; }
     public Color getColor(){ return color; }
     public float getOpacity()       { return opacity; }
+
 }

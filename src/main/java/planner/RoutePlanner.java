@@ -325,14 +325,14 @@ public class RoutePlanner {
         RoutePlanner planner = new RoutePlanner(graph);
         System.out.println(graph.stops.size());
         System.out.println("Starting the search");
-        //planner.computeAllShortestPaths(52.346853, 4.800953, "23:00");
         //planner.computeAllShortestPaths(52.377956, 4.897070, "12:00");
         // 00:27
         // 2636916 : 00:53
         // 2636880 : 00:46
         Stop s = graph.stops.get("2636880");
-        List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "23:00");
+        List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "12:00");
         JourneyStep last = steps.get(steps.size() -1 );
         System.out.println(planner.formatTime(planner.parsetime(last.startTime)+last.durationMin*60));
+        System.out.println(planner.computeAllShortestPaths(52.346853, 4.800953, "12:00").get(s)/60);
     }
 }

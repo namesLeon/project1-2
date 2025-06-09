@@ -1,8 +1,16 @@
 package gui;
 
+import planner.RoutePlanner;
+import storage.TransitGraph;
+import structs.Stop;
+
 import java.awt.Color;
+import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.TransferQueue;
 
 // Builds the grid of SquareArea objects covering a geographic viewport
 public class HeatMapMaker {
@@ -14,6 +22,11 @@ public class HeatMapMaker {
     private final float  cellOpacity;
     private final int    numBins;
     private final List<SquareArea> grid;
+    private final TransitGraph graph;
+    private final RoutePlanner planner;
+
+    private final double startLat;
+    private final double startLon;
 
     /**
      * @param topLat       latitude of top edge
@@ -30,7 +43,12 @@ public class HeatMapMaker {
                         double rightLon,
                         double cellSizeMeters,
                         float cellOpacity,
-                        int numBins) {
+                        int numBins,
+                        TransitGraph graph,
+                        RoutePlanner planner,
+                        double startLat,
+                        double startLon
+    ) {
         this.topLat        = topLat;
         this.leftLon       = leftLon;
         this.bottomLat     = bottomLat;
@@ -39,6 +57,10 @@ public class HeatMapMaker {
         this.cellOpacity   = cellOpacity;
         this.numBins       = numBins;
         this.grid          = new ArrayList<>();
+        this.graph = graph;
+        this.planner = planner;
+        this.startLat = startLat;
+        this.startLon = startLon;
         buildGrid();
     }
 
@@ -56,12 +78,14 @@ public class HeatMapMaker {
         int cols = (int)Math.ceil((rightLon - leftLon) / lonStep);
 
         // Loop from top-left downward and rightward
+        int counter = 0;
         for (int r = 0; r < rows; r++) {
             double cellTopLat = topLat - r * latStep;
             for (int c = 0; c < cols; c++) {
                 double cellLeftLon = leftLon + c * lonStep;
+                counter++;
                 // Compute color bin by default distance = 0
-                Color fillColor = computeColorBin(0, numBins);
+                Color fillColor = computeColorBin(60, numBins);
                 SquareArea cell = new SquareArea(
                         cellSizeMeters,
                         cellSizeMeters,
@@ -70,9 +94,29 @@ public class HeatMapMaker {
                         fillColor,
                         cellOpacity
                 );
+                cell.setStop(new Stop("Heat"+counter, "Heat"+counter, cellTopLat+0.5*latStep, cellLeftLon+0.5*lonStep));
+                graph.addStopToHeatMap(cell.getStop());
                 grid.add(cell);
             }
         }
+        long startTime = System.currentTimeMillis();
+        graph.computeWalkEdgesForHeatMap(cellSizeMeters);
+        HashMap<Stop, Integer> travelTimes = planner.computeAllShortestPaths(startLat, startLon, "12:00");
+        long routeTime = (System.currentTimeMillis() - startTime);
+        System.out.println("Route calculating : "+routeTime/1000);
+        for(SquareArea sq : grid){
+            Stop s = sq.getStop();
+            int index = (int)(travelTimes.get(s)/60);
+            sq.setColor(computeColorBin(index, numBins));
+            //System.out.println(s.stopId+" "+index);
+        }
+        //graph.clearHeatMapStops();
+        System.out.println("Created heatmap");
+//        for(Map.Entry<Stop, Integer> e : travelTimes.entrySet()){
+//            if(e.getKey().stopId.startsWith("Heat")){
+//                System.out.println(e.getKey().stopId + " : "+e.getValue());
+//            }
+//        }
     }
 
     /**
@@ -86,9 +130,11 @@ public class HeatMapMaker {
      * Helper to pick a discrete color between yellow and red for a given bin index
      */
     private Color computeColorBin(int binIndex, int bins) {
-        float t = (float)binIndex / (bins - 1);
+        float t;
+        if(binIndex < bins) t = (float)binIndex / (bins - 1);
+        else t = 1;
         int green = (int)(255 * (1 - t));
-        return new java.awt.Color(255, green, 0);
+        return new java.awt.Color((int)(255 - green), green, 0);
     }
 }
 

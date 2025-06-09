@@ -49,9 +49,9 @@ public class AmsterdamMap {
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
 
-    private static final double CELL_SIZE_METERS = 200.0;
-    private static final float  CELL_OPACITY     = 0.5f;
-    private static final int    NUM_BINS         = 5;
+    private static final double CELL_SIZE_METERS = 300.0;
+    private static final float  CELL_OPACITY     = 0.6f;
+    private static final int    NUM_BINS         = 60;
     private static HeatMapMaker  heatMaker;
     private static HeatMapPainter heatPainter;
 
@@ -292,11 +292,16 @@ public class AmsterdamMap {
                     AMST_MAX_LON,  // right edge
                     CELL_SIZE_METERS,
                     CELL_OPACITY,
-                    NUM_BINS
+                    NUM_BINS,
+                    graph,
+                    planner,
+                    start.getLatitude(),
+                    start.getLongitude()
             );
             System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
 
             // 4) Create the painter that will draw those squares:
+            long startTime = System.currentTimeMillis();
             heatPainter = new HeatMapPainter(
                     heatMaker.getGrid(),
                     mapViewer.getTileFactory()
@@ -306,6 +311,8 @@ public class AmsterdamMap {
             mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter, routePainter));
             mapViewer.repaint();
             routeActive = true;
+            graph.clearHeatMapStops();
+            System.out.println("Painting time : "+(System.currentTimeMillis()-startTime)/1000);
         }
     }
     private static void resetRoute() {
