@@ -12,6 +12,7 @@ public class TransitGraph {
     public final Map<String, List<DepartureEvent>> departures = new HashMap<>();
     public final List<WalkEdge> walkEdges = new ArrayList<>();
     public String deletedStop = null;
+    public ArrayList<String> deletedStops = new ArrayList<>();
     public final List<DepartureEvent> additionalDepartureEvents = new ArrayList<>();
 
     public void computeAllWalkEdges() {
@@ -57,12 +58,12 @@ public class TransitGraph {
 
     public void deleteStop(String stopId){
         DBManager dbManager = new DBManager();
-        additionalDepartureEvents.clear();
         for(DepartureEvent event : dbManager.getDepartureEventsAfterStopDeletion(stopId)){
             departures.get(event.fromStopId).add(event);
             additionalDepartureEvents.add(event);
         }
-        deletedStop = String.valueOf(stopId);
+        deletedStops.add(stopId);
+//        deletedStop = String.valueOf(stopId);
     }
 
     public void reloadDeletedStop(){
@@ -70,6 +71,9 @@ public class TransitGraph {
             departures.get(event.fromStopId).remove(event);
         }
         additionalDepartureEvents.clear();
-        deletedStop = null;
+//        deletedStop = null;
+        deletedStops.clear();
+        DBManager manager = new DBManager();
+        manager.reloadEdges();
     }
 }

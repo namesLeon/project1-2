@@ -160,14 +160,14 @@ public class DBloader {
         }
     }
 
-    private void createEdgesTable(Connection conn) throws SQLException{
+    public void createEdgesTable(Connection conn) throws SQLException{
         Statement st = conn.createStatement();
         String dropTableQuery = "DROP TABLE IF EXISTS edges";
         String createTableQuery = """
                 CREATE TABLE edges AS(
                     SELECT st1.stop_id as start_stop, st2.stop_id as end_stop, trip_id,
                     st1.departure_time as departure_time, st2.arrival_time as arrival_time,
-                    TIMEDIFF(st2.arrival_time, st1.departure_time) AS transfer_length, st1.stop_sequence as edge_sequence
+                    TIMEDIFF(st2.arrival_time, st1.departure_time) AS transfer_length
                     FROM stop_times st1 JOIN stop_times st2
                     USING (trip_id)
                     WHERE st1.stop_sequence = st2.stop_sequence - 1)

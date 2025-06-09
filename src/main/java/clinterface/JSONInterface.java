@@ -40,6 +40,7 @@ public class JSONInterface {
      * @throws IOException
      */
     public void run() throws IOException {
+        List<String> deletedStopIds = null;
         String deletedStopId = null;
         
         while (true) {
@@ -69,15 +70,19 @@ public class JSONInterface {
             Map<String,Object> req = (Map<String,Object>) obj;
 
             if (req.containsKey("load")) {
-                if(req.containsKey("deletedStopId")){
-                    deletedStopId = (String) req.get("deletedStopId");
+                if(req.containsKey("deletedStopIds")){
+                    deletedStopIds = (List<String>) req.get("deletedStopIds");
                 }
                 else{
-                    deletedStopId = null;
+                    deletedStopIds = null;
                 }
                 try {
                     String path = (String) req.get("load");
-                    if(deletedStopId != null) loader.setDeletedStopId(deletedStopId);
+                    if(deletedStopIds != null) {
+                        for(String stopId : deletedStopIds){
+                            loader.setDeletedStopId(stopId);
+                        }
+                    }
                     else loader.setDeletedStopNull();
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
