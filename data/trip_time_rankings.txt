@@ -1,0 +1,6354 @@
+Average Trip Time Difference Rankings
+=====================================
+
+Ranked by absolute difference in average journey duration (greatest impact first)
+Baseline average trip time: 1943.40 seconds
+
+ 1. 2992163
+    Difference: +48.12 seconds (+2.4761%)
+    Impact: Increases trip time
+
+ 2. 2636275
+    Difference: +41.40 seconds (+2.1303%)
+    Impact: Increases trip time
+
+ 3. 2636883
+    Difference: +40.68 seconds (+2.0932%)
+    Impact: Increases trip time
+
+ 4. 2636898
+    Difference: +40.68 seconds (+2.0932%)
+    Impact: Increases trip time
+
+ 5. 2636274
+    Difference: +39.72 seconds (+2.0438%)
+    Impact: Increases trip time
+
+ 6. 2992154
+    Difference: +37.80 seconds (+1.9450%)
+    Impact: Increases trip time
+
+ 7. 2992194
+    Difference: +37.32 seconds (+1.9203%)
+    Impact: Increases trip time
+
+ 8. 2860888
+    Difference: +36.60 seconds (+1.8833%)
+    Impact: Increases trip time
+
+ 9. 2992179
+    Difference: +36.60 seconds (+1.8833%)
+    Impact: Increases trip time
+
+10. 2992185
+    Difference: +36.36 seconds (+1.8709%)
+    Impact: Increases trip time
+
+11. 2636894
+    Difference: +36.12 seconds (+1.8586%)
+    Impact: Increases trip time
+
+12. 2992161
+    Difference: +35.88 seconds (+1.8462%)
+    Impact: Increases trip time
+
+13. 2636912
+    Difference: +35.64 seconds (+1.8339%)
+    Impact: Increases trip time
+
+14. 2950563
+    Difference: +35.64 seconds (+1.8339%)
+    Impact: Increases trip time
+
+15. 2992160
+    Difference: +35.40 seconds (+1.8215%)
+    Impact: Increases trip time
+
+16. 2992189
+    Difference: +35.40 seconds (+1.8215%)
+    Impact: Increases trip time
+
+17. 2636893
+    Difference: +35.16 seconds (+1.8092%)
+    Impact: Increases trip time
+
+18. 2636897
+    Difference: +35.16 seconds (+1.8092%)
+    Impact: Increases trip time
+
+19. 2636902
+    Difference: +35.16 seconds (+1.8092%)
+    Impact: Increases trip time
+
+20. 2950554
+    Difference: +35.16 seconds (+1.8092%)
+    Impact: Increases trip time
+
+21. 2992155
+    Difference: +35.16 seconds (+1.8092%)
+    Impact: Increases trip time
+
+22. 2636892
+    Difference: +34.92 seconds (+1.7969%)
+    Impact: Increases trip time
+
+23. 2860887
+    Difference: +34.92 seconds (+1.7969%)
+    Impact: Increases trip time
+
+24. 2636899
+    Difference: +34.68 seconds (+1.7845%)
+    Impact: Increases trip time
+
+25. 2965101
+    Difference: +34.68 seconds (+1.7845%)
+    Impact: Increases trip time
+
+26. 2992168
+    Difference: +34.68 seconds (+1.7845%)
+    Impact: Increases trip time
+
+27. 2636218
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+28. 2636219
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+29. 2636256
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+30. 2636911
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+31. 2992170
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+32. 2992193
+    Difference: +34.44 seconds (+1.7722%)
+    Impact: Increases trip time
+
+33. 2636207
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+34. 2636217
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+35. 2636245
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+36. 2636254
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+37. 2636909
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+38. 2950561
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+39. 2992162
+    Difference: +34.20 seconds (+1.7598%)
+    Impact: Increases trip time
+
+40. 2636208
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+41. 2636863
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+42. 2636886
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+43. 2636890
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+44. 2636906
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+45. 2636910
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+46. 2953529
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+47. 2992182
+    Difference: +33.96 seconds (+1.7475%)
+    Impact: Increases trip time
+
+48. 2636210
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+49. 2636234
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+50. 2636236
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+51. 2636868
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+52. 2636887
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+53. 2636901
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+54. 2853645
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+55. 2950551
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+56. 2950564
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+57. 2965114
+    Difference: +33.72 seconds (+1.7351%)
+    Impact: Increases trip time
+
+58. 2636186
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+59. 2636187
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+60. 2636188
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+61. 2636189
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+62. 2636190
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+63. 2636191
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+64. 2636195
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+65. 2636197
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+66. 2636198
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+67. 2636199
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+68. 2636201
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+69. 2636202
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+70. 2636203
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+71. 2636204
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+72. 2636205
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+73. 2636206
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+74. 2636209
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+75. 2636215
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+76. 2636216
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+77. 2636220
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+78. 2636229
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+79. 2636231
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+80. 2636232
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+81. 2636233
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+82. 2636235
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+83. 2636237
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+84. 2636243
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+85. 2636244
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+86. 2636246
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+87. 2636247
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+88. 2636248
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+89. 2636249
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+90. 2636253
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+91. 2636255
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+92. 2636259
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+93. 2636260
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+94. 2636261
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+95. 2636262
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+96. 2636263
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+97. 2636264
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+98. 2636265
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+99. 2636266
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+100. 2636267
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+101. 2636268
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+102. 2636269
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+103. 2636270
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+104. 2636271
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+105. 2636272
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+106. 2636273
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+107. 2636276
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+108. 2636277
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+109. 2636278
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+110. 2636279
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+111. 2636280
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+112. 2636281
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+113. 2636282
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+114. 2636283
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+115. 2636284
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+116. 2636285
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+117. 2636293
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+118. 2636294
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+119. 2636295
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+120. 2636296
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+121. 2636297
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+122. 2636298
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+123. 2636299
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+124. 2636862
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+125. 2636864
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+126. 2636865
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+127. 2636866
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+128. 2636867
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+129. 2636872
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+130. 2636873
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+131. 2636874
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+132. 2636876
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+133. 2636879
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+134. 2636880
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+135. 2636881
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+136. 2636882
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+137. 2636884
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+138. 2636885
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+139. 2636888
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+140. 2636889
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+141. 2636891
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+142. 2636895
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+143. 2636896
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+144. 2636900
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+145. 2636903
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+146. 2636905
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+147. 2636907
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+148. 2636908
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+149. 2636915
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+150. 2636916
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+151. 2636917
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+152. 2636918
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+153. 2636919
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+154. 2636921
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+155. 2636922
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+156. 2636923
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+157. 2636924
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+158. 2636925
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+159. 2636926
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+160. 2636927
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+161. 2636928
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+162. 2636929
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+163. 2636930
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+164. 2636931
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+165. 2636932
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+166. 2811355
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+167. 2811356
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+168. 2811357
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+169. 2811359
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+170. 2824717
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+171. 2831546
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+172. 2841603
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+173. 2841711
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+174. 2853644
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+175. 2853646
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+176. 2853647
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+177. 2853648
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+178. 2853649
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+179. 2853650
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+180. 2860211
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+181. 2860241
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+182. 2860242
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+183. 2860357
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+184. 2860379
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+185. 2860380
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+186. 2860502
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+187. 2860518
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+188. 2860543
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+189. 2860545
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+190. 2860546
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+191. 2860547
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+192. 2860551
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+193. 2860553
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+194. 2860554
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+195. 2860555
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+196. 2860644
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+197. 2860886
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+198. 2860889
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+199. 2860890
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+200. 2860897
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+201. 2860898
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+202. 2860899
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+203. 2860937
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+204. 2860938
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+205. 2860939
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+206. 2860940
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+207. 2861947
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+208. 2861948
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+209. 2861949
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+210. 2865435
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+211. 2865436
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+212. 2865437
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+213. 2865438
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+214. 2865522
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+215. 2872186
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+216. 2872187
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+217. 2905584
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+218. 2905587
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+219. 2905588
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+220. 2905591
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+221. 2914447
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+222. 2950348
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+223. 2950550
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+224. 2950552
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+225. 2950553
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+226. 2950555
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+227. 2950556
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+228. 2950557
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+229. 2950558
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+230. 2950559
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+231. 2950560
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+232. 2950562
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+233. 2950565
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+234. 2953522
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+235. 2953524
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+236. 2953525
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+237. 2953526
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+238. 2953528
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+239. 2955048
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+240. 2960839
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+241. 2977249
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+242. 2977250
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+243. 2978579
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+244. 2986976
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+245. 2992153
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+246. 2992156
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+247. 2992157
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+248. 2992158
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+249. 2992159
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+250. 2992164
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+251. 2992165
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+252. 2992166
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+253. 2992167
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+254. 2992169
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+255. 2992171
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+256. 2992172
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+257. 2992173
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+258. 2992174
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+259. 2992175
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+260. 2992176
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+261. 2992177
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+262. 2992178
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+263. 2992180
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+264. 2992181
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+265. 2992183
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+266. 2992184
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+267. 2992186
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+268. 2992187
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+269. 2992188
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+270. 2992190
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+271. 2992191
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+272. 2992192
+    Difference: +33.48 seconds (+1.7228%)
+    Impact: Increases trip time
+
+273. 2637046
+    Difference: +17.88 seconds (+0.9200%)
+    Impact: Increases trip time
+
+274. 2636754
+    Difference: +13.44 seconds (+0.6916%)
+    Impact: Increases trip time
+
+275. 2636511
+    Difference: +12.66 seconds (+0.6514%)
+    Impact: Increases trip time
+
+276. 2637045
+    Difference: +12.42 seconds (+0.6391%)
+    Impact: Increases trip time
+
+277. 2636484
+    Difference: +11.64 seconds (+0.5990%)
+    Impact: Increases trip time
+
+278. 2637052
+    Difference: +11.46 seconds (+0.5897%)
+    Impact: Increases trip time
+
+279. 2637027
+    Difference: +11.40 seconds (+0.5866%)
+    Impact: Increases trip time
+
+280. 2637047
+    Difference: +11.34 seconds (+0.5835%)
+    Impact: Increases trip time
+
+281. 2637033
+    Difference: +10.86 seconds (+0.5588%)
+    Impact: Increases trip time
+
+282. 2637050
+    Difference: +10.74 seconds (+0.5526%)
+    Impact: Increases trip time
+
+283. 2992210
+    Difference: +10.62 seconds (+0.5465%)
+    Impact: Increases trip time
+
+284. 2637051
+    Difference: +9.12 seconds (+0.4693%)
+    Impact: Increases trip time
+
+285. 2637049
+    Difference: +9.06 seconds (+0.4662%)
+    Impact: Increases trip time
+
+286. 2636485
+    Difference: +8.22 seconds (+0.4230%)
+    Impact: Increases trip time
+
+287. 2636510
+    Difference: +7.74 seconds (+0.3983%)
+    Impact: Increases trip time
+
+288. 2637028
+    Difference: +7.68 seconds (+0.3952%)
+    Impact: Increases trip time
+
+289. 2636396
+    Difference: +7.56 seconds (+0.3890%)
+    Impact: Increases trip time
+
+290. 2637015
+    Difference: +7.14 seconds (+0.3674%)
+    Impact: Increases trip time
+
+291. 2637048
+    Difference: +7.14 seconds (+0.3674%)
+    Impact: Increases trip time
+
+292. 2637034
+    Difference: +6.96 seconds (+0.3581%)
+    Impact: Increases trip time
+
+293. 2637061
+    Difference: +6.96 seconds (+0.3581%)
+    Impact: Increases trip time
+
+294. 2636173
+    Difference: +6.48 seconds (+0.3334%)
+    Impact: Increases trip time
+
+295. 2637009
+    Difference: +6.00 seconds (+0.3087%)
+    Impact: Increases trip time
+
+296. 2665227
+    Difference: +5.82 seconds (+0.2995%)
+    Impact: Increases trip time
+
+297. 2635870
+    Difference: +5.52 seconds (+0.2840%)
+    Impact: Increases trip time
+
+298. 2992238
+    Difference: +5.46 seconds (+0.2810%)
+    Impact: Increases trip time
+
+299. 2637016
+    Difference: +4.92 seconds (+0.2532%)
+    Impact: Increases trip time
+
+300. 2636130
+    Difference: +4.86 seconds (+0.2501%)
+    Impact: Increases trip time
+
+301. 2636395
+    Difference: +4.80 seconds (+0.2470%)
+    Impact: Increases trip time
+
+302. 2635837
+    Difference: +4.68 seconds (+0.2408%)
+    Impact: Increases trip time
+
+303. 2635871
+    Difference: +4.68 seconds (+0.2408%)
+    Impact: Increases trip time
+
+304. 2637010
+    Difference: +4.62 seconds (+0.2377%)
+    Impact: Increases trip time
+
+305. 2992239
+    Difference: +4.56 seconds (+0.2346%)
+    Impact: Increases trip time
+
+306. 2992211
+    Difference: +4.26 seconds (+0.2192%)
+    Impact: Increases trip time
+
+307. 2636393
+    Difference: +4.14 seconds (+0.2130%)
+    Impact: Increases trip time
+
+308. 2637060
+    Difference: +3.84 seconds (+0.1976%)
+    Impact: Increases trip time
+
+309. 2637008
+    Difference: +3.78 seconds (+0.1945%)
+    Impact: Increases trip time
+
+310. 2635987
+    Difference: +3.72 seconds (+0.1914%)
+    Impact: Increases trip time
+
+311. 2636374
+    Difference: +3.72 seconds (+0.1914%)
+    Impact: Increases trip time
+
+312. 2637058
+    Difference: +3.60 seconds (+0.1852%)
+    Impact: Increases trip time
+
+313. 2637007
+    Difference: +3.54 seconds (+0.1822%)
+    Impact: Increases trip time
+
+314. 2637006
+    Difference: +3.42 seconds (+0.1760%)
+    Impact: Increases trip time
+
+315. 2636825
+    Difference: +3.36 seconds (+0.1729%)
+    Impact: Increases trip time
+
+316. 2637005
+    Difference: +3.30 seconds (+0.1698%)
+    Impact: Increases trip time
+
+317. 2636588
+    Difference: +3.18 seconds (+0.1636%)
+    Impact: Increases trip time
+
+318. 2636586
+    Difference: +3.12 seconds (+0.1605%)
+    Impact: Increases trip time
+
+319. 2992203
+    Difference: +3.06 seconds (+0.1575%)
+    Impact: Increases trip time
+
+320. 2992241
+    Difference: +2.94 seconds (+0.1513%)
+    Impact: Increases trip time
+
+321. 2636824
+    Difference: +2.76 seconds (+0.1420%)
+    Impact: Increases trip time
+
+322. 2637059
+    Difference: +2.70 seconds (+0.1389%)
+    Impact: Increases trip time
+
+323. 3011905
+    Difference: +2.64 seconds (+0.1358%)
+    Impact: Increases trip time
+
+324. 2637021
+    Difference: +2.46 seconds (+0.1266%)
+    Impact: Increases trip time
+
+325. 2636433
+    Difference: +2.40 seconds (+0.1235%)
+    Impact: Increases trip time
+
+326. 2637017
+    Difference: +2.40 seconds (+0.1235%)
+    Impact: Increases trip time
+
+327. 2637026
+    Difference: +2.34 seconds (+0.1204%)
+    Impact: Increases trip time
+
+328. 2637025
+    Difference: +2.28 seconds (+0.1173%)
+    Impact: Increases trip time
+
+329. 2636512
+    Difference: +2.22 seconds (+0.1142%)
+    Impact: Increases trip time
+
+330. 2636513
+    Difference: +2.22 seconds (+0.1142%)
+    Impact: Increases trip time
+
+331. 2637057
+    Difference: +2.22 seconds (+0.1142%)
+    Impact: Increases trip time
+
+332. 2636432
+    Difference: +2.16 seconds (+0.1111%)
+    Impact: Increases trip time
+
+333. 2637018
+    Difference: +2.16 seconds (+0.1111%)
+    Impact: Increases trip time
+
+334. 2637035
+    Difference: +2.10 seconds (+0.1081%)
+    Impact: Increases trip time
+
+335. 2728719
+    Difference: +2.10 seconds (+0.1081%)
+    Impact: Increases trip time
+
+336. 2636742
+    Difference: +2.04 seconds (+0.1050%)
+    Impact: Increases trip time
+
+337. 2637024
+    Difference: +1.98 seconds (+0.1019%)
+    Impact: Increases trip time
+
+338. 2635972
+    Difference: +1.92 seconds (+0.0988%)
+    Impact: Increases trip time
+
+339. 2636048
+    Difference: +1.92 seconds (+0.0988%)
+    Impact: Increases trip time
+
+340. 2637000
+    Difference: +1.92 seconds (+0.0988%)
+    Impact: Increases trip time
+
+341. 2636394
+    Difference: +1.86 seconds (+0.0957%)
+    Impact: Increases trip time
+
+342. 2636981
+    Difference: +1.86 seconds (+0.0957%)
+    Impact: Increases trip time
+
+343. 2746541
+    Difference: +1.86 seconds (+0.0957%)
+    Impact: Increases trip time
+
+344. 2636149
+    Difference: +1.80 seconds (+0.0926%)
+    Impact: Increases trip time
+
+345. 2636364
+    Difference: +1.80 seconds (+0.0926%)
+    Impact: Increases trip time
+
+346. 2636606
+    Difference: +1.74 seconds (+0.0895%)
+    Impact: Increases trip time
+
+347. 2637019
+    Difference: +1.74 seconds (+0.0895%)
+    Impact: Increases trip time
+
+348. 2637055
+    Difference: +1.74 seconds (+0.0895%)
+    Impact: Increases trip time
+
+349. 2637037
+    Difference: +1.68 seconds (+0.0864%)
+    Impact: Increases trip time
+
+350. 2636750
+    Difference: +1.62 seconds (+0.0834%)
+    Impact: Increases trip time
+
+351. 2992204
+    Difference: +1.56 seconds (+0.0803%)
+    Impact: Increases trip time
+
+352. 2636380
+    Difference: +1.50 seconds (+0.0772%)
+    Impact: Increases trip time
+
+353. 2699827
+    Difference: +1.44 seconds (+0.0741%)
+    Impact: Increases trip time
+
+354. 2636177
+    Difference: +1.38 seconds (+0.0710%)
+    Impact: Increases trip time
+
+355. 2636506
+    Difference: +1.38 seconds (+0.0710%)
+    Impact: Increases trip time
+
+356. 2992205
+    Difference: +1.38 seconds (+0.0710%)
+    Impact: Increases trip time
+
+357. 2636594
+    Difference: +1.32 seconds (+0.0679%)
+    Impact: Increases trip time
+
+358. 2636584
+    Difference: +1.26 seconds (+0.0648%)
+    Impact: Increases trip time
+
+359. 2636839
+    Difference: +1.26 seconds (+0.0648%)
+    Impact: Increases trip time
+
+360. 3011908
+    Difference: +1.26 seconds (+0.0648%)
+    Impact: Increases trip time
+
+361. 2636029
+    Difference: +1.20 seconds (+0.0617%)
+    Impact: Increases trip time
+
+362. 2636413
+    Difference: +1.20 seconds (+0.0617%)
+    Impact: Increases trip time
+
+363. 2636644
+    Difference: +1.20 seconds (+0.0617%)
+    Impact: Increases trip time
+
+364. 2637022
+    Difference: +1.20 seconds (+0.0617%)
+    Impact: Increases trip time
+
+365. 3034739
+    Difference: +1.20 seconds (+0.0617%)
+    Impact: Increases trip time
+
+366. 2636375
+    Difference: +1.14 seconds (+0.0587%)
+    Impact: Increases trip time
+
+367. 2636612
+    Difference: +1.14 seconds (+0.0587%)
+    Impact: Increases trip time
+
+368. 2636999
+    Difference: +1.14 seconds (+0.0587%)
+    Impact: Increases trip time
+
+369. 2636303
+    Difference: +1.08 seconds (+0.0556%)
+    Impact: Increases trip time
+
+370. 2636751
+    Difference: +1.08 seconds (+0.0556%)
+    Impact: Increases trip time
+
+371. 2636126
+    Difference: +1.02 seconds (+0.0525%)
+    Impact: Increases trip time
+
+372. 2636507
+    Difference: +1.02 seconds (+0.0525%)
+    Impact: Increases trip time
+
+373. 2636743
+    Difference: +1.02 seconds (+0.0525%)
+    Impact: Increases trip time
+
+374. 2637042
+    Difference: +1.02 seconds (+0.0525%)
+    Impact: Increases trip time
+
+375. 3049959
+    Difference: +1.02 seconds (+0.0525%)
+    Impact: Increases trip time
+
+376. 2636602
+    Difference: +0.96 seconds (+0.0494%)
+    Impact: Increases trip time
+
+377. 2636635
+    Difference: +0.96 seconds (+0.0494%)
+    Impact: Increases trip time
+
+378. 2637041
+    Difference: +0.96 seconds (+0.0494%)
+    Impact: Increases trip time
+
+379. 2745933
+    Difference: +0.96 seconds (+0.0494%)
+    Impact: Increases trip time
+
+380. 2745934
+    Difference: +0.96 seconds (+0.0494%)
+    Impact: Increases trip time
+
+381. 2636405
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+382. 2636613
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+383. 2636699
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+384. 2636796
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+385. 2636821
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+386. 2637056
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+387. 2992234
+    Difference: +0.90 seconds (+0.0463%)
+    Impact: Increases trip time
+
+388. 2635986
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+389. 2636127
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+390. 2636617
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+391. 2636631
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+392. 2636633
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+393. 2636855
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+394. 2636956
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+395. 2636975
+    Difference: +0.84 seconds (+0.0432%)
+    Impact: Increases trip time
+
+396. 2636027
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+397. 2636420
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+398. 2636536
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+399. 2636616
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+400. 2636634
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+401. 2636933
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+402. 2745887
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+403. 2745930
+    Difference: +0.78 seconds (+0.0401%)
+    Impact: Increases trip time
+
+404. 2635951
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+405. 2636540
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+406. 2636645
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+407. 2636749
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+408. 2636840
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+409. 2636852
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+410. 2637002
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+411. 2637036
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+412. 3049966
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+413. 3049987
+    Difference: +0.72 seconds (+0.0370%)
+    Impact: Increases trip time
+
+414. 2635852
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+415. 2636384
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+416. 2636431
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+417. 2636669
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+418. 2636755
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+419. 2636943
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+420. 2745879
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+421. 2745919
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+422. 2746540
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+423. 2992202
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+424. 3011906
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+425. 3025598
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+426. 3049943
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+427. 3049958
+    Difference: +0.66 seconds (+0.0340%)
+    Impact: Increases trip time
+
+428. 2636140
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+429. 2636381
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+430. 2636430
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+431. 2636559
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+432. 2636580
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+433. 2636605
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+434. 2636643
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+435. 2636756
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+436. 2636847
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+437. 2636953
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+438. 2637004
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+439. 2745929
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+440. 3011910
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+441. 3049066
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+442. 3049067
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+443. 3049974
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+444. 3050025
+    Difference: +0.60 seconds (+0.0309%)
+    Impact: Increases trip time
+
+445. 2635803
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+446. 2635845
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+447. 2636086
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+448. 2636321
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+449. 2636330
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+450. 2636429
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+451. 2636434
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+452. 2636508
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+453. 2636509
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+454. 2636752
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+455. 2637001
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+456. 2637003
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+457. 2637053
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+458. 2750000
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+459. 2992236
+    Difference: +0.54 seconds (+0.0278%)
+    Impact: Increases trip time
+
+460. 2635874
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+461. 2636050
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+462. 2636092
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+463. 2636148
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+464. 2636387
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+465. 2636533
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+466. 2636537
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+467. 2636597
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+468. 2636598
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+469. 2636982
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+470. 3025599
+    Difference: +0.48 seconds (+0.0247%)
+    Impact: Increases trip time
+
+471. 2636028
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+472. 2636081
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+473. 2636085
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+474. 2636090
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+475. 2636095
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+476. 2636301
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+477. 2636318
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+478. 2636328
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+479. 2636334
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+480. 2636341
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+481. 2636359
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+482. 2636401
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+483. 2636402
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+484. 2636404
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+485. 2636419
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+486. 2636501
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+487. 2636504
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+488. 2636518
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+489. 2636550
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+490. 2636604
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+491. 2636618
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+492. 2636624
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+493. 2636822
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+494. 2636837
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+495. 2636964
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+496. 2636965
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+497. 2637013
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+498. 2637054
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+499. 2750012
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+500. 3049968
+    Difference: +0.42 seconds (+0.0216%)
+    Impact: Increases trip time
+
+501. 2635808
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+502. 2636033
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+503. 2636099
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+504. 2636137
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+505. 2636147
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+506. 2636304
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+507. 2636338
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+508. 2636353
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+509. 2636363
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+510. 2636534
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+511. 2636535
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+512. 2636538
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+513. 2636552
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+514. 2636615
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+515. 2636660
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+516. 2636666
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+517. 2636668
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+518. 2636804
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+519. 2636859
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+520. 2636938
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+521. 2636970
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+522. 2699820
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+523. 2745877
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+524. 3034740
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+525. 3049975
+    Difference: +0.36 seconds (+0.0185%)
+    Impact: Increases trip time
+
+526. 2635804
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+527. 2635889
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+528. 2635967
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+529. 2636122
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+530. 2636365
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+531. 2636366
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+532. 2636379
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+533. 2636392
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+534. 2636403
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+535. 2636406
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+536. 2636446
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+537. 2636460
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+538. 2636470
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+539. 2636496
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+540. 2636498
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+541. 2636503
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+542. 2636548
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+543. 2636571
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+544. 2636595
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+545. 2636614
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+546. 2636632
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+547. 2636641
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+548. 2636720
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+549. 2636721
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+550. 2636805
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+551. 2636828
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+552. 2636845
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+553. 2636940
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+554. 2657204
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+555. 2693889
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+556. 2745901
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+557. 3048331
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+558. 3049967
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+559. 3049986
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+560. 3049988
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+561. 3049992
+    Difference: +0.30 seconds (+0.0154%)
+    Impact: Increases trip time
+
+562. 2635820
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+563. 2635828
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+564. 2635831
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+565. 2635842
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+566. 2636044
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+567. 2636083
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+568. 2636089
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+569. 2636342
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+570. 2636356
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+571. 2636409
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+572. 2636530
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+573. 2636553
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+574. 2636623
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+575. 2636630
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+576. 2636636
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+577. 2636649
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+578. 2636663
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+579. 2636733
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+580. 2636807
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+581. 2636830
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+582. 2636935
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+583. 2636944
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+584. 2636971
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+585. 2637014
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+586. 2992235
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+587. 3034737
+    Difference: +0.24 seconds (+0.0123%)
+    Impact: Increases trip time
+
+588. 2635813
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+589. 2635814
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+590. 2635829
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+591. 2635830
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+592. 2635843
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+593. 2635850
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+594. 2635851
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+595. 2635867
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+596. 2635904
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+597. 2636046
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+598. 2636047
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+599. 2636057
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+600. 2636105
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+601. 2636107
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+602. 2636316
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+603. 2636319
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+604. 2636337
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+605. 2636368
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+606. 2636408
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+607. 2636454
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+608. 2636459
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+609. 2636462
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+610. 2636488
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+611. 2636495
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+612. 2636531
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+613. 2636532
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+614. 2636563
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+615. 2636575
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+616. 2636577
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+617. 2636600
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+618. 2636651
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+619. 2636653
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+620. 2636656
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+621. 2636658
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+622. 2636661
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+623. 2636716
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+624. 2636719
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+625. 2636814
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+626. 2636823
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+627. 2636829
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+628. 2636846
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+629. 2636857
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+630. 2636858
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+631. 2636994
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+632. 2685423
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+633. 2693874
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+634. 2745924
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+635. 2749994
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+636. 2811354
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+637. 2992240
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+638. 2992242
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+639. 3049945
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+640. 3049947
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+641. 3049991
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+642. 3117696
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+643. 3142428
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+644. 3142429
+    Difference: +0.18 seconds (+0.0093%)
+    Impact: Increases trip time
+
+645. 2635807
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+646. 2635825
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+647. 2635833
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+648. 2635853
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+649. 2635866
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+650. 2635869
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+651. 2635910
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+652. 2635934
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+653. 2636035
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+654. 2636049
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+655. 2636055
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+656. 2636082
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+657. 2636087
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+658. 2636102
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+659. 2636108
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+660. 2636115
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+661. 2636129
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+662. 2636143
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+663. 2636160
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+664. 2636165
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+665. 2636312
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+666. 2636340
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+667. 2636352
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+668. 2636361
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+669. 2636373
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+670. 2636382
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+671. 2636383
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+672. 2636400
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+673. 2636451
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+674. 2636560
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+675. 2636568
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+676. 2636570
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+677. 2636599
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+678. 2636603
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+679. 2636608
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+680. 2636646
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+681. 2636650
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+682. 2636657
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+683. 2636662
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+684. 2636664
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+685. 2636739
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+686. 2636783
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+687. 2636842
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+688. 2636861
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+689. 2636945
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+690. 2636954
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+691. 2636959
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+692. 2636960
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+693. 2685419
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+694. 2693873
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+695. 2693877
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+696. 2699828
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+697. 2745917
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+698. 2750009
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+699. 2811353
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+700. 3034741
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+701. 3049942
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+702. 3049965
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+703. 3049969
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+704. 3049972
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+705. 3049979
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+706. 3049980
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+707. 3049981
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+708. 3067458
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+709. 3134428
+    Difference: +0.12 seconds (+0.0062%)
+    Impact: Increases trip time
+
+710. 2636854
+    Difference: -0.06 seconds (-0.0031%)
+    Impact: Decreases trip time
+
+711. 2699824
+    Difference: -0.06 seconds (-0.0031%)
+    Impact: Decreases trip time
+
+712. 2635798
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+713. 2635806
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+714. 2635811
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+715. 2635812
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+716. 2635822
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+717. 2635823
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+718. 2635834
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+719. 2635849
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+720. 2635873
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+721. 2635915
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+722. 2635980
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+723. 2636030
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+724. 2636042
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+725. 2636078
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+726. 2636079
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+727. 2636091
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+728. 2636100
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+729. 2636101
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+730. 2636109
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+731. 2636125
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+732. 2636138
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+733. 2636145
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+734. 2636150
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+735. 2636184
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+736. 2636307
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+737. 2636317
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+738. 2636326
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+739. 2636357
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+740. 2636360
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+741. 2636410
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+742. 2636414
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+743. 2636445
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+744. 2636447
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+745. 2636453
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+746. 2636456
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+747. 2636482
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+748. 2636487
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+749. 2636544
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+750. 2636554
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+751. 2636557
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+752. 2636576
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+753. 2636601
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+754. 2636622
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+755. 2636637
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+756. 2636638
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+757. 2636659
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+758. 2636667
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+759. 2636675
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+760. 2636682
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+761. 2636725
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+762. 2636800
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+763. 2636806
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+764. 2636827
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+765. 2636853
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+766. 2636860
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+767. 2636946
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+768. 2636962
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+769. 2636967
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+770. 2636973
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+771. 2636974
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+772. 2636977
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+773. 2636979
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+774. 2636980
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+775. 2636991
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+776. 2637020
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+777. 2637023
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+778. 2693878
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+779. 2699825
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+780. 2699829
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+781. 2745886
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+782. 2745915
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+783. 2745966
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+784. 2749993
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+785. 2750004
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+786. 2750010
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+787. 2992198
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+788. 2992219
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+789. 3034738
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+790. 3049948
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+791. 3049983
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+792. 3050015
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+793. 3050031
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+794. 3134003
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+795. 3134005
+    Difference: +0.06 seconds (+0.0031%)
+    Impact: Increases trip time
+
+796. 2635792
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+797. 2635805
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+798. 2635809
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+799. 2635810
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+800. 2635815
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+801. 2635816
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+802. 2635817
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+803. 2635818
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+804. 2635819
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+805. 2635821
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+806. 2635824
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+807. 2635826
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+808. 2635827
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+809. 2635832
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+810. 2635835
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+811. 2635836
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+812. 2635838
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+813. 2635839
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+814. 2635840
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+815. 2635841
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+816. 2635844
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+817. 2635846
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+818. 2635847
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+819. 2635848
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+820. 2635854
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+821. 2635855
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+822. 2635856
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+823. 2635857
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+824. 2635858
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+825. 2635859
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+826. 2635860
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+827. 2635861
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+828. 2635862
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+829. 2635863
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+830. 2635864
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+831. 2635865
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+832. 2635868
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+833. 2635872
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+834. 2635875
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+835. 2635876
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+836. 2635877
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+837. 2635878
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+838. 2635879
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+839. 2635880
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+840. 2635881
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+841. 2635882
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+842. 2635883
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+843. 2635884
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+844. 2635885
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+845. 2635886
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+846. 2635887
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+847. 2635902
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+848. 2635903
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+849. 2635905
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+850. 2635906
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+851. 2635907
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+852. 2635908
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+853. 2635909
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+854. 2635911
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+855. 2635913
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+856. 2635914
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+857. 2635916
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+858. 2635917
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+859. 2635918
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+860. 2635919
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+861. 2635920
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+862. 2635921
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+863. 2635922
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+864. 2635923
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+865. 2635924
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+866. 2635925
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+867. 2635926
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+868. 2635927
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+869. 2635928
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+870. 2635929
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+871. 2635930
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+872. 2635931
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+873. 2635932
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+874. 2635933
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+875. 2635939
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+876. 2635940
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+877. 2635941
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+878. 2635942
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+879. 2635945
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+880. 2635952
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+881. 2635957
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+882. 2635958
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+883. 2635959
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+884. 2635960
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+885. 2635961
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+886. 2635963
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+887. 2635964
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+888. 2635968
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+889. 2635970
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+890. 2635973
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+891. 2635974
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+892. 2635975
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+893. 2635976
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+894. 2635977
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+895. 2635978
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+896. 2635979
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+897. 2635981
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+898. 2635982
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+899. 2635983
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+900. 2635984
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+901. 2635985
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+902. 2635988
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+903. 2635990
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+904. 2636031
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+905. 2636032
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+906. 2636034
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+907. 2636036
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+908. 2636037
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+909. 2636038
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+910. 2636039
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+911. 2636040
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+912. 2636041
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+913. 2636043
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+914. 2636045
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+915. 2636051
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+916. 2636052
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+917. 2636053
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+918. 2636054
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+919. 2636056
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+920. 2636058
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+921. 2636065
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+922. 2636066
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+923. 2636067
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+924. 2636068
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+925. 2636069
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+926. 2636070
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+927. 2636071
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+928. 2636072
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+929. 2636073
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+930. 2636075
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+931. 2636076
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+932. 2636077
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+933. 2636080
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+934. 2636084
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+935. 2636088
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+936. 2636093
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+937. 2636094
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+938. 2636096
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+939. 2636097
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+940. 2636098
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+941. 2636103
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+942. 2636104
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+943. 2636106
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+944. 2636110
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+945. 2636111
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+946. 2636112
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+947. 2636113
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+948. 2636114
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+949. 2636116
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+950. 2636117
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+951. 2636118
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+952. 2636119
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+953. 2636120
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+954. 2636121
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+955. 2636123
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+956. 2636124
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+957. 2636131
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+958. 2636132
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+959. 2636133
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+960. 2636134
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+961. 2636135
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+962. 2636136
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+963. 2636139
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+964. 2636141
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+965. 2636142
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+966. 2636144
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+967. 2636146
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+968. 2636151
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+969. 2636152
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+970. 2636153
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+971. 2636154
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+972. 2636155
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+973. 2636156
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+974. 2636157
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+975. 2636158
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+976. 2636159
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+977. 2636161
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+978. 2636162
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+979. 2636163
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+980. 2636164
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+981. 2636166
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+982. 2636167
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+983. 2636168
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+984. 2636169
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+985. 2636171
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+986. 2636172
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+987. 2636175
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+988. 2636176
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+989. 2636179
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+990. 2636180
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+991. 2636181
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+992. 2636182
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+993. 2636183
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+994. 2636185
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+995. 2636300
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+996. 2636305
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+997. 2636306
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+998. 2636308
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+999. 2636309
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1000. 2636310
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1001. 2636311
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1002. 2636313
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1003. 2636315
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1004. 2636320
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1005. 2636322
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1006. 2636323
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1007. 2636324
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1008. 2636325
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1009. 2636327
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1010. 2636329
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1011. 2636333
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1012. 2636335
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1013. 2636336
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1014. 2636339
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1015. 2636343
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1016. 2636344
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1017. 2636345
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1018. 2636346
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1019. 2636347
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1020. 2636348
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1021. 2636349
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1022. 2636350
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1023. 2636351
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1024. 2636354
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1025. 2636355
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1026. 2636358
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1027. 2636362
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1028. 2636367
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1029. 2636370
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1030. 2636371
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1031. 2636372
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1032. 2636376
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1033. 2636378
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1034. 2636385
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1035. 2636388
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1036. 2636389
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1037. 2636390
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1038. 2636391
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1039. 2636397
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1040. 2636398
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1041. 2636399
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1042. 2636407
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1043. 2636411
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1044. 2636412
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1045. 2636415
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1046. 2636416
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1047. 2636417
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1048. 2636418
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1049. 2636421
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1050. 2636422
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1051. 2636423
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1052. 2636424
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1053. 2636425
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1054. 2636426
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1055. 2636427
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1056. 2636428
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1057. 2636435
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1058. 2636436
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1059. 2636437
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1060. 2636440
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1061. 2636441
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1062. 2636442
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1063. 2636443
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1064. 2636444
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1065. 2636448
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1066. 2636449
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1067. 2636450
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1068. 2636452
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1069. 2636455
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1070. 2636457
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1071. 2636458
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1072. 2636461
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1073. 2636463
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1074. 2636464
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1075. 2636465
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1076. 2636466
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1077. 2636468
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1078. 2636469
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1079. 2636471
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1080. 2636472
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1081. 2636473
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1082. 2636476
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1083. 2636477
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1084. 2636478
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1085. 2636479
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1086. 2636480
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1087. 2636481
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1088. 2636483
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1089. 2636486
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1090. 2636489
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1091. 2636490
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1092. 2636494
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1093. 2636497
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1094. 2636500
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1095. 2636502
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1096. 2636505
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1097. 2636514
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1098. 2636515
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1099. 2636516
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1100. 2636517
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1101. 2636524
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1102. 2636525
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1103. 2636526
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1104. 2636527
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1105. 2636528
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1106. 2636529
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1107. 2636539
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1108. 2636541
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1109. 2636542
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1110. 2636543
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1111. 2636545
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1112. 2636546
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1113. 2636547
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1114. 2636549
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1115. 2636551
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1116. 2636555
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1117. 2636556
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1118. 2636558
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1119. 2636561
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1120. 2636569
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1121. 2636578
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1122. 2636579
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1123. 2636581
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1124. 2636582
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1125. 2636585
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1126. 2636587
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1127. 2636596
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1128. 2636620
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1129. 2636639
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1130. 2636640
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1131. 2636642
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1132. 2636647
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1133. 2636648
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1134. 2636652
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1135. 2636654
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1136. 2636655
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1137. 2636665
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1138. 2636670
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1139. 2636671
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1140. 2636672
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1141. 2636673
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1142. 2636674
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1143. 2636676
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1144. 2636677
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1145. 2636678
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1146. 2636679
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1147. 2636680
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1148. 2636681
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1149. 2636683
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1150. 2636684
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1151. 2636685
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1152. 2636686
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1153. 2636687
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1154. 2636688
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1155. 2636690
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1156. 2636691
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1157. 2636692
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1158. 2636693
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1159. 2636694
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1160. 2636695
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1161. 2636696
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1162. 2636697
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1163. 2636698
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1164. 2636700
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1165. 2636703
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1166. 2636704
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1167. 2636705
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1168. 2636706
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1169. 2636707
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1170. 2636708
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1171. 2636709
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1172. 2636710
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1173. 2636711
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1174. 2636712
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1175. 2636714
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1176. 2636715
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1177. 2636717
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1178. 2636718
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1179. 2636722
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1180. 2636723
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1181. 2636724
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1182. 2636726
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1183. 2636727
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1184. 2636728
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1185. 2636729
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1186. 2636730
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1187. 2636731
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1188. 2636732
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1189. 2636734
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1190. 2636735
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1191. 2636736
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1192. 2636738
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1193. 2636740
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1194. 2636744
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1195. 2636753
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1196. 2636757
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1197. 2636768
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1198. 2636769
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1199. 2636782
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1200. 2636784
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1201. 2636797
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1202. 2636798
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1203. 2636799
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1204. 2636801
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1205. 2636802
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1206. 2636803
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1207. 2636808
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1208. 2636809
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1209. 2636810
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1210. 2636811
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1211. 2636812
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1212. 2636813
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1213. 2636817
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1214. 2636818
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1215. 2636819
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1216. 2636820
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1217. 2636826
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1218. 2636831
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1219. 2636832
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1220. 2636833
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1221. 2636834
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1222. 2636835
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1223. 2636836
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1224. 2636838
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1225. 2636841
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1226. 2636843
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1227. 2636848
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1228. 2636849
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1229. 2636850
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1230. 2636856
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1231. 2636934
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1232. 2636936
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1233. 2636939
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1234. 2636941
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1235. 2636942
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1236. 2636947
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1237. 2636948
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1238. 2636949
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1239. 2636950
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1240. 2636952
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1241. 2636955
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1242. 2636957
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1243. 2636958
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1244. 2636961
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1245. 2636963
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1246. 2636966
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1247. 2636968
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1248. 2636969
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1249. 2636972
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1250. 2636976
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1251. 2636978
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1252. 2636983
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1253. 2636984
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1254. 2636985
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1255. 2636987
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1256. 2636988
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1257. 2636992
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1258. 2636993
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1259. 2636995
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1260. 2636996
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1261. 2636997
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1262. 2636998
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1263. 2637040
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1264. 2637062
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1265. 2637064
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1266. 2637065
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1267. 2637066
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1268. 2637067
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1269. 2637068
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1270. 2637069
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1271. 2637070
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1272. 2637071
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1273. 2637072
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1274. 2637073
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1275. 2637074
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1276. 2637080
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1277. 2637081
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1278. 2650860
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1279. 2657203
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1280. 2657205
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1281. 2685420
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1282. 2685421
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1283. 2685422
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1284. 2685424
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1285. 2693718
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1286. 2693719
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1287. 2693871
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1288. 2693872
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1289. 2693875
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1290. 2693876
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1291. 2693879
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1292. 2693880
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1293. 2693881
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1294. 2693882
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1295. 2693884
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1296. 2693885
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1297. 2693886
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1298. 2693887
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1299. 2693888
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1300. 2695319
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1301. 2695320
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1302. 2695321
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1303. 2695324
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1304. 2695325
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1305. 2695326
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1306. 2695327
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1307. 2695328
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1308. 2695329
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1309. 2695330
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1310. 2695331
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1311. 2695332
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1312. 2695333
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1313. 2695334
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1314. 2695335
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1315. 2695336
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1316. 2695337
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1317. 2695338
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1318. 2695339
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1319. 2695349
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1320. 2695350
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1321. 2695351
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1322. 2699817
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1323. 2699818
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1324. 2699819
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1325. 2699821
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1326. 2699822
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1327. 2699823
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1328. 2745873
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1329. 2745874
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1330. 2745875
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1331. 2745876
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1332. 2745878
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1333. 2745880
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1334. 2745881
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1335. 2745882
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1336. 2745883
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1337. 2745884
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1338. 2745885
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1339. 2745896
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1340. 2745897
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1341. 2745898
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1342. 2745899
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1343. 2745900
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1344. 2745902
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1345. 2745903
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1346. 2745904
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1347. 2745905
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1348. 2745906
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1349. 2745907
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1350. 2745908
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1351. 2745909
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1352. 2745910
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1353. 2745916
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1354. 2745918
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1355. 2745922
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1356. 2745923
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1357. 2745925
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1358. 2745927
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1359. 2745931
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1360. 2745932
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1361. 2745935
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1362. 2745955
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1363. 2745956
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1364. 2745957
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1365. 2745958
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1366. 2745959
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1367. 2745960
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1368. 2745961
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1369. 2745964
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1370. 2745967
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1371. 2745968
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1372. 2745969
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1373. 2745970
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1374. 2746027
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1375. 2746088
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1376. 2746089
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1377. 2746090
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1378. 2746091
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1379. 2746092
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1380. 2746093
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1381. 2746094
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1382. 2746095
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1383. 2746096
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1384. 2746097
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1385. 2746098
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1386. 2746099
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1387. 2746100
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1388. 2746101
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1389. 2746102
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1390. 2746103
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1391. 2746104
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1392. 2746105
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1393. 2746106
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1394. 2746108
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1395. 2746109
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1396. 2746110
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1397. 2746532
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1398. 2749996
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1399. 2749997
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1400. 2749998
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1401. 2749999
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1402. 2750001
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1403. 2750002
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1404. 2750003
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1405. 2750005
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1406. 2750006
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1407. 2750007
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1408. 2750008
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1409. 2750011
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1410. 2750013
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1411. 2750014
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1412. 2750015
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1413. 2750016
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1414. 2750017
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1415. 2750018
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1416. 2750019
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1417. 2750020
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1418. 2750021
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1419. 2750022
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1420. 2750023
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1421. 2750024
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1422. 2750025
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1423. 2750026
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1424. 2750027
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1425. 2750028
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1426. 2750029
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1427. 2750030
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1428. 2750031
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1429. 2765126
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1430. 2765258
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1431. 2765259
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1432. 2777322
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1433. 2992195
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1434. 2992196
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1435. 2992197
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1436. 2992199
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1437. 2992200
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1438. 2992201
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1439. 2992206
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1440. 2992207
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1441. 2992208
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1442. 2992209
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1443. 2992212
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1444. 2992213
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1445. 2992214
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1446. 2992215
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1447. 2992216
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1448. 2992217
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1449. 2992218
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1450. 2992220
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1451. 2992221
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1452. 2992233
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1453. 2992237
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1454. 2992243
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1455. 2992244
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1456. 2992245
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1457. 2992246
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1458. 2993662
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1459. 2993663
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1460. 2993664
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1461. 2993665
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1462. 2993666
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1463. 2993667
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1464. 2993668
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1465. 3003535
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1466. 3011907
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1467. 3011909
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1468. 3023716
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1469. 3023717
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1470. 3023718
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1471. 3034736
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1472. 3034755
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1473. 3034756
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1474. 3034757
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1475. 3049069
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1476. 3049072
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1477. 3049262
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1478. 3049338
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1479. 3049939
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1480. 3049940
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1481. 3049941
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1482. 3049944
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1483. 3049946
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1484. 3049949
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1485. 3049950
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1486. 3049951
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1487. 3049952
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1488. 3049953
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1489. 3049954
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1490. 3049955
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1491. 3049956
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1492. 3049957
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1493. 3049960
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1494. 3049961
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1495. 3049962
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1496. 3049963
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1497. 3049964
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1498. 3049973
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1499. 3049976
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1500. 3049977
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1501. 3049978
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1502. 3049982
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1503. 3049984
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1504. 3049985
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1505. 3049989
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1506. 3049990
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1507. 3049993
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1508. 3049994
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1509. 3049995
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1510. 3049996
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1511. 3049997
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1512. 3049998
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1513. 3049999
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1514. 3050000
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1515. 3050001
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1516. 3050002
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1517. 3050003
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1518. 3050004
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1519. 3050005
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1520. 3050006
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1521. 3050007
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1522. 3050008
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1523. 3050009
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1524. 3050012
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1525. 3050014
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1526. 3050016
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1527. 3050017
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1528. 3050018
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1529. 3050019
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1530. 3050020
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1531. 3050021
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1532. 3050022
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1533. 3050023
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1534. 3050024
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1535. 3050026
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1536. 3050027
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1537. 3050028
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1538. 3050029
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1539. 3050030
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1540. 3050036
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1541. 3065684
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1542. 3065692
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1543. 3065705
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1544. 3067453
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1545. 3067454
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1546. 3067455
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1547. 3067456
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1548. 3067457
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1549. 3076628
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1550. 3076647
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1551. 3076648
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1552. 3076649
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1553. 3076650
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1554. 3085967
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1555. 3093657
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1556. 3117694
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1557. 3117695
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1558. 3129635
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1559. 3129636
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1560. 3129637
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1561. 3134001
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1562. 3134002
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1563. 3134004
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1564. 3134006
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1565. 3134007
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1566. 3134008
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1567. 3134009
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1568. 3134010
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1569. 3134011
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1570. 3134012
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1571. 3134013
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1572. 3134014
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1573. 3134015
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1574. 3134016
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1575. 3134017
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1576. 3134018
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1577. 3134019
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1578. 3134425
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1579. 3134429
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1580. 3134430
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1581. 3140218
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1582. 3142151
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1583. 3142152
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1584. 3142153
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1585. 3145155
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1586. 3149853
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+
+1587. 3149854
+    Difference: +0.00 seconds (+0.0000%)
+    Impact: Decreases trip time
+

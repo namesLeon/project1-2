@@ -96,7 +96,8 @@ public class RoutePlanner {
             }
 
             //walk edges
-            for (WalkEdge we : graph.walkEdges) {
+            List<WalkEdge> edges = graph.walkEdges.get(cur.stopId);
+            for (WalkEdge we : edges) {
                 if (!we.fromStopId.equals(cur.stopId)) continue;
                 int g2 = cur.arrivalSec + we.walkDurationSec;
                 if (g2 < best.getOrDefault(we.toStopId, Integer.MAX_VALUE)) {
@@ -205,7 +206,7 @@ public class RoutePlanner {
 
         while (!pq.isEmpty()) {
             Label cur = pq.poll();
-            if (visited.contains(cur.stopId) || graph.deletedStops.contains(cur.stopId) || cur.arrivalSec > best.getOrDefault(cur.stopId, Integer.MAX_VALUE)) {
+            if (/*visited.contains(cur.stopId) ||*/ cur.stopId.equals(graph.deletedStop) || cur.arrivalSec > best.getOrDefault(cur.stopId, Integer.MAX_VALUE)) {
                 continue;
             }
             //System.out.println("[LOG] visit " + cur.stopId + " @sec=" + cur.arrivalSec);
@@ -214,7 +215,8 @@ public class RoutePlanner {
             Stop s = graph.stops.get(cur.stopId);
 
             //walk edges
-            for (WalkEdge we : graph.walkEdges) {
+            List<WalkEdge> edges = graph.walkEdges.get(cur.stopId);
+            for (WalkEdge we : edges) {
                 if (!we.fromStopId.equals(cur.stopId)) continue;
                 int g2 = cur.arrivalSec + we.walkDurationSec;
                 if (g2 < best.getOrDefault(we.toStopId, Integer.MAX_VALUE)) {
@@ -331,9 +333,10 @@ public class RoutePlanner {
         // 2636916 : 00:53
         // 2636880 : 00:46
         Stop s = graph.stops.get("2636880");
-        System.out.println(times.get(s));
         List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "12:00");
+        System.out.println(times.get(s));
         JourneyStep last = steps.get(steps.size() -1 );
         System.out.println(planner.formatTime(planner.parsetime(last.startTime)+last.durationMin*60));
+        System.out.println(planner.computeAllShortestPaths(52.346853, 4.800953, "12:00").get(s)/60);
     }
 }

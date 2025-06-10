@@ -10,10 +10,12 @@ import DB.*;
 public class TransitGraph {
     public final Map<String, Stop> stops = new HashMap<>();
     public final Map<String, List<DepartureEvent>> departures = new HashMap<>();
-    public final List<WalkEdge> walkEdges = new ArrayList<>();
+    public final HashMap<String, List<WalkEdge>> walkEdges = new HashMap<>();
     public String deletedStop = null;
     public ArrayList<String> deletedStops = new ArrayList<>();
     public final List<DepartureEvent> additionalDepartureEvents = new ArrayList<>();
+    private final List<Stop> heatMapStops = new ArrayList<>();
+    private final List<WalkEdge> heatMapWalkEdges = new ArrayList<>();
 
     public void computeAllWalkEdges() {
         List<Stop> stopList = new ArrayList<>(stops.values());
@@ -24,18 +26,91 @@ public class TransitGraph {
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
                 if(dist <= 5000){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
-                    walkEdges.add(new WalkEdge(a.stopId, b.stopId, secs));
-                    walkEdges.add(new WalkEdge(b.stopId, a.stopId, secs));
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    walkEdges.get(a.stopId).add(new WalkEdge(a.stopId, b.stopId, secs));
+                    walkEdges.get(b.stopId).add(new WalkEdge(b.stopId, a.stopId, secs));
                 }
             }
         }
+    }
+
+    public void computeWalkEdgesForHeatMap(double radius){
+        List<Stop> stopList = new ArrayList<>(stops.values());
+//        for(Stop s : heatMapStops){
+//            stopList.add(s);
+//        }
+        for (int i = 0; i < stopList.size(); i++) {
+            Stop a = stopList.get(i);
+            for (int j = 0; j < heatMapStops.size(); j++) {
+                Stop b = heatMapStops.get(j);
+                double dist = haversine(a.lat, a.lon, b.lat, b.lon);
+                if(dist <= 1.5* radius){
+                    int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    WalkEdge edgeAB = new WalkEdge(a.stopId, b.stopId, secs);
+                    WalkEdge edgeBA = new WalkEdge(b.stopId, a.stopId, secs);
+                    walkEdges.get(a.stopId).add(edgeAB);
+                    walkEdges.get(b.stopId).add(edgeBA);
+                }
+            }
+        }
+        for(int i = 0; i < heatMapStops.size(); i++){
+            Stop a = heatMapStops.get(i);
+            for(int j = i; j < heatMapStops.size(); j++){
+                Stop b = heatMapStops.get(j);
+                double dist = haversine(a.lat, a.lon, b.lat, b.lon);
+                if(dist <= 1.5*radius){
+                    int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    WalkEdge edgeAB = new WalkEdge(a.stopId, b.stopId, secs);
+                    WalkEdge edgeBA = new WalkEdge(b.stopId, a.stopId, secs);
+                    walkEdges.get(a.stopId).add(edgeAB);
+                    walkEdges.get(b.stopId).add(edgeBA);
+                }
+            }
+        }
+        for(Stop s : heatMapStops){
+            stops.put(s.stopId, s);
+        }
+
+    }
+
+    public void addStopToHeatMap(Stop stop){
+        heatMapStops.add(stop);
+    }
+
+    public void clearHeatMapStops(){
+        List<WalkEdge> edgesToRemove = new ArrayList<>();
+        for(Map.Entry<String, List<WalkEdge>> entry : walkEdges.entrySet()){
+            edgesToRemove.clear();
+            for(WalkEdge edge : entry.getValue()){
+                Stop a = stops.get(edge.fromStopId);
+                Stop b = stops.get(edge.toStopId);
+                if(heatMapStops.contains(a)||heatMapStops.contains(b)){
+                    edgesToRemove.add(edge);
+                }
+            }
+            for(WalkEdge edge : edgesToRemove){
+                entry.getValue().remove(edge);
+            }
+        }
+        for(WalkEdge edge : edgesToRemove){
+            walkEdges.remove(edge);
+        }
+        for(Stop s : heatMapStops){
+            stops.remove(s.stopId);
+        }
+        heatMapStops.clear();
     }
     //legacy method, might be useful in the future
     public List<WalkEdge> getNearestWalkEdges(double lat, double lon, int maxResults) {
         PriorityQueue<WalkEdge> pq = new PriorityQueue<>(Comparator.comparingInt(e->e.walkDurationSec));
         for (Stop s : stops.values()) {
             double dist = haversine(lat, lon, s.lat, s.lon);
-            if (dist <= 5000.0) {
+            if (dist <= /*5000.0*/ 1000) {
                 int secs = (int) Math.round(dist / 5000.0 * 3600.0);
                 pq.offer(new WalkEdge("__SRC__", s.stopId, secs));
             }
