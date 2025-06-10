@@ -22,9 +22,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AmsterdamMap {
@@ -43,14 +45,18 @@ public class AmsterdamMap {
     private static JTextField timeInputField;
     private static JLabel startTimeLabel;
     private static JLabel endTimeLabel;
-    private static ArrayList<Integer> stepDurations;
+    private static JLabel stopsLabel;
+    private static JLabel transfersLabel;
+    private static String arrivalTime;
+    private static final String DEFAULT_GTFS_PATH = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
+    private static final String DEFAULT_TILE_PATH = "/tiles.zip"; // Default path for tile data
 
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             mapViewer = new JXMapViewer();
             try {
-                URL tilesURL = AmsterdamMap.class.getResource("/tiles.zip");
+                URL tilesURL = AmsterdamMap.class.getResource(DEFAULT_TILE_PATH);
                 String jarURL = "jar:" + tilesURL.toURI() + "!";
 
                 TileFactoryInfo info = new LocalTileFactoryInfo(jarURL);
@@ -61,7 +67,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
+                    String path = DEFAULT_GTFS_PATH; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
@@ -80,23 +86,14 @@ public class AmsterdamMap {
                 mapViewer.addPropertyChangeListener("centerPosition", evt -> {
                     GeoPosition center = mapViewer.getCenterPosition();
                     double lat = Math.max(52.35, Math.min(52.42, center.getLatitude()));
-                    double lon = Math.max(4.0, Math.min(4.9, center.getLongitude()));
+                    double lon = Math.max(4.8, Math.min(4.9, center.getLongitude()));
                     if (lat != center.getLatitude() || lon != center.getLongitude()) {
                         mapViewer.setCenterPosition(new GeoPosition(lat, lon));
                     }
                 });
                 mapViewer.setZoom(3);
                 mapViewer.setAddressLocation(amsterdam);
-
-                // // Approximate polyline of Vinkenstraat
-                // List<GeoPosition> testRoute = new ArrayList<>();
-                // testRoute.add(new GeoPosition(52.38305, 4.88555));
-                // testRoute.add(new GeoPosition(52.38335, 4.88495));
-                // testRoute.add(new GeoPosition(52.38365, 4.88435));
-                // testRoute.add(new GeoPosition(52.38395, 4.88375));
-
                
-
                 // Add mouse listeners
                 MouseInputListener mia = new PanMouseInputListener(mapViewer);
                 mapViewer.addMouseListener(mia);
@@ -117,7 +114,7 @@ public class AmsterdamMap {
 
                             if (routeActive) {
                                 resetRoute();
-                                resetTimeLabels();
+                                resetLabels();
                             }
                             
                             updateCoordinateLabels();
@@ -137,7 +134,7 @@ public class AmsterdamMap {
                 resetButton.addActionListener(e -> {
                     markers.clear();
                     resetRoute();
-                    resetTimeLabels();
+                    resetLabels();
 
                     updateCoordinateLabels();
                     mapViewer.repaint();
@@ -193,8 +190,8 @@ public class AmsterdamMap {
                 endCoordLabel = new JLabel("End Coord: (--, --)");
                 startTimeLabel = new JLabel("Start Time: --:--");
                 endTimeLabel = new JLabel("End Time: --:--");
-                JLabel stopsLabel = new JLabel("Stops: 0");
-                JLabel transfersLabel = new JLabel("Transfers: 0");
+                stopsLabel = new JLabel("Stops: 0");
+                transfersLabel = new JLabel("Transfers: 0");
 
                 bottomPanel.add(startTimeLabel);
                 bottomPanel.add(endTimeLabel);
@@ -243,18 +240,33 @@ public class AmsterdamMap {
             List<GeoPosition> route = new ArrayList<>();
             GeoPosition start = markers.get(0);
             GeoPosition end = markers.get(1);
+            int transfers = 0;
+            int stops = 0;
+            String lastLine = "";
             route.add(start);
             List<JourneyStep> journey = planner.computeRoute(start.getLatitude(), start.getLongitude(), end.getLatitude(), end.getLongitude(), time);
-            stepDurations = new ArrayList<>();
+            arrivalTime = calculateArrivalTime(journey.get(journey.size() - 1).startTime, journey.get(journey.size() - 1).durationMin); // Get the arrival time from the last step
             for(JourneyStep step : journey) {
-                stepDurations.add(step.durationMin);
+                if(step.mode.equals("ride")) {
+                    stops++;
+                    if(!lastLine.equals(step.routeInfo.shortName)) {
+                        transfers++;
+                        lastLine = step.routeInfo.shortName;
+                    }
+                }
                 GeoPosition stepPos = new GeoPosition(step.to[0], step.to[1]);
                 modes.add(step.mode);
                 route.add(stepPos);
             }
+            transfers = Math.max(transfers-1, 0); // Adjust transfers count to match the number of transfers made
+            transfersLabel.setText("Transfers: " + transfers);
+            stopsLabel.setText("Stops: " + stops);
             routePainter = new RoutePainter(route, modes);
             mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, routePainter));
             mapViewer.repaint();
+            // create a popup with route info
+            JFrame routeInfoFrame = createRouteInfoFrame(journey);
+            routeInfoFrame.setVisible(true);
             routeActive = true;
         }
     }
@@ -285,25 +297,98 @@ public class AmsterdamMap {
                 : timeFormat.parse(timeText);
             
             // Calculate end time (start time + 5 minutes)
-            Date endTime = new Date(startTime.getTime() + stepDurations.stream()
-                    .reduce(0, Integer::sum) * 60 * 1000);
             
             startTimeLabel.setText("Start Time: " + timeFormat.format(startTime));
-            endTimeLabel.setText("End Time: " + timeFormat.format(endTime));
+            endTimeLabel.setText("End Time: " + timeFormat.format(arrivalTime));
         } catch (Exception e) {
             // If parsing fails, use current time
             startTimeLabel.setText("Start Time: " + timeFormat.format(now));
-            endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
-  .reduce(0, Integer::sum) * 60 * 1000))); // Sum of durations in milliseconds
+            endTimeLabel.setText("End Time: " + arrivalTime); // Sum of durations in milliseconds
         }
     }
 
-    private static void resetTimeLabels() {
+    private static void resetLabels() {
         startTimeLabel.setText("Start Time: --:--");
         endTimeLabel.setText("End Time: --:--");
         timeInputField.setText("Right now");
+        stopsLabel.setText("Stops: 0");
+        transfersLabel.setText("Transfers: 0");
         timeInputField.setForeground(Color.GRAY);
     }
+    //here's an example of journey step:
+    //{"mode":"walk","to":{"lat":52.388085,"lon":4.884871},"duration":2,"startTime":"12:06"},{"mode":"ride","to":{"lat":52.384843,"lon":4.88341},"duration":2,"startTime":"12:08","stop":"Amsterdam, Haarlemmerplein","route":{"operator":"GVB","shortName":"5","longName":"Lijn 5","headSign":"Amstelveen Stadshart"}},{"mode":"walk","to":{"lat":52.385159,"lon":4.883715},"duration":1,"startTime":"12:10"},{"mode":"ride","to":{"lat":52.383119,"lon":4.888056},"duration":2,"startTime":"12:10","stop":"Amsterdam, Buiten Oranjestraat","route":{"operator":"GVB","shortName":"21","longName":"Lijn 21","headSign":"Centraal Station"}},{"mode":"ride","to":{"lat":52.381507,"lon":4.89157},"duration":1,"startTime":"12:12","stop":"Amsterdam, Buiten Brouwersstraat","route":{"operator":"GVB","shortName":"21","longName":"Lijn 21","headSign":"Centraal Station"}},{"mode":"ride","to":{"lat":52.379729,"lon":4.900461},"duration":5,"startTime":"12:13","stop":"Centraal Station","route":{"operator":"GVB","shortName":"21","longName":"Lijn 21","headSign":"Centraal Station"}},{"mode":"walk","to":{"lat":52.378208,"lon":4.899949},"duration":3,"startTime":"12:18"},{"mode":"ride","to":{"lat":52.389459,"lon":4.919774},"duration":2,"startTime":"12:24","stop":"Amsterdam, Noorderpark","route":{"operator":"GVB","shortName":"52","longName":"Lijn 52","headSign":"Noord"}},{"mode":"walk","to":{"lat":52.389018,"lon":4.919558},"duration":1,"startTime":"12:26"},{"mode":"ride","to":{"lat":52.388139,"lon":4.924635},"duration":2,"startTime":"12:27","stop":"Amsterdam, Johan v.Hasseltweg","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"ride","to":{"lat":52.389956,"lon":4.925057},"duration":1,"startTime":"12:29","stop":"Amsterdam, Merelstraat","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"ride","to":{"lat":52.394878,"lon":4.928811},"duration":2,"startTime":"12:30","stop":"Amsterdam, Rode Kruisstraat","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"ride","to":{"lat":52.394181,"lon":4.934504},"duration":2,"startTime":"12:32","stop":"Amsterdam, Nieuwe Purmerweg","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"ride","to":{"lat":52.392708,"lon":4.939543},"duration":1,"startTime":"12:33","stop":"Amsterdam, Wervershoofstraat","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"ride","to":{"lat":52.390458,"lon":4.945692},"duration":2,"startTime":"12:34","stop":"Amsterdam, Purmerplein","route":{"operator":"GVB","shortName":"35","longName":"Lijn 35","headSign":"Olof Palmeplein"}},{"mode":"walk","to":{"lat":52.38916848288419,"lon":4.945132807792146},"duration":2,"startTime":"12:36"}
+    private static JFrame createRouteInfoFrame(List<JourneyStep> journey) {
+    JFrame routeInfoFrame = new JFrame("Route Information");
+    routeInfoFrame.setLayout(new BorderLayout());
+    JTextArea routeInfoArea = new JTextArea();
+    routeInfoArea.setEditable(false);
+    routeInfoArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+    StringBuilder infoText = new StringBuilder();
+    
+    // Add header
+    infoText.append(String.format("%-50s%8s%10s\n", "Action", "Duration", "Arrival"));
+    infoText.append("------------------------------------------------------------\n");
+
+    int i = 0;
+    while (i < journey.size()) {
+        JourneyStep step = journey.get(i);
+        
+        if (step.mode.equals("walk")) {
+            infoText.append(String.format("%-50s%7s%10s\n", 
+                "Walk", 
+                step.durationMin + " min", 
+                calculateArrivalTime(step.startTime, step.durationMin)));
+            i++;
+        } 
+        else if (step.mode.equals("ride")) {
+            // Start of a potential ride sequence
+            String currentRouteName = step.routeInfo.shortName;
+            infoText.append(String.format("%-50s%7s%10s\n", 
+                "Take " + step.routeInfo.longName, 
+                step.durationMin + " min", 
+                calculateArrivalTime(step.startTime, step.durationMin)));
+            
+            // Add first stop
+            infoText.append(String.format("  %-48s%8s%10s\n", 
+                "→ " + step.stop, 
+                "", 
+                calculateArrivalTime(step.startTime, step.durationMin)));
+            
+            // Check subsequent steps for same route
+            i++;
+            while (i < journey.size() && 
+                   journey.get(i).mode.equals("ride") && 
+                   journey.get(i).routeInfo.shortName.equals(currentRouteName)) {
+                JourneyStep nextStep = journey.get(i);
+                infoText.append(String.format("  %-48s%8s%10s\n", 
+                    "→ " + nextStep.stop, 
+                    "", 
+                    calculateArrivalTime(nextStep.startTime, nextStep.durationMin)));
+                i++;
+            }
+            infoText.append("\n"); // Add empty line between different routes
+        }
+    }
+
+    routeInfoArea.setText(infoText.toString());
+    routeInfoFrame.add(new JScrollPane(routeInfoArea), BorderLayout.CENTER);
+    routeInfoFrame.setSize(600, 400);  // Increased width for better formatting
+    routeInfoFrame.setVisible(true);
+    return routeInfoFrame;
+}
+
+private static String calculateArrivalTime(String startTime, int durationMin) {
+    try {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date date = sdf.parse(startTime);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, durationMin);
+        return sdf.format(cal.getTime());
+    } catch (ParseException e) {
+        return startTime; // fallback if parsing fails
+    }
+}
 }
 
 class CompositePainter<T> implements Painter<T> {
