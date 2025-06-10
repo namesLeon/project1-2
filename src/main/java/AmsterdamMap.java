@@ -49,6 +49,9 @@ public class AmsterdamMap {
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
 
+    private static List<Stop> deletedStopsList = new ArrayList<>();
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -129,6 +132,34 @@ public class AmsterdamMap {
                             updateCoordinateLabels();
                             mapViewer.repaint();
                         }
+
+                        else if (e.getButton() == MouseEvent.BUTTON3) {
+                            // 1. Get click location in geo-coordinates
+                            Point2D pt = e.getPoint();
+                            GeoPosition clickGeo = mapViewer.convertPointToGeoPosition(pt);
+
+                            // 2. Find nearest stop in graph.stops
+                            Stop nearest = null;
+                            double minSqDist = Double.MAX_VALUE;
+                            for (Stop s : graph.stops.values()) {
+                                double dLat = s.lat - clickGeo.getLatitude();
+                                double dLon = s.lon - clickGeo.getLongitude();
+                                double sqDist = dLat*dLat + dLon*dLon;
+                                if (sqDist < minSqDist) {
+                                    minSqDist = sqDist;
+                                    nearest = s;
+                                }
+                            }
+
+                            // 3. If within threshold (≈50 m), delete it
+                            double thresholdDeg = 0.0005;  // ≈50 m in degrees
+                            if (nearest != null && minSqDist <= thresholdDeg*thresholdDeg) {
+                                deletedStopsList.add(nearest);
+                                stopTimeDiffs.remove(nearest.stopId);
+                                System.out.println("Removed stop: " + nearest.stopName);
+                                mapViewer.repaint();
+                            }
+                        }
                     }
                 });
 
@@ -146,6 +177,24 @@ public class AmsterdamMap {
                     resetTimeLabels();
 
                     updateCoordinateLabels();
+                    mapViewer.repaint();
+                });
+
+                JButton resetDeletedStopsButton = new JButton("Reset Deleted Stops");
+                resetDeletedStopsButton.addActionListener(e -> {
+
+                    // 1) Read all stop‐time diffs from file into a Map
+                    Map<String,Float> diffMap = loadStopTimeDiffs("data/stop_time_diff.txt");
+
+                    // 1) re-insert every Stop we previously removed
+                    for (Stop s : deletedStopsList) {
+
+                        Float diff = diffMap.get(s.stopId);
+                        stopTimeDiffs.put(s.stopId, diff);
+                    }
+                    // 2) clear the “trash bin” so next remove-click will repopulate it
+                    deletedStopsList.clear();
+
                     mapViewer.repaint();
                 });
 
@@ -185,6 +234,7 @@ public class AmsterdamMap {
                 controls.add(zoomOut);
                 controls.add(resetButton);
                 controls.add(startRouteButton);
+                controls.add(resetDeletedStopsButton);
                 controls.add(timeInputField);
 
                 Painter<JXMapViewer> stopPainter = (Graphics2D g, JXMapViewer map, int w, int h) -> {
