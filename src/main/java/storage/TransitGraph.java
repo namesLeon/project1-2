@@ -10,10 +10,11 @@ import DB.*;
 public class TransitGraph {
     public final Map<String, Stop> stops = new HashMap<>();
     public final Map<String, List<DepartureEvent>> departures = new HashMap<>();
-    public final List<WalkEdge> walkEdges = new ArrayList<>();
+    public final HashMap<String, List<WalkEdge>> walkEdges = new HashMap<>();
     public String deletedStop = null;
     public final List<DepartureEvent> additionalDepartureEvents = new ArrayList<>();
     private final List<Stop> heatMapStops = new ArrayList<>();
+    private final List<WalkEdge> heatMapWalkEdges = new ArrayList<>();
 
     public void computeAllWalkEdges() {
         List<Stop> stopList = new ArrayList<>(stops.values());
@@ -24,8 +25,10 @@ public class TransitGraph {
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
                 if(dist <= 5000){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
-                    walkEdges.add(new WalkEdge(a.stopId, b.stopId, secs));
-                    walkEdges.add(new WalkEdge(b.stopId, a.stopId, secs));
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    walkEdges.get(a.stopId).add(new WalkEdge(a.stopId, b.stopId, secs));
+                    walkEdges.get(b.stopId).add(new WalkEdge(b.stopId, a.stopId, secs));
                 }
             }
         }
@@ -43,8 +46,12 @@ public class TransitGraph {
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
                 if(dist <= radius){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
-                    walkEdges.add(new WalkEdge(a.stopId, b.stopId, secs));
-                    walkEdges.add(new WalkEdge(b.stopId, a.stopId, secs));
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    WalkEdge edgeAB = new WalkEdge(a.stopId, b.stopId, secs);
+                    WalkEdge edgeBA = new WalkEdge(b.stopId, a.stopId, secs);
+                    walkEdges.get(a.stopId).add(edgeAB);
+                    walkEdges.get(b.stopId).add(edgeBA);
                 }
             }
         }
@@ -55,8 +62,12 @@ public class TransitGraph {
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
                 if(dist <= radius){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
-                    walkEdges.add(new WalkEdge(a.stopId, b.stopId, secs));
-                    walkEdges.add(new WalkEdge(b.stopId, a.stopId, secs));
+                    walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
+                    walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
+                    WalkEdge edgeAB = new WalkEdge(a.stopId, b.stopId, secs);
+                    WalkEdge edgeBA = new WalkEdge(b.stopId, a.stopId, secs);
+                    walkEdges.get(a.stopId).add(edgeAB);
+                    walkEdges.get(b.stopId).add(edgeBA);
                 }
             }
         }
@@ -72,11 +83,17 @@ public class TransitGraph {
 
     public void clearHeatMapStops(){
         List<WalkEdge> edgesToRemove = new ArrayList<>();
-        for(WalkEdge edge : walkEdges){
-            Stop a = stops.get(edge.fromStopId);
-            Stop b = stops.get(edge.toStopId);
-            if(heatMapStops.contains(a)||heatMapStops.contains(b)){
-                edgesToRemove.add(edge);
+        for(Map.Entry<String, List<WalkEdge>> entry : walkEdges.entrySet()){
+            edgesToRemove.clear();
+            for(WalkEdge edge : entry.getValue()){
+                Stop a = stops.get(edge.fromStopId);
+                Stop b = stops.get(edge.toStopId);
+                if(heatMapStops.contains(a)||heatMapStops.contains(b)){
+                    edgesToRemove.add(edge);
+                }
+            }
+            for(WalkEdge edge : edgesToRemove){
+                entry.getValue().remove(edge);
             }
         }
         for(WalkEdge edge : edgesToRemove){

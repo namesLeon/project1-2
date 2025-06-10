@@ -49,7 +49,7 @@ public class AmsterdamMap {
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
 
-    private static final double CELL_SIZE_METERS = 300.0;
+    private static final double CELL_SIZE_METERS = 200.0;
     private static final float  CELL_OPACITY     = 0.6f;
     private static final int    NUM_BINS         = 60;
     private static HeatMapMaker  heatMaker;
