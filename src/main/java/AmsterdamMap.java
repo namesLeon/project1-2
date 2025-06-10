@@ -155,9 +155,11 @@ public class AmsterdamMap {
                             // 3. If within threshold (≈50 m), delete it
                             double thresholdDeg = 0.0005;  // ≈50 m in degrees
                             if (nearest != null && minSqDist <= thresholdDeg*thresholdDeg) {
-                                deletedStopsList.add(nearest);
-                                stopTimeDiffs.remove(nearest.stopId);
-                                System.out.println("Removed stop: " + nearest.stopName);
+                                if(!deletedStopsList.contains(nearest)) {
+                                    deletedStopsList.add(nearest);
+                                    stopTimeDiffs.remove(nearest.stopId);
+                                    System.out.println("Removed stop: " + nearest.stopName);
+                                }
                                 mapViewer.repaint();
                             }
                         }
