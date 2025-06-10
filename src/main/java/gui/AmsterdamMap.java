@@ -177,6 +177,7 @@ public class AmsterdamMap {
                             if (nearest != null && minSqDist <= thresholdDeg*thresholdDeg) {
                                 if(!deletedStopsList.contains(nearest)) {
                                     deletedStopsList.add(nearest);
+                                    deleteStop(nearest);
                                     stopTimeDiffs.remove(nearest.stopId);
                                     System.out.println("Removed stop: " + nearest.stopName);
                                 }
@@ -217,6 +218,7 @@ public class AmsterdamMap {
                     }
                     // 2) clear the “trash bin” so next remove-click will repopulate it
                     deletedStopsList.clear();
+                    restoreDeletedStops();
 
                     mapViewer.repaint();
                 });
@@ -346,9 +348,6 @@ public class AmsterdamMap {
                 frame.setResizable(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
-                ArrayList<String> deletedStops = new ArrayList<>();
-                deletedStops.add("2953526");
-                deleteStops(deletedStops);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -641,10 +640,8 @@ public class AmsterdamMap {
         timeInputField.setForeground(Color.GRAY);
     }
 
-    public static void deleteStops(ArrayList<String> deletedStopIds){
-        for(String s : deletedStopIds){
-            planner.deleteStop(s);
-        }
+    public static void deleteStop(Stop deletedStop){
+        planner.deleteStop(deletedStop.stopId);
     }
 
     public static void restoreDeletedStops(){
