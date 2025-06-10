@@ -11,21 +11,25 @@ import clinterface.GTFSLoader;
 import planner.RoutePlanner;
 import storage.TransitGraph;
 import structs.JourneyStep;
+import structs.Stop;
 
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class AmsterdamMap {
     private static List<GeoPosition> markers = new ArrayList<>();
@@ -50,6 +54,8 @@ public class AmsterdamMap {
         SwingUtilities.invokeLater(() -> {
             mapViewer = new JXMapViewer();
             try {
+                Map<String, Float> stopTimeDiffs = loadStopTimeDiffs("data/stop_time_diff.txt");
+
                 URL tilesURL = AmsterdamMap.class.getResource("/tiles.zip");
                 String jarURL = "jar:" + tilesURL.toURI() + "!";
 
@@ -61,7 +67,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
@@ -181,8 +187,49 @@ public class AmsterdamMap {
                 controls.add(startRouteButton);
                 controls.add(timeInputField);
 
+                Painter<JXMapViewer> stopPainter = (Graphics2D g, JXMapViewer map, int w, int h) -> {
+                    for (Map.Entry<String, Float> entry : stopTimeDiffs.entrySet()) {
+                        String stopId = entry.getKey();
+                        float diff = entry.getValue();
+
+                        // Lookup stop in graph
+                        Stop s = graph.stops.get(stopId);
+                        if (s == null) continue;
+
+                        // Convert lat/lon to pixel
+                        GeoPosition pos = new GeoPosition(s.lat, s.lon);
+                        Point2D p = map.convertGeoPositionToPoint(pos);
+
+                        // Decide color
+                        Color color;
+                        if (diff == 0.0f) {
+                            color = new Color(235, 245, 255);         // very light blue
+                        } else if (diff <= 5.0f) {
+                            color = new Color(180, 210, 255);         // light blue
+                        } else if (diff <= 20.0f) {
+                            color = new Color(100, 150, 255);         // normal blue
+                        } else { // up to 50.0
+                            color = new Color(30, 90, 220);           // dark blue
+                        }
+
+                        // Draw circle
+                        double radius = 6;  // 4px radius
+                        Ellipse2D.Double circle = new Ellipse2D.Double(
+                                p.getX() - radius,
+                                p.getY() - radius,
+                                radius * 2,
+                                radius * 2
+                        );
+                        g.setColor(color);
+                        g.fill(circle);
+                        g.setStroke(new BasicStroke(2f));
+                        g.setColor(Color.BLACK);
+                        g.draw(circle);
+                    }
+                };
+
                 markerPainter = new MarkerPainter(markers);
-                mapViewer.setOverlayPainter(markerPainter);
+                mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, stopPainter));
 
                 JPanel bottomPanel = new JPanel();
                 bottomPanel.setBorder(BorderFactory.createTitledBorder("Trip Info"));
@@ -304,6 +351,28 @@ public class AmsterdamMap {
         timeInputField.setText("Right now");
         timeInputField.setForeground(Color.GRAY);
     }
+
+    public static Map<String, Float> loadStopTimeDiffs(String filename) {
+        Map<String, Float> stopTimeDiffMap = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // skip empty lines
+                if (line.trim().isEmpty()) continue;
+                // each line is stopId=diffValue
+                String[] parts = line.split("=", 2);
+                if (parts.length == 2) {
+                    String stopId = parts[0];
+                    Float diff = Float.parseFloat(parts[1]);
+                    stopTimeDiffMap.put(stopId, diff);
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error loading stop time diffs: " + e.getMessage());
+        }
+        return stopTimeDiffMap;
+    }
+
 }
 
 class CompositePainter<T> implements Painter<T> {
