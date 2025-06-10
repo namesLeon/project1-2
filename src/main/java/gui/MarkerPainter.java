@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 import javax.swing.ImageIcon;
 
-class MarkerPainter implements Painter<JXMapViewer> {
+public class MarkerPainter implements Painter<JXMapViewer> {
     private final List<GeoPosition> markers;
     private final ImageIcon pinIcon;
 

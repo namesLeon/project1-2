@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 
-class RoutePainter implements Painter<JXMapViewer> {
+public class RoutePainter implements Painter<JXMapViewer> {
     private final List<GeoPosition> track;
     private final List<String> modes;
     private Color color = new Color(221, 255, 0, 255); // default yellow color

@@ -1,4 +1,5 @@
 import DB.DBManager;
+import gui.*;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.viewer.DefaultTileFactory;
 import org.jxmapviewer.viewer.GeoPosition;
@@ -27,6 +28,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.management.PlatformLoggingMXBean;
 import java.net.URL;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -55,7 +57,7 @@ public class AmsterdamMap {
     private static final double CELL_SIZE_METERS = 200;
     private static final float  CELL_OPACITY     = 0.7f;
     private static final int    NUM_BINS         = 60;
-    private static HeatMapMaker  heatMaker;
+    private static HeatMapMaker heatMaker;
     private static HeatMapPainter heatPainter;
 
     private static final double AMST_MIN_LAT = 52.2430;
@@ -87,7 +89,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
