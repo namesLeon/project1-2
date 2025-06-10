@@ -44,7 +44,7 @@ public class TransitGraph {
             for (int j = 0; j < heatMapStops.size(); j++) {
                 Stop b = heatMapStops.get(j);
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
-                if(dist <= radius){
+                if(dist <= 1.5* radius){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
                     walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
                     walkEdges.putIfAbsent(b.stopId,new ArrayList<>());
@@ -60,7 +60,7 @@ public class TransitGraph {
             for(int j = i; j < heatMapStops.size(); j++){
                 Stop b = heatMapStops.get(j);
                 double dist = haversine(a.lat, a.lon, b.lat, b.lon);
-                if(dist <= radius){
+                if(dist <= 1.5*radius){
                     int secs = (int) Math.ceil(dist / 5000.0 * 3600.0);
                     walkEdges.putIfAbsent(a.stopId,new ArrayList<>());
                     walkEdges.putIfAbsent(b.stopId,new ArrayList<>());

@@ -43,6 +43,7 @@ public class AmsterdamMap {
     private static Painter<JXMapViewer> markerPainter;
     private static Painter<JXMapViewer> routePainter;
     private static JButton startRouteButton;
+    private static JButton startHeatmapButton;
     private static boolean routeActive = false;
     private static JTextField timeInputField;
     private static JLabel startTimeLabel;
@@ -93,7 +94,7 @@ public class AmsterdamMap {
         
 
                 // Set center to Amsterdam
-                GeoPosition amsterdam = new GeoPosition(52.3702, 4.8952);
+                GeoPosition amsterdam = new GeoPosition(52.37192, 4.89201);
                 mapViewer.addPropertyChangeListener("centerPosition", evt -> {
                     GeoPosition center = mapViewer.getCenterPosition();
                     double lat = Math.max(52.35, Math.min(52.42, center.getLatitude()));
@@ -169,6 +170,13 @@ public class AmsterdamMap {
                     updateTimeLabels();
                 });
 
+                startHeatmapButton = new JButton("Start Heatmap");
+                startHeatmapButton.addActionListener(e ->{
+                    String time = getTimeFromInput();
+                    startHeatmap(time);
+                    updateTimeLabels();
+                });
+
                 // Time input field
             timeInputField = new JTextField(10);
             timeInputField.setToolTipText("Enter time (HH:mm) or leave empty for current time");
@@ -196,6 +204,7 @@ public class AmsterdamMap {
                 controls.add(zoomOut);
                 controls.add(resetButton);
                 controls.add(startRouteButton);
+                controls.add(startHeatmapButton);
                 controls.add(timeInputField);
 
 
@@ -255,6 +264,43 @@ public class AmsterdamMap {
         }
     }
 
+    private static void startHeatmap(String time){
+
+        GeoPosition start;
+        if (markers.size() >= 1) start = markers.get(0);
+        else start = new GeoPosition(52.37455, 4.89527);
+        System.out.println(start.toString());
+        heatMaker = new HeatMapMaker(
+                AMST_MAX_LAT,  // top edge
+                AMST_MIN_LON,  // left edge
+                AMST_MIN_LAT,  // bottom edge
+                AMST_MAX_LON,  // right edge
+                CELL_SIZE_METERS,
+                CELL_OPACITY,
+                NUM_BINS,
+                graph,
+                planner,
+                start.getLatitude(),
+                start.getLongitude(),
+                getTimeFromInput()
+        );
+        System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
+
+        // 4) Create the painter that will draw those squares:
+        long startTime = System.currentTimeMillis();
+        heatPainter = new HeatMapPainter(
+                heatMaker.getGrid(),
+                mapViewer.getTileFactory()
+        );
+
+
+        mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter/*, routePainter*/));
+        mapViewer.repaint();
+        //routeActive = true;
+        graph.clearHeatMapStops();
+        System.out.println("Painting time : "+(System.currentTimeMillis()-startTime)/1000);
+    }
+
     private static void startRoute(String time) {
         if (markers.size() == 2) {
             List<String> modes = new ArrayList<>();
@@ -284,35 +330,36 @@ public class AmsterdamMap {
                     new Point2D.Double(vp.x + vp.width, vp.y + vp.height),
                     zoomLevel);
 
-            // 3) Build the grid of SquareArea objects:
-            heatMaker = new HeatMapMaker(
-                    AMST_MAX_LAT,  // top edge
-                    AMST_MIN_LON,  // left edge
-                    AMST_MIN_LAT,  // bottom edge
-                    AMST_MAX_LON,  // right edge
-                    CELL_SIZE_METERS,
-                    CELL_OPACITY,
-                    NUM_BINS,
-                    graph,
-                    planner,
-                    start.getLatitude(),
-                    start.getLongitude()
-            );
-            System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
+//            // 3) Build the grid of SquareArea objects:
+//            heatMaker = new HeatMapMaker(
+//                    AMST_MAX_LAT,  // top edge
+//                    AMST_MIN_LON,  // left edge
+//                    AMST_MIN_LAT,  // bottom edge
+//                    AMST_MAX_LON,  // right edge
+//                    CELL_SIZE_METERS,
+//                    CELL_OPACITY,
+//                    NUM_BINS,
+//                    graph,
+//                    planner,
+//                    start.getLatitude(),
+//                    start.getLongitude(),
+//                    getTimeFromInput()
+//            );
+//            System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
+//
+//            // 4) Create the painter that will draw those squares:
+//            long startTime = System.currentTimeMillis();
+//            heatPainter = new HeatMapPainter(
+//                    heatMaker.getGrid(),
+//                    mapViewer.getTileFactory()
+//            );
 
-            // 4) Create the painter that will draw those squares:
-            long startTime = System.currentTimeMillis();
-            heatPainter = new HeatMapPainter(
-                    heatMaker.getGrid(),
-                    mapViewer.getTileFactory()
-            );
 
-
-            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter, routePainter));
+            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter/*, heatPainter*/, routePainter));
             mapViewer.repaint();
             routeActive = true;
-            graph.clearHeatMapStops();
-            System.out.println("Painting time : "+(System.currentTimeMillis()-startTime)/1000);
+            //graph.clearHeatMapStops();
+            //System.out.println("Painting time : "+(System.currentTimeMillis()-startTime)/1000);
         }
     }
     private static void resetRoute() {
@@ -350,7 +397,7 @@ public class AmsterdamMap {
         } catch (Exception e) {
             // If parsing fails, use current time
             startTimeLabel.setText("Start Time: " + timeFormat.format(now));
-            endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
+            if(stepDurations != null) endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
   .reduce(0, Integer::sum) * 60 * 1000))); // Sum of durations in milliseconds
         }
     }

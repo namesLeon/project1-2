@@ -27,6 +27,7 @@ public class HeatMapMaker {
 
     private final double startLat;
     private final double startLon;
+    private final String startTime;
 
     /**
      * @param topLat       latitude of top edge
@@ -47,7 +48,8 @@ public class HeatMapMaker {
                         TransitGraph graph,
                         RoutePlanner planner,
                         double startLat,
-                        double startLon
+                        double startLon,
+                        String startTime
     ) {
         this.topLat        = topLat;
         this.leftLon       = leftLon;
@@ -61,6 +63,7 @@ public class HeatMapMaker {
         this.planner = planner;
         this.startLat = startLat;
         this.startLon = startLon;
+        this.startTime = String.valueOf(startTime);
         buildGrid();
     }
 
@@ -101,7 +104,7 @@ public class HeatMapMaker {
         }
         long startTime = System.currentTimeMillis();
         graph.computeWalkEdgesForHeatMap(cellSizeMeters);
-        HashMap<Stop, Integer> travelTimes = planner.computeAllShortestPaths(startLat, startLon, "12:00");
+        HashMap<Stop, Integer> travelTimes = planner.computeAllShortestPaths(startLat, startLon, this.startTime);
         long routeTime = (System.currentTimeMillis() - startTime);
         System.out.println("Route calculating : "+routeTime/1000);
         for(SquareArea sq : grid){
@@ -129,12 +132,44 @@ public class HeatMapMaker {
     /**
      * Helper to pick a discrete color between yellow and red for a given bin index
      */
-    private Color computeColorBin(int binIndex, int bins) {
-        float t;
-        if(binIndex < bins) t = (float)binIndex / (bins - 1);
-        else t = 1;
-        int green = (int)(255 * (1 - t));
-        return new java.awt.Color((int)(255 - green), green, 0);
+//    private Color computeColorBin(int binIndex, int bins) {
+//        float t;
+//        if(binIndex < bins) t = (float)binIndex / (bins - 1);
+//        else t = 1;
+//        int green = (int)(255 * (1 - t));
+//        return new java.awt.Color((int)(255 - green), green, 0);
+//    }
+//    private Color computeColorBin(int binIndex, int bins) {
+//        float t = Math.min(1.0f, (float)binIndex / (bins - 1));
+//
+//        // Blue to red gradient
+//        int red = (int)(255 * (1-t));
+//        int blue = (int)(255 * t);
+//        return new Color(red, 0, blue);
+//    }
+    public Color computeColorBin(int binIndex, int bins) {
+        float t = Math.min(1.0f, (float)binIndex / (bins - 1));
+
+        // Invert t so lower binIndex = warmer colors
+        t = 1.0f - t;
+
+        int red, green, blue;
+
+        if (t < 0.5f) {
+            // Dark blue to cyan (cold colors for high binIndex)
+            float localT = t * 2;
+            red = 0;
+            green = (int)(255 * localT);
+            blue = 255;
+        } else {
+            // Cyan to yellow to red (warm colors for low binIndex)
+            float localT = (t - 0.5f) * 2;
+            red = (int)(255 * localT);
+            green = 255;
+            blue = (int)(255 * (1 - localT));
+        }
+
+        return new Color(red, green, blue);
     }
 }
 
