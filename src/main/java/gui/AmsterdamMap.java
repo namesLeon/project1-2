@@ -50,8 +50,8 @@ public class AmsterdamMap {
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
 
-    private static final double CELL_SIZE_METERS = 200.0;
-    private static final float  CELL_OPACITY     = 0.6f;
+    private static final double CELL_SIZE_METERS = 200;
+    private static final float  CELL_OPACITY     = 0.7f;
     private static final int    NUM_BINS         = 60;
     private static HeatMapMaker  heatMaker;
     private static HeatMapPainter heatPainter;
@@ -206,6 +206,11 @@ public class AmsterdamMap {
                 controls.add(startRouteButton);
                 controls.add(startHeatmapButton);
                 controls.add(timeInputField);
+                int resolution = 6;
+                for(int i = 0; i <= resolution; i++){
+                    controls.add(createSquareForBinIndex(i*(NUM_BINS)/resolution));
+                }
+
 
 
                 markerPainter = new MarkerPainter(markers);
@@ -239,6 +244,9 @@ public class AmsterdamMap {
                 frame.setResizable(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
+                ArrayList<String> deletedStops = new ArrayList<>();
+                deletedStops.add("2953526");
+                deleteStops(deletedStops);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -282,7 +290,7 @@ public class AmsterdamMap {
                 planner,
                 start.getLatitude(),
                 start.getLongitude(),
-                getTimeFromInput()
+                time
         );
         System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
 
@@ -408,7 +416,33 @@ public class AmsterdamMap {
         timeInputField.setText("Right now");
         timeInputField.setForeground(Color.GRAY);
     }
+
+    public static void deleteStops(ArrayList<String> deletedStopIds){
+        for(String s : deletedStopIds){
+            planner.deleteStop(s);
+        }
+    }
+
+    public static void restoreDeletedStops(){
+        planner.reloadDeletedStop();
+    }
+
+    public static JPanel createSquareForBinIndex(int index){
+        int size = 500;
+        Color color = HeatMapMaker.computeColorBin(index, NUM_BINS);
+        String timeLabel = index+" min";
+
+        JPanel square = new JPanel();
+        square.setSize(new Dimension(size,size));
+        square.setBackground(color);
+        JPanel result = new JPanel();
+        result.add(new JLabel(timeLabel));
+        result.add(square);
+        return result;
+    }
 }
+
+
 
 class CompositePainter<T> implements Painter<T> {
     private final List<Painter<T>> painters;

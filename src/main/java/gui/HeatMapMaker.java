@@ -147,7 +147,7 @@ public class HeatMapMaker {
 //        int blue = (int)(255 * t);
 //        return new Color(red, 0, blue);
 //    }
-    public Color computeColorBin(int binIndex, int bins) {
+    public static Color computeColorBin(int binIndex, int bins) {
         float t = Math.min(1.0f, (float)binIndex / (bins - 1));
 
         // Invert t so lower binIndex = warmer colors
