@@ -40,8 +40,16 @@ public class GTFSLoader {
         this.graph = graph;
     }
 
-    public void setDeletedStopId(String deletedStopId){
-        this.deletedStopId = deletedStopId;
+    public void deleteStop(String deletedStopId){
+        System.out.println("Stop deltion started");
+        graph.deleteStop(deletedStopId);
+        System.out.println("Deleted Stop : "+deletedStopId);
+    }
+
+    public void reloadDeletedStops(){
+        System.out.println("Stop reload started");
+        graph.reloadDeletedStop();
+        System.out.println("Reloaded stops");
     }
 
     public void loadFromZip(Path zipPath) throws IOException {
@@ -51,6 +59,7 @@ public class GTFSLoader {
         agencyMap.clear();
         routes.clear();
         trips.clear();
+        System.out.println("cleared everything");
         Path tmpDir = Files.createTempDirectory("gtfs");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;
@@ -84,11 +93,7 @@ public class GTFSLoader {
             list.sort(Comparator.comparingInt(e -> e.departureSec));
         }
         graph.computeAllWalkEdges();
-        if(deletedStopId == null & graph.deletedStop!=null) {
-            graph.reloadDeletedStop();
-            graph.deletedStop = null;
-        }
-        if(deletedStopId != null) graph.deleteStop(deletedStopId);
+        //reloadDeletedStops();
     }
 
     public TransitGraph getTransitGraph() {
