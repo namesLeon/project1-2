@@ -8,6 +8,7 @@ import storage.TransitGraph;
 import structs.JourneyStep;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.*;
@@ -172,6 +173,7 @@ public class JSONInterface {
     }
 
     private void handleRunFile(Map<String,Object> req) throws IOException {
+        List<String> deletedStopIds = null;
         try {
             String file = (String) req.get("runFile");
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -194,19 +196,28 @@ public class JSONInterface {
                     @SuppressWarnings("unchecked")
                     Map<String,Object> subReq = (Map<String,Object>) obj;
                     if (subReq.containsKey("load")) {
-                        if(subReq.containsKey("deletedStopId")){
-                            deletedStopId = (String) subReq.get("deletedStopId");
-                        }
-                        else{
-                            deletedStopId = null;
-                        }
                         try {
                             String path = (String) subReq.get("load");
-                                if(deletedStopId != null) loader.deleteStop(deletedStopId);
-                                else loader.setDeletedStopNull();
-                                loader.loadFromZip(Path.of(path));
-                                planner = new RoutePlanner(graph);
-                                sendOk();
+                            loader.loadFromZip(Path.of(path));
+                            planner = new RoutePlanner(graph);
+                            loader.reloadDeletedStops();
+                            //sendOk();
+                            if(req.containsKey("deletedStopIds")){
+                                try {
+                                    deletedStopIds = (List<String>) subReq.get("deletedStopIds");
+                                    for (String stopId : deletedStopIds) {
+                                        loader.deleteStop(stopId);
+                                    }
+                                } catch (RuntimeException e) {
+                                    e.printStackTrace();
+                                    sendError("Bad deleted stop Ids input");
+                                }
+                            }
+                            else{
+                                //loader.reloadDeletedStops();
+                                deletedStopIds = null;
+                            }
+                            sendOk();
                         } catch (FileNotFoundException e) {
                             sendError("File not found");
                             break;
@@ -221,7 +232,7 @@ public class JSONInterface {
                         }
                     } else if (subReq.containsKey("batchRoutes")) {
                         handleBatch(subReq);
-                    } 
+                    }
                 }
             }
         } catch (ClassCastException | NullPointerException e) {
