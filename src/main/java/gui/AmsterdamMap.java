@@ -1,3 +1,5 @@
+package gui;
+
 import DB.DBManager;
 import gui.*;
 import org.jxmapviewer.JXMapViewer;
@@ -402,7 +404,49 @@ public class AmsterdamMap {
         );
 
 
-        mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter/*, routePainter*/));
+        Painter<JXMapViewer> stopPainter = (Graphics2D g, JXMapViewer map, int w, int h) -> {
+            for (Map.Entry<String, Float> entry : stopTimeDiffs.entrySet()) {
+                String stopId = entry.getKey();
+                float diff = entry.getValue();
+
+                // Lookup stop in graph
+                Stop s = graph.stops.get(stopId);
+                if (s == null) continue;
+
+                // Convert lat/lon to pixel
+                GeoPosition pos = new GeoPosition(s.lat, s.lon);
+                Point2D p = map.convertGeoPositionToPoint(pos);
+
+                // Decide color
+                Color color;
+                if (diff == 0.0f) {
+                    color = new Color(235, 245, 255);         // very light blue
+                } else if (diff <= 5.0f) {
+                    color = new Color(180, 210, 255);         // light blue
+                } else if (diff <= 20.0f) {
+                    color = new Color(100, 150, 255);         // normal blue
+                } else { // up to 50.0
+                    color = new Color(30, 90, 220);           // dark blue
+                }
+
+                // Draw circle
+                double radius = 6;  // 4px radius
+                Ellipse2D.Double circle = new Ellipse2D.Double(
+                        p.getX() - radius,
+                        p.getY() - radius,
+                        radius * 2,
+                        radius * 2
+                );
+                g.setColor(color);
+                g.fill(circle);
+                g.setStroke(new BasicStroke(2f));
+                g.setColor(Color.BLACK);
+                g.draw(circle);
+            }
+        };
+
+
+        mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter, stopPainter));
         mapViewer.repaint();
         //routeActive = true;
         graph.clearHeatMapStops();
@@ -462,8 +506,48 @@ public class AmsterdamMap {
 //                    mapViewer.getTileFactory()
 //            );
 
+            Painter<JXMapViewer> stopPainter = (Graphics2D g, JXMapViewer map, int w, int h) -> {
+                for (Map.Entry<String, Float> entry : stopTimeDiffs.entrySet()) {
+                    String stopId = entry.getKey();
+                    float diff = entry.getValue();
 
-            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter/*, heatPainter*/, routePainter));
+                    // Lookup stop in graph
+                    Stop s = graph.stops.get(stopId);
+                    if (s == null) continue;
+
+                    // Convert lat/lon to pixel
+                    GeoPosition pos = new GeoPosition(s.lat, s.lon);
+                    Point2D p = map.convertGeoPositionToPoint(pos);
+
+                    // Decide color
+                    Color color;
+                    if (diff == 0.0f) {
+                        color = new Color(235, 245, 255);         // very light blue
+                    } else if (diff <= 5.0f) {
+                        color = new Color(180, 210, 255);         // light blue
+                    } else if (diff <= 20.0f) {
+                        color = new Color(100, 150, 255);         // normal blue
+                    } else { // up to 50.0
+                        color = new Color(30, 90, 220);           // dark blue
+                    }
+
+                    // Draw circle
+                    double radius = 6;  // 4px radius
+                    Ellipse2D.Double circle = new Ellipse2D.Double(
+                            p.getX() - radius,
+                            p.getY() - radius,
+                            radius * 2,
+                            radius * 2
+                    );
+                    g.setColor(color);
+                    g.fill(circle);
+                    g.setStroke(new BasicStroke(2f));
+                    g.setColor(Color.BLACK);
+                    g.draw(circle);
+                }
+            };
+
+            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter/*, heatPainter*/, routePainter, stopPainter));
             mapViewer.repaint();
             routeActive = true;
         }
