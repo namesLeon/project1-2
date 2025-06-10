@@ -335,7 +335,6 @@ public class RoutePlanner {
         Stop s = graph.stops.get("2636880");
         List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "12:00");
         System.out.println(times.get(s));
-        List<JourneyStep> steps = planner.computeRoute(52.346853, 4.800953, s.lat, s.lon, "12:00");
         JourneyStep last = steps.get(steps.size() -1 );
         System.out.println(planner.formatTime(planner.parsetime(last.startTime)+last.durationMin*60));
         System.out.println(planner.computeAllShortestPaths(52.346853, 4.800953, "12:00").get(s)/60);
