@@ -91,7 +91,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database

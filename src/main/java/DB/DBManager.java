@@ -33,7 +33,7 @@ public class DBManager {
      */
     public static void main(String[] args) throws IOException {
         DBManager manager = new DBManager();
-        manager.initializeDataBase("data/amsterdam_gtfs.zip");
+        manager.initializeDataBase("data/amsterdam_gtfs_final.zip");
 //        ArrayList<DepartureEvent> events = manager.getDepartureEventsAfterStopDeletion("2636678");
 //        for(DepartureEvent event : events){
 //            System.out.println(event);
