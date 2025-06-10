@@ -41,15 +41,11 @@ public class GTFSLoader {
     }
 
     public void deleteStop(String deletedStopId){
-        System.out.println("Stop deltion started");
         graph.deleteStop(deletedStopId);
-        System.out.println("Deleted Stop : "+deletedStopId);
     }
 
     public void reloadDeletedStops(){
-        System.out.println("Stop reload started");
         graph.reloadDeletedStop();
-        System.out.println("Reloaded stops");
     }
 
     public void loadFromZip(Path zipPath) throws IOException {
@@ -59,7 +55,6 @@ public class GTFSLoader {
         agencyMap.clear();
         routes.clear();
         trips.clear();
-        System.out.println("cleared everything");
         Path tmpDir = Files.createTempDirectory("gtfs");
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipPath))) {
             ZipEntry entry;

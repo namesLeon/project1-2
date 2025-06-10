@@ -150,6 +150,7 @@ public class DBManager {
         try(Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)){
             dBloader.createEdgesTable(conn);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

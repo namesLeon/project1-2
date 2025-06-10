@@ -30,10 +30,10 @@ public class JSONInterface {
      * Important note: <br>
      * Now we have two possibilities to "delete" a stop <br>
      *  1. Delete the stop at the moment of accepting the input for finding the route <br>
-     *      {"routeFrom":{}, "startingAt":{}, "to":{}, "deletedStopId":"xyz"} - the last key-value pair is optional.
+     *      {"routeFrom":{}, "startingAt":{}, "to":{}, "deletedStopIds":["xyz","abc"]} - the last key-value pair is optional.
      *     Here the stop is added again after finding the path. <br>
      *  2. Delete the stop at the moment of loading the files into the graph <br>
-     *      {"load" : "PATH", "deletedStopId":"xyz"} - the last key-value pair is optional.
+     *      {"load" : "PATH", "deletedStopId":"deletedStopIds":["xyz","abc"]} - the last key-value pair is optional.
      *     Here the stop deletion is more binding than in step 1. The stop is not after finding the path. <br>
      *  The 1st method would then be used for example for the GUI or some quick comparisons, whereas
      *  2nd method would be used in experiments (so that we don't waste time for repetitive stop add and removal)
@@ -41,25 +41,21 @@ public class JSONInterface {
      */
     public void run() throws IOException {
         //List<String> deletedStopIds = null;
-        String[] deletedStopIds = null;
+        List<String> deletedStopIds = null;
         
         while (true) {
             Object obj;
             try {
                 obj = reader.read();
-                System.out.println("reading line");
             } catch (JSONSyntaxError e) {
                 //bad JSON, must terminate
-                System.out.println("Bad JSon input");
                 sendError("Bad JSON input");
                 break;
             } catch (EOFException e) {
                 //clean end of input
-                System.out.println(e.getMessage());
                 break;
             } catch (IOException e) {
                 //non-fatal I/O error reading input
-                System.out.println(e.getMessage());
                 sendError(e.getMessage());
                 continue;
             }
@@ -70,23 +66,19 @@ public class JSONInterface {
                 continue;
             }
 
-            System.out.println("Attempting casting");
             @SuppressWarnings("unchecked")
             Map<String,Object> req = (Map<String,Object>) obj;
-            System.out.println("Casted into Map");
 
             if (req.containsKey("load")) {
-                System.out.println("found load command");
                 try {
-                    System.out.println("I am here");
                     String path = (String) req.get("load");
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
+                    loader.reloadDeletedStops();
                     //sendOk();
-                    System.out.println("loaded graph");
                     if(req.containsKey("deletedStopIds")){
                         try {
-                            deletedStopIds = (String[]) req.get("deletedStopIds");
+                            deletedStopIds = (List<String>) req.get("deletedStopIds");
                             for (String stopId : deletedStopIds) {
                                 loader.deleteStop(stopId);
                             }
@@ -96,7 +88,7 @@ public class JSONInterface {
                         }
                     }
                     else{
-                        loader.reloadDeletedStops();
+                        //loader.reloadDeletedStops();
                         deletedStopIds = null;
                     }
                     sendOk();
@@ -125,9 +117,10 @@ public class JSONInterface {
                     Map<String,Object> to = (Map<String,Object>) req.get("to");
                     String start = (String) req.get("startingAt");
                     boolean tempDeleted = false;
-                    if(req.containsKey("deletedStopId")){
+                    if(req.containsKey("deletedStopIds")){
                         if(deletedStopIds==null && req.containsKey("deletedStopIds")){
-                            deletedStopIds = (String[]) req.get("deletedStopIds");
+
+                            deletedStopIds = (List<String>) req.get("deletedStopIds");
                             for(String stopId : deletedStopIds){
                                 loader.deleteStop(stopId);
                             }
