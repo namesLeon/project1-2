@@ -14,6 +14,8 @@ import structs.JourneyStep;
 import structs.Stop;
 
 import javax.swing.event.MouseInputListener;
+import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
@@ -43,11 +45,25 @@ public class AmsterdamMap {
     private static Painter<JXMapViewer> markerPainter;
     private static Painter<JXMapViewer> routePainter;
     private static JButton startRouteButton;
+    private static JButton startHeatmapButton;
     private static boolean routeActive = false;
     private static JTextField timeInputField;
     private static JLabel startTimeLabel;
     private static JLabel endTimeLabel;
     private static ArrayList<Integer> stepDurations;
+
+    private static final double CELL_SIZE_METERS = 200;
+    private static final float  CELL_OPACITY     = 0.7f;
+    private static final int    NUM_BINS         = 60;
+    private static HeatMapMaker  heatMaker;
+    private static HeatMapPainter heatPainter;
+
+    private static final double AMST_MIN_LAT = 52.2430;
+    private static final double AMST_MAX_LAT = 52.4311;
+    private static final double AMST_MIN_LON = 4.7283;
+    private static final double AMST_MAX_LON = 5.0616;
+
+
 
     static Map<String, Float> stopTimeDiffs;
     private static List<Stop> deletedStopsList = new ArrayList<>();
@@ -71,7 +87,7 @@ public class AmsterdamMap {
                 loader = new GTFSLoader(graph);
                 dbManager = new DBManager();
                 try {
-                    String path = "data/amsterdam_gtfs.zip"; // Default path for GTFS data
+                    String path = "data/amsterdam_gtfs_final.zip"; // Default path for GTFS data
                     loader.loadFromZip(Path.of(path));
                     planner = new RoutePlanner(graph);
                     //dbManager.initializeDataBase(path);// Takes like 30 seconds to load the database
@@ -210,6 +226,13 @@ public class AmsterdamMap {
                     updateTimeLabels();
                 });
 
+                startHeatmapButton = new JButton("Start Heatmap");
+                startHeatmapButton.addActionListener(e ->{
+                    String time = getTimeFromInput();
+                    startHeatmap(time);
+                    updateTimeLabels();
+                });
+
                 // Time input field
             timeInputField = new JTextField(10);
             timeInputField.setToolTipText("Enter time (HH:mm) or leave empty for current time");
@@ -238,7 +261,14 @@ public class AmsterdamMap {
                 controls.add(resetButton);
                 controls.add(startRouteButton);
                 controls.add(resetDeletedStopsButton);
+                controls.add(startHeatmapButton);
                 controls.add(timeInputField);
+                int resolution = 6;
+                for(int i = 0; i <= resolution; i++){
+                    controls.add(createSquareForBinIndex(i*(NUM_BINS)/resolution));
+                }
+
+
 
                 Painter<JXMapViewer> stopPainter = (Graphics2D g, JXMapViewer map, int w, int h) -> {
                     for (Map.Entry<String, Float> entry : stopTimeDiffs.entrySet()) {
@@ -312,6 +342,9 @@ public class AmsterdamMap {
                 frame.setResizable(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
+                ArrayList<String> deletedStops = new ArrayList<>();
+                deletedStops.add("2953526");
+                deleteStops(deletedStops);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -337,6 +370,43 @@ public class AmsterdamMap {
         }
     }
 
+    private static void startHeatmap(String time){
+
+        GeoPosition start;
+        if (markers.size() >= 1) start = markers.get(0);
+        else start = new GeoPosition(52.37455, 4.89527);
+        System.out.println(start.toString());
+        heatMaker = new HeatMapMaker(
+                AMST_MAX_LAT,  // top edge
+                AMST_MIN_LON,  // left edge
+                AMST_MIN_LAT,  // bottom edge
+                AMST_MAX_LON,  // right edge
+                CELL_SIZE_METERS,
+                CELL_OPACITY,
+                NUM_BINS,
+                graph,
+                planner,
+                start.getLatitude(),
+                start.getLongitude(),
+                time
+        );
+        System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
+
+        // 4) Create the painter that will draw those squares:
+        long startTime = System.currentTimeMillis();
+        heatPainter = new HeatMapPainter(
+                heatMaker.getGrid(),
+                mapViewer.getTileFactory()
+        );
+
+
+        mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, heatPainter/*, routePainter*/));
+        mapViewer.repaint();
+        //routeActive = true;
+        graph.clearHeatMapStops();
+        System.out.println("Painting time : "+(System.currentTimeMillis()-startTime)/1000);
+    }
+
     private static void startRoute(String time) {
         if (markers.size() == 2) {
             List<String> modes = new ArrayList<>();
@@ -353,7 +423,45 @@ public class AmsterdamMap {
                 route.add(stepPos);
             }
             routePainter = new RoutePainter(route, modes);
-            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter, routePainter));
+
+            // 1) Read the current viewport in pixels:
+            Rectangle vp = mapViewer.getViewportBounds();
+            int zoomLevel = mapViewer.getZoom();
+            TileFactory tf = mapViewer.getTileFactory();
+
+            // 2) Convert the two corners to geographic coordinates:
+            GeoPosition topLeftGeo = tf.pixelToGeo(
+                    new Point2D.Double(vp.x, vp.y), zoomLevel);
+            GeoPosition botRightGeo = tf.pixelToGeo(
+                    new Point2D.Double(vp.x + vp.width, vp.y + vp.height),
+                    zoomLevel);
+
+//            // 3) Build the grid of SquareArea objects:
+//            heatMaker = new HeatMapMaker(
+//                    AMST_MAX_LAT,  // top edge
+//                    AMST_MIN_LON,  // left edge
+//                    AMST_MIN_LAT,  // bottom edge
+//                    AMST_MAX_LON,  // right edge
+//                    CELL_SIZE_METERS,
+//                    CELL_OPACITY,
+//                    NUM_BINS,
+//                    graph,
+//                    planner,
+//                    start.getLatitude(),
+//                    start.getLongitude(),
+//                    getTimeFromInput()
+//            );
+//            System.out.println("HeatMap has " + heatMaker.getGrid().size() + " cells");
+//
+//            // 4) Create the painter that will draw those squares:
+//            long startTime = System.currentTimeMillis();
+//            heatPainter = new HeatMapPainter(
+//                    heatMaker.getGrid(),
+//                    mapViewer.getTileFactory()
+//            );
+
+
+            mapViewer.setOverlayPainter(CompositePainter.of(markerPainter/*, heatPainter*/, routePainter));
             mapViewer.repaint();
             routeActive = true;
         }
@@ -435,7 +543,7 @@ public class AmsterdamMap {
         } catch (Exception e) {
             // If parsing fails, use current time
             startTimeLabel.setText("Start Time: " + timeFormat.format(now));
-            endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
+            if(stepDurations != null) endTimeLabel.setText("End Time: " + timeFormat.format(new Date(now.getTime() + stepDurations.stream()
   .reduce(0, Integer::sum) * 60 * 1000))); // Sum of durations in milliseconds
         }
     }
@@ -445,6 +553,30 @@ public class AmsterdamMap {
         endTimeLabel.setText("End Time: --:--");
         timeInputField.setText("Right now");
         timeInputField.setForeground(Color.GRAY);
+    }
+
+    public static void deleteStops(ArrayList<String> deletedStopIds){
+        for(String s : deletedStopIds){
+            planner.deleteStop(s);
+        }
+    }
+
+    public static void restoreDeletedStops(){
+        planner.reloadDeletedStop();
+    }
+
+    public static JPanel createSquareForBinIndex(int index){
+        int size = 500;
+        Color color = HeatMapMaker.computeColorBin(index, NUM_BINS);
+        String timeLabel = index+" min";
+
+        JPanel square = new JPanel();
+        square.setSize(new Dimension(size,size));
+        square.setBackground(color);
+        JPanel result = new JPanel();
+        result.add(new JLabel(timeLabel));
+        result.add(square);
+        return result;
     }
 
     public static Map<String, Float> loadStopTimeDiffs(String filename) {

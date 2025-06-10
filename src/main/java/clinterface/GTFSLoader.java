@@ -40,8 +40,12 @@ public class GTFSLoader {
         this.graph = graph;
     }
 
-    public void setDeletedStopId(String deletedStopId){
-        this.deletedStopId = deletedStopId;
+    public void deleteStop(String deletedStopId){
+        graph.deleteStop(deletedStopId);
+    }
+
+    public void reloadDeletedStops(){
+        graph.reloadDeletedStop();
     }
 
     public void loadFromZip(Path zipPath) throws IOException {
@@ -84,11 +88,7 @@ public class GTFSLoader {
             list.sort(Comparator.comparingInt(e -> e.departureSec));
         }
         graph.computeAllWalkEdges();
-        if(deletedStopId == null & graph.deletedStop!=null) {
-            graph.reloadDeletedStop();
-            graph.deletedStop = null;
-        }
-        if(deletedStopId != null) graph.deleteStop(deletedStopId);
+        //reloadDeletedStops();
     }
 
     public TransitGraph getTransitGraph() {

@@ -34,6 +34,14 @@ public class DBManager {
     public static void main(String[] args) throws IOException {
         DBManager manager = new DBManager();
         manager.initializeDataBase("data/amsterdam_gtfs.zip");
+//        ArrayList<DepartureEvent> events = manager.getDepartureEventsAfterStopDeletion("2636678");
+//        for(DepartureEvent event : events){
+//            System.out.println(event);
+//        }
+//        events = manager.getDepartureEventsAfterStopDeletion("2636726");
+//        for(DepartureEvent event : events){
+//            System.out.println(event);
+//        }
     }
 
     public void initializeDataBase(String zipDirectory){
@@ -57,34 +65,57 @@ public class DBManager {
     public ArrayList<DepartureEvent> getDepartureEventsAfterStopDeletion(String deletedStopId){
         ArrayList<DepartureEvent> newDepartures = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)){
-            PreparedStatement st = conn.prepareStatement("""
-                    SELECT
-                    route_id, trip_id, start_stop, end_stop, departure_time, arrival_time, transfer_length,
-                    trip_headsign, agency_name, route_short_name, route_long_name
-                    FROM (SELECT * FROM
-                    	(
-                    	SELECT e1.start_stop as start_stop, e2.end_stop as end_stop, trip_id,
-                    	e1.departure_time as departure_time, e2.arrival_time as arrival_time,
-                    	TIMEDIFF(e2.arrival_time, e2.departure_time) as transfer_length
-                    	FROM edges e1 JOIN edges e2
-                    	USING(trip_id)
-                    	WHERE e1.end_stop = e2.start_stop AND e1.end_stop = ?
-                    	) a
-                    	JOIN
-                    	(
-                    	SELECT trip_id, trip_headsign FROM trips
-                    	) b
-                    	USING(trip_id)
-                    ) c
-                    JOIN
-                    (SELECT route_id, agency_name, route_short_name, route_long_name
-                    FROM routes JOIN agency USING(agency_id))d
+            conn.setAutoCommit(false);
+            PreparedStatement st1 = conn.prepareStatement("""
+                        CREATE TEMPORARY TABLE temp_edges AS
+                        SELECT e1.start_stop as start_stop, e2.end_stop as end_stop, trip_id,
+                        e1.departure_time as departure_time, e2.arrival_time as arrival_time,
+                        TIMEDIFF(e2.arrival_time, e2.departure_time) as transfer_length
+                        FROM edges e1 JOIN edges e2
+                        USING(trip_id)
+                        WHERE e1.end_stop = e2.start_stop AND e1.end_stop = ?
                     """);
-            st.setString(1, deletedStopId);
-            ResultSet rs = st.executeQuery();
+            st1.setString(1, deletedStopId);
+            st1.executeUpdate();
+            PreparedStatement st3 = conn.prepareStatement("""
+                        DELETE FROM edges
+                        WHERE start_stop = ? OR end_stop = ?;
+                    """);
+            st3.setString(1,deletedStopId);
+            st3.setString(2, deletedStopId);
+            st3.executeUpdate();
+
+            String updateEdges = """
+                        INSERT INTO edges SELECT * FROM temp_edges
+                    """;
+            Statement st = conn.createStatement();
+            st.executeUpdate(updateEdges);
+            PreparedStatement st2 = conn.prepareStatement("""
+                    SELECT
+                   route_id, trip_id, start_stop, end_stop, departure_time, arrival_time, transfer_length,
+                   trip_headsign, agency_name, route_short_name, route_long_name
+                   FROM (SELECT * FROM
+                   temp_edges
+                   JOIN
+                   (
+                   SELECT trip_id, trip_headsign, route_id FROM trips
+                   ) b
+                   USING(trip_id)
+                   ) c
+                   JOIN
+                   (SELECT route_id, agency_name, route_short_name, route_long_name
+                   FROM routes JOIN agency USING(agency_id)) d
+                   USING(route_id);
+                    """);
+            ResultSet rs = st2.executeQuery();
             while (rs.next()) {
                 newDepartures.add(createNewDepartureEvent(rs));
             }
+            Statement dropTempTable = conn.createStatement();
+            dropTempTable.executeUpdate("""
+                    DROP TEMPORARY TABLE temp_edges
+                    """);
+            conn.commit();
             //System.out.println("Created new edges.");
         }
         catch (SQLException e) {
@@ -112,5 +143,15 @@ public class DBManager {
                 StopTime.parseTime(rs.getString(6)),
                 routeInfo
         );
+    }
+
+    public void reloadEdges(){
+        DBloader dBloader = new DBloader();
+        try(Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)){
+            dBloader.createEdgesTable(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
