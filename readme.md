@@ -56,6 +56,17 @@ repository.
    exit;
    ```
 
+3.1 (optional) **Create a new user for the purpuses of the project**
+   Inside MySQL shell:
+
+   ```sql
+   CREATE USER 'BCS1510'@'localhost' IDENTIFIED BY 'BCS1510';
+
+   GRANT ALL PRIVILEGES ON gtfs_Amsterdam.* TO 'BCS1510'@'localhost';
+
+   FLUSH PRIVILEGES;
+   ```
+
 4. **Import the provided GTFS SQL dump**:
    In your terminal:
 
