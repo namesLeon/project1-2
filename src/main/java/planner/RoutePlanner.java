@@ -264,7 +264,7 @@ public class RoutePlanner {
         //assume a straight as-the-crow-flies path from stopID to the destination
         //assume an absurdly high average transit speed
         //return a lower bound on the remaining journey time from stopID
-        return (int)Math.ceil((d / 25000.0 * 3600.0));
+        return (int)Math.ceil((d / 50000.0 * 3600.0));
     }
 
     private static String formatTime(int sec) {
