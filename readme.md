@@ -1,98 +1,199 @@
-# BCS1600 Spring 2025 Project Skeleton
+# Amsterdam Routing Engine
 
-The files in this repository can be used as a basis for your implementation of the Routing
-Engine portion of the project.
+This project is a Java 17 public-transport routing engine for Amsterdam. It loads a
+GTFS feed, builds an in-memory transit graph, and reads routing commands as JSON from
+standard input. Routes can combine walking and public transport and are returned as
+JSON on standard output.
 
-[Maven]: https://maven.apache.org/
+The project is built with [Maven](https://maven.apache.org/) and uses Apache Commons
+CSV for GTFS parsing, MySQL Connector/J for the optional database utilities, and
+JXMapViewer for map visualisation components.
 
-## Building
+## Requirements
 
-Use [Maven][] to build, clean, test, and start your program. The command-line tool is called
-`mvn`, and IDEs like IntelliJ IDEA and Visual Studio Code have built-in support for Maven
-actions. Maven is configured with the [`pom.xml`](pom.xml) file in the root directory of your
-repository.
+- Java Development Kit (JDK) 17 or newer
+- Maven 3.8 or newer
+- The provided GTFS archive, or another compatible GTFS ZIP feed
 
- - `mvn clean`: removes the `target/` directory (but note that e.g. vscode will immediately put
-   it back if vscode is open on the project!).
+The feed used by this repository is
+[`data/amsterdam_gtfs_final.zip`](data/amsterdam_gtfs_final.zip). A compatible feed
+must contain `stops.txt`, `agency.txt`, `routes.txt`, one or more `trips*.txt` files,
+and one or more `stop_times*.txt` files.
 
- - `mvn compile`: build the main project.
+## Build and run
 
- - `mvn test`: run the test suite.
+Run these commands from the repository root:
 
- - `mvn exec:java`: invoke the main class of the project (`exec.mainClass` property in
-   `pom.xml`). Use the `-q` flag to silence Maven's own output: `mvn -q exec:java`.
+```text
+mvn clean
+mvn compile
+mvn test
+```
 
-## Files
+The application entry point is `clinterface.RoutingEngine`, configured in
+[`pom.xml`](pom.xml). Start it with:
 
- - `pom.xml`: [Maven][] configuration file.
+```text
+mvn -q exec:java
+```
 
- - `src/main/java/RoutingEngine.java`: Skeleton Routing Engine server implementation for you to
-   build on.
+The application is a streaming process: send one JSON request per line (or multiple
+JSON values through standard input) and read one JSON response per request.
 
+## JSON protocol
 
+### Load a GTFS feed
 
-## GTFS MySQL database setup and loader guide
+Load the feed before requesting a route:
 
-### set up the MySQL Database
+```json
+{"load":"data/amsterdam_gtfs_final.zip"}
+```
 
-1. **install MySQL Server** (if you don't have it yet):
-   - Download from [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
+Successful loading returns:
 
-2. **Start your MySQL Server**:
-   - Windows: start mySQL service meow
-   - Mac/Linux: `sudo systemctl start mysql`
+```json
+{"ok":"loaded"}
+```
 
-3. **Create a new database**:
-   Open a terminal and run:
+The path is resolved relative to the process working directory. Loading replaces the
+currently loaded graph and computes walking connections between stops.
 
-   ```bash
-   mysql -u root -p
-   ```
+### Request a route
 
-   Inside the MySQL shell:
+`startingAt` uses `HH:mm` notation. Coordinates are decimal latitude and longitude.
+
+```json
+{
+  "routeFrom": {"lat": 52.3702, "lon": 4.8952},
+  "to": {"lat": 52.3791, "lon": 4.9003},
+  "startingAt": "08:30"
+}
+```
+
+The response has an `ok` array containing journey steps. Each step includes:
+
+- `mode`: `walk` or `ride`
+- `to`: destination coordinates for that step
+- `duration`: duration in minutes
+- `startTime`: step start time
+
+Ride steps additionally include the stop name and route metadata:
+
+```json
+{
+  "ok": [
+    {
+      "mode": "ride",
+      "to": {"lat": 52.36, "lon": 4.91},
+      "duration": 12,
+      "startTime": "08:42",
+      "stop": "Central Station",
+      "route": {
+        "operator": "Operator",
+        "shortName": "2",
+        "longName": "Example line",
+        "headSign": "Example destination"
+      }
+    }
+  ]
+}
+```
+
+If no transit route improves on walking, the engine returns a walking journey. Errors
+are returned as JSON, for example `{"error":"No GTFS data loaded"}`.
+
+### Temporarily remove stops
+
+Stops can be removed for a single route request:
+
+```json
+{
+  "routeFrom": {"lat": 52.3702, "lon": 4.8952},
+  "to": {"lat": 52.3791, "lon": 4.9003},
+  "startingAt": "08:30",
+  "deletedStopIds": ["stop-id-1", "stop-id-2"]
+}
+```
+
+They can also be removed when loading a feed:
+
+```json
+{
+  "load": "data/amsterdam_gtfs_final.zip",
+  "deletedStopIds": ["stop-id-1"]
+}
+```
+
+The load-time option remains active until the graph is reloaded.
+
+### Batch routes
+
+After loading a feed, process newline-delimited route requests in parallel:
+
+```json
+{"batchRoutes":{"input":"data/routes-input.jsonl","output":"data/routes-output.jsonl"}}
+```
+
+Each input line must be a route request. The output contains one JSON result per
+input line in the original order.
+
+### Run a request file
+
+The `runFile` command reads a file containing newline-delimited JSON commands:
+
+```json
+{"runFile":"data/commands.jsonl"}
+```
+
+This is useful for replaying a load-and-route sequence without typing requests
+interactively.
+
+## Optional MySQL utilities
+
+The main routing process uses the in-memory `GTFSLoader`; it does not require MySQL.
+The `DBManager` and `DBloader` classes provide an optional MySQL workflow for loading
+the GTFS data and generating database edges.
+
+1. Install and start MySQL.
+2. Create the database:
 
    ```sql
    CREATE DATABASE gtfs_Amsterdam;
-   exit;
    ```
 
-3.1 (optional) **Create a new user for the purpuses of the project**
-   Inside MySQL shell:
+3. Create a user, or update the credentials in
+   [`DBManager.java`](src/main/java/DB/DBManager.java) to match an existing account.
+4. From the repository root, run:
 
-   ```sql
-   CREATE USER 'BCS1510'@'localhost' IDENTIFIED BY 'BCS1510';
-
-   GRANT ALL PRIVILEGES ON gtfs_Amsterdam.* TO 'BCS1510'@'localhost';
-
-   FLUSH PRIVILEGES;
+   ```text
+   mvn -q exec:java -Dexec.mainClass=DB.DBManager
    ```
 
-4. **Import the provided GTFS SQL dump**:
-   In your terminal:
+The database schema is in [`amsterdam_database/schema.sql`](amsterdam_database/schema.sql).
+The database loader imports the GTFS ZIP into MySQL and creates an `edges` table used
+by the database-specific stop-deletion helpers.
 
-   ```bash
-   mysql -u root -p gtfs_Amsterdam < path/to/gtfs_Amsterdam.sql
-   ```
-  
-  
-  and that s it !!! should work now ^-^
----
+## Project layout
 
-###  GTFSMySQLLoader . java
+- [`src/main/java/clinterface/`](src/main/java/clinterface/): application entry point,
+  JSON protocol, and GTFS ZIP loader
+- [`src/main/java/planner/`](src/main/java/planner/): route search and journey
+  reconstruction
+- [`src/main/java/storage/`](src/main/java/storage/): in-memory transit graph
+- [`src/main/java/structs/`](src/main/java/structs/): stops, trips, departures, and
+  journey result types
+- [`src/main/java/gui/`](src/main/java/gui/): map and route/heat-map visualisation
+- [`src/main/java/DB/`](src/main/java/DB/): optional MySQL loading and edge utilities
+- [`src/main/resources/tiles.zip`](src/main/resources/tiles.zip): bundled map tiles
+- [`map.HTML`](map.HTML): map-related project resource
 
-The `GTFSMySQLLoader` class **connects to the MySQL database** and **loads GTFS data** into Java objects.
+## Troubleshooting
 
-It supports:
-- `loadStops()` → Load stops from the `stops` table into a `Map<String, Stop>`
-- `loadRoutes()` → Load routes from the `routes` table into a `Map<String, Route>`
-- `loadTrips()` → Load trips from the `trips` table into a `Map<String, Trip>`
-- `loadStopTimes()` → Load stop times from the `stop_times` table into a `List<StopTime>`
-- `loadCalendarDates()` → Load service dates from the `calendar_dates` table into a `List<CalendarDate>`
-
-The loader uses:
-- Standard JDBC (Java Database Connectivity)
-- Works similarly to the original ZIP GTFSLoader, but reads data from MySQL instead of a `.zip` file.
-
-NOTE : the data loaded in the current Amsterdam gtfs database are the preprocessed csv files meow.
-
----
+- **`No GTFS data loaded`**: send a `load` request before a route or batch request.
+- **`File not found`**: check that the ZIP or input file path is relative to the
+  directory where Maven was started.
+- **Bad request errors**: verify that coordinates are numbers, `startingAt` is in
+  `HH:mm` format, and every request is a JSON object.
+- **MySQL connection errors**: confirm that MySQL is running, the database exists, and
+  the credentials and JDBC URL in `DBManager.java` are correct.
